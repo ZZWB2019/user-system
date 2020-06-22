@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cmpay.zwb.dao.IRoleMenuDao" >
+
+    <resultMap id="BaseResultMap" type="com.cmpay.zwb.entity.RoleMenuDO" >
+        <result column="id" property="id" jdbcType="BIGINT" />
+        <result column="rid" property="rid" jdbcType="BIGINT" />
+        <result column="mid" property="mid" jdbcType="BIGINT" />
+        <result column="use_select" property="useSelect" jdbcType="SMALLINT" />
+        <result column="use_delete" property="useDelete" jdbcType="SMALLINT" />
+        <result column="use_insert" property="useInsert" jdbcType="SMALLINT" />
+        <result column="use_update" property="useUpdate" jdbcType="SMALLINT" />
+        <result column="creat_time" property="creatTime" jdbcType="DATE" />
+    </resultMap>
+
+    <insert id="insert" parameterType="com.cmpay.zwb.entity.RoleMenuDO" >
+        insert into role_menu
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                id,
+            </if>
+            <if test="rid != null" >
+                rid,
+            </if>
+            <if test="mid != null" >
+                mid,
+            </if>
+            <if test="useSelect != null" >
+                use_select,
+            </if>
+            <if test="useDelete != null" >
+                use_delete,
+            </if>
+            <if test="useInsert != null" >
+                use_insert,
+            </if>
+            <if test="useUpdate != null" >
+                use_update,
+            </if>
+            <if test="creatTime != null" >
+                creat_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="rid != null" >
+                #{rid,jdbcType=BIGINT},
+            </if>
+            <if test="mid != null" >
+                #{mid,jdbcType=BIGINT},
+            </if>
+            <if test="useSelect != null" >
+                #{useSelect,jdbcType=SMALLINT},
+            </if>
+            <if test="useDelete != null" >
+                #{useDelete,jdbcType=SMALLINT},
+            </if>
+            <if test="useInsert != null" >
+                #{useInsert,jdbcType=SMALLINT},
+            </if>
+            <if test="useUpdate != null" >
+                #{useUpdate,jdbcType=SMALLINT},
+            </if>
+            <if test="creatTime != null" >
+                #{creatTime,jdbcType=DATE},
+            </if>
+        </trim>
+    </insert>
+
+    <select id="find" resultMap="BaseResultMap" parameterType="com.cmpay.zwb.entity.RoleMenuDO" >
+        select 
+        <include refid="Base_Column_List" />
+        from role_menu
+        <where >
+            <if test="id != null" >
+                and id = #{id,jdbcType=BIGINT}
+            </if>
+            <if test="rid != null" >
+                and rid = #{rid,jdbcType=BIGINT}
+            </if>
+            <if test="mid != null" >
+                and mid = #{mid,jdbcType=BIGINT}
+            </if>
+            <if test="useSelect != null" >
+                and use_select = #{useSelect,jdbcType=SMALLINT}
+            </if>
+            <if test="useDelete != null" >
+                and use_delete = #{useDelete,jdbcType=SMALLINT}
+            </if>
+            <if test="useInsert != null" >
+                and use_insert = #{useInsert,jdbcType=SMALLINT}
+            </if>
+            <if test="useUpdate != null" >
+                and use_update = #{useUpdate,jdbcType=SMALLINT}
+            </if>
+            <if test="creatTime != null" >
+                and creat_time = #{creatTime,jdbcType=DATE}
+            </if>
+        </where>
+    </select>
+</mapper>

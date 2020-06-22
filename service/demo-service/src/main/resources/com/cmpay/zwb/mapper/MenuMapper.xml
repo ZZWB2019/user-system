@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cmpay.zwb.dao.IMenuDao" >
+
+    <resultMap id="BaseResultMap" type="com.cmpay.zwb.entity.MenuDO" >
+        <result column="mid" property="mid" jdbcType="BIGINT" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="supid" property="supid" jdbcType="BIGINT" />
+        <result column="menu_type" property="menuType" jdbcType="SMALLINT" />
+        <result column="creat_time" property="creatTime" jdbcType="DATE" />
+    </resultMap>
+
+    <insert id="insert" parameterType="com.cmpay.zwb.entity.MenuDO" >
+        insert into menu
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="mid != null" >
+                mid,
+            </if>
+            <if test="name != null" >
+                name,
+            </if>
+            <if test="supid != null" >
+                supid,
+            </if>
+            <if test="menuType != null" >
+                menu_type,
+            </if>
+            <if test="creatTime != null" >
+                creat_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="mid != null" >
+                #{mid,jdbcType=BIGINT},
+            </if>
+            <if test="name != null" >
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="supid != null" >
+                #{supid,jdbcType=BIGINT},
+            </if>
+            <if test="menuType != null" >
+                #{menuType,jdbcType=SMALLINT},
+            </if>
+            <if test="creatTime != null" >
+                #{creatTime,jdbcType=DATE},
+            </if>
+        </trim>
+    </insert>
+
+    <select id="find" resultMap="BaseResultMap" parameterType="com.cmpay.zwb.entity.MenuDO" >
+        select 
+        <include refid="Base_Column_List" />
+        from menu
+        <where >
+            <if test="mid != null" >
+                and mid = #{mid,jdbcType=BIGINT}
+            </if>
+            <if test="name != null" >
+                and name = #{name,jdbcType=VARCHAR}
+            </if>
+            <if test="supid != null" >
+                and supid = #{supid,jdbcType=BIGINT}
+            </if>
+            <if test="menuType != null" >
+                and menu_type = #{menuType,jdbcType=SMALLINT}
+            </if>
+            <if test="creatTime != null" >
+                and creat_time = #{creatTime,jdbcType=DATE}
+            </if>
+        </where>
+    </select>
+</mapper>

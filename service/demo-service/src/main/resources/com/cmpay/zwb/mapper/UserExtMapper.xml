@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cmpay.zwb.dao.IUserDao" >
+
+    <sql id="Base_Column_List" >
+        uid,name,passwd,create_time,phnumber,email,is_deleted
+    </sql>
+
+    <select id="getById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from my_user
+        <where>
+            <if test="uid != null" >
+                and uid = #{uid,jdbcType=BIGINT}
+            </if>
+        </where>
+    </select>
+
+</mapper>

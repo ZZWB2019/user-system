@@ -1,0 +1,12 @@
+rootProject.name = 'user-system'
+include 'app'
+include 'app:demo-manager-app'
+include 'constant'
+include 'constant:demo-constant'
+include 'common'
+include 'common:demo-auth'
+include 'interface'
+include 'interface:demo-manager-interface'
+include 'service'
+include 'service:demo-service'
+

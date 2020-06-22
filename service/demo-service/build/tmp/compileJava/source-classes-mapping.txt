@@ -1,0 +1,32 @@
+com/cmpay/zwb/dao/IRoleDao.java
+ com.cmpay.zwb.dao.IRoleDao
+com/cmpay/zwb/dao/IUserRoleDao.java
+ com.cmpay.zwb.dao.IUserRoleDao
+com/cmpay/zwb/dao/IMenuDao.java
+ com.cmpay.zwb.dao.IMenuDao
+com/cmpay/zwb/entity/UserDO.java
+ com.cmpay.zwb.entity.UserDO
+com/cmpay/zwb/dao/IRoleMenuDao.java
+ com.cmpay.zwb.dao.IRoleMenuDao
+com/cmpay/zwb/entity/RoleMenuDO.java
+ com.cmpay.zwb.entity.RoleMenuDO
+com/cmpay/zwb/entity/RoleDO.java
+ com.cmpay.zwb.entity.RoleDO
+com/cmpay/zwb/entity/UserRoleDOKey.java
+ com.cmpay.zwb.entity.UserRoleDOKey
+com/cmpay/zwb/entity/UserRoleDO.java
+ com.cmpay.zwb.entity.UserRoleDO
+com/cmpay/zwb/dao/BaseDO.java
+ com.cmpay.zwb.dao.BaseDO
+com/cmpay/zwb/entity/RoleMenuDOKey.java
+ com.cmpay.zwb.entity.RoleMenuDOKey
+com/cmpay/zwb/entity/MenuDOKey.java
+ com.cmpay.zwb.entity.MenuDOKey
+com/cmpay/zwb/dao/IUserDao.java
+ com.cmpay.zwb.dao.IUserDao
+com/cmpay/zwb/entity/UserDOKey.java
+ com.cmpay.zwb.entity.UserDOKey
+com/cmpay/zwb/entity/RoleDOKey.java
+ com.cmpay.zwb.entity.RoleDOKey
+com/cmpay/zwb/entity/MenuDO.java
+ com.cmpay.zwb.entity.MenuDO
