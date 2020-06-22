@@ -31,4 +31,14 @@ public interface UserService {
      * @return
      */
     public int SaveUser(SaveUserDto saveUserDto,Long idgenValue);
+
+    /**
+     * 用户登录接口
+     * @param name
+     * @param passwd
+     * @return
+     */
+    public UserDO login(String name,String passwd);
+
+
 }

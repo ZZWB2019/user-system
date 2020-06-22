@@ -5,8 +5,11 @@
     <resultMap id="BaseResultMap" type="com.cmpay.zwb.entity.RoleDO" >
         <result column="rid" property="rid" jdbcType="BIGINT" />
         <result column="name" property="name" jdbcType="VARCHAR" />
-        <result column="create_time" property="createTime" jdbcType="DATE" />
         <result column="note" property="note" jdbcType="VARCHAR" />
+        <result column="create_user" property="createUser" jdbcType="BIGINT" />
+        <result column="create_time" property="createTime" jdbcType="DATE" />
+        <result column="update_user" property="updateUser" jdbcType="BIGINT" />
+        <result column="update_time" property="updateTime" jdbcType="DATE" />
     </resultMap>
 
     <insert id="insert" parameterType="com.cmpay.zwb.entity.RoleDO" >
@@ -18,11 +21,20 @@
             <if test="name != null" >
                 name,
             </if>
+            <if test="note != null" >
+                note,
+            </if>
+            <if test="createUser != null" >
+                create_user,
+            </if>
             <if test="createTime != null" >
                 create_time,
             </if>
-            <if test="note != null" >
-                note,
+            <if test="updateUser != null" >
+                update_user,
+            </if>
+            <if test="updateTime != null" >
+                update_time,
             </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -32,11 +44,20 @@
             <if test="name != null" >
                 #{name,jdbcType=VARCHAR},
             </if>
+            <if test="note != null" >
+                #{note,jdbcType=VARCHAR},
+            </if>
+            <if test="createUser != null" >
+                #{createUser,jdbcType=BIGINT},
+            </if>
             <if test="createTime != null" >
                 #{createTime,jdbcType=DATE},
             </if>
-            <if test="note != null" >
-                #{note,jdbcType=VARCHAR},
+            <if test="updateUser != null" >
+                #{updateUser,jdbcType=BIGINT},
+            </if>
+            <if test="updateTime != null" >
+                #{updateTime,jdbcType=DATE},
             </if>
         </trim>
     </insert>
@@ -52,11 +73,20 @@
             <if test="name != null" >
                 and name = #{name,jdbcType=VARCHAR}
             </if>
+            <if test="note != null" >
+                and note = #{note,jdbcType=VARCHAR}
+            </if>
+            <if test="createUser != null" >
+                and create_user = #{createUser,jdbcType=BIGINT}
+            </if>
             <if test="createTime != null" >
                 and create_time = #{createTime,jdbcType=DATE}
             </if>
-            <if test="note != null" >
-                and note = #{note,jdbcType=VARCHAR}
+            <if test="updateUser != null" >
+                and update_user = #{updateUser,jdbcType=BIGINT}
+            </if>
+            <if test="updateTime != null" >
+                and update_time = #{updateTime,jdbcType=DATE}
             </if>
         </where>
     </select>

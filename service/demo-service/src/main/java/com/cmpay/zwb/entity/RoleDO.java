@@ -2,7 +2,7 @@
  * @ClassName RoleDO
  * @Description 
  * @version 1.0
- * @Date 2020-06-21 10:50:50
+ * @Date 2020-06-22 10:29:31
  */
 package com.cmpay.zwb.entity;
 
@@ -14,21 +14,33 @@ import java.time.LocalDate;
 @DataObject
 public class RoleDO extends BaseDO {
     /**
-     * @Fields rid 
+     * @Fields rid 角色id
      */
     private Long rid;
     /**
-     * @Fields name 
+     * @Fields name 角色名称
      */
     private String name;
     /**
-     * @Fields createTime 
+     * @Fields note 角色备注
+     */
+    private String note;
+    /**
+     * @Fields createUser 创建人
+     */
+    private Long createUser;
+    /**
+     * @Fields createTime 创建时间
      */
     private LocalDate createTime;
     /**
-     * @Fields note 
+     * @Fields updateUser 修改人
      */
-    private String note;
+    private Long updateUser;
+    /**
+     * @Fields updateTime 修改时间
+     */
+    private LocalDate updateTime;
 
     public Long getRid() {
         return rid;
@@ -46,6 +58,22 @@ public class RoleDO extends BaseDO {
         this.name = name;
     }
 
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
+    }
+
+    public Long getCreateUser() {
+        return createUser;
+    }
+
+    public void setCreateUser(Long createUser) {
+        this.createUser = createUser;
+    }
+
     public LocalDate getCreateTime() {
         return createTime;
     }
@@ -54,11 +82,19 @@ public class RoleDO extends BaseDO {
         this.createTime = createTime;
     }
 
-    public String getNote() {
-        return note;
+    public Long getUpdateUser() {
+        return updateUser;
     }
 
-    public void setNote(String note) {
-        this.note = note;
+    public void setUpdateUser(Long updateUser) {
+        this.updateUser = updateUser;
+    }
+
+    public LocalDate getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(LocalDate updateTime) {
+        this.updateTime = updateTime;
     }
 }

@@ -7,7 +7,10 @@
         <result column="name" property="name" jdbcType="VARCHAR" />
         <result column="supid" property="supid" jdbcType="BIGINT" />
         <result column="menu_type" property="menuType" jdbcType="SMALLINT" />
-        <result column="creat_time" property="creatTime" jdbcType="DATE" />
+        <result column="create_user" property="createUser" jdbcType="BIGINT" />
+        <result column="create_time" property="createTime" jdbcType="DATE" />
+        <result column="update_user" property="updateUser" jdbcType="BIGINT" />
+        <result column="update_time" property="updateTime" jdbcType="DATE" />
     </resultMap>
 
     <insert id="insert" parameterType="com.cmpay.zwb.entity.MenuDO" >
@@ -25,8 +28,17 @@
             <if test="menuType != null" >
                 menu_type,
             </if>
-            <if test="creatTime != null" >
-                creat_time,
+            <if test="createUser != null" >
+                create_user,
+            </if>
+            <if test="createTime != null" >
+                create_time,
+            </if>
+            <if test="updateUser != null" >
+                update_user,
+            </if>
+            <if test="updateTime != null" >
+                update_time,
             </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -42,8 +54,17 @@
             <if test="menuType != null" >
                 #{menuType,jdbcType=SMALLINT},
             </if>
-            <if test="creatTime != null" >
-                #{creatTime,jdbcType=DATE},
+            <if test="createUser != null" >
+                #{createUser,jdbcType=BIGINT},
+            </if>
+            <if test="createTime != null" >
+                #{createTime,jdbcType=DATE},
+            </if>
+            <if test="updateUser != null" >
+                #{updateUser,jdbcType=BIGINT},
+            </if>
+            <if test="updateTime != null" >
+                #{updateTime,jdbcType=DATE},
             </if>
         </trim>
     </insert>
@@ -65,8 +86,17 @@
             <if test="menuType != null" >
                 and menu_type = #{menuType,jdbcType=SMALLINT}
             </if>
-            <if test="creatTime != null" >
-                and creat_time = #{creatTime,jdbcType=DATE}
+            <if test="createUser != null" >
+                and create_user = #{createUser,jdbcType=BIGINT}
+            </if>
+            <if test="createTime != null" >
+                and create_time = #{createTime,jdbcType=DATE}
+            </if>
+            <if test="updateUser != null" >
+                and update_user = #{updateUser,jdbcType=BIGINT}
+            </if>
+            <if test="updateTime != null" >
+                and update_time = #{updateTime,jdbcType=DATE}
             </if>
         </where>
     </select>

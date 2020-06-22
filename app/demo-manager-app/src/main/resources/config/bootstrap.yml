@@ -96,7 +96,7 @@ lemon:
       #配置不进行认证检查的交易请求url
       permitAll:
         - /upms/v1/captcha/getCaptcha
-        - /user/info
+        - /user/*
   #Multiple dataSources
   dataSources:
     primary:
@@ -169,3 +169,6 @@ bui:
     httpMethods: POST, GET, PATCH, DELETE, PUT
     httpMaxAge: 3600
     httpHeaders: Origin, X-Requested-With, Content-Type, Accept, token, upmsSessionId, Content-Disposition
+mybatis:
+  mapper-locations:
+    - classpath:com/cmpay/zwb/mapper/*.xml

@@ -6,14 +6,17 @@
         <result column="uid" property="uid" jdbcType="BIGINT" />
         <result column="name" property="name" jdbcType="VARCHAR" />
         <result column="passwd" property="passwd" jdbcType="VARCHAR" />
-        <result column="create_time" property="createTime" jdbcType="DATE" />
         <result column="phnumber" property="phnumber" jdbcType="VARCHAR" />
-        <result column="is_deleted" property="isDeleted" jdbcType="TINYINT" />
         <result column="email" property="email" jdbcType="VARCHAR" />
+        <result column="is_deleted" property="isDeleted" jdbcType="TINYINT" />
+        <result column="create_user" property="createUser" jdbcType="BIGINT" />
+        <result column="create_time" property="createTime" jdbcType="DATE" />
+        <result column="update_user" property="updateUser" jdbcType="VARCHAR" />
+        <result column="update_time" property="updateTime" jdbcType="DATE" />
     </resultMap>
 
     <insert id="insert" parameterType="com.cmpay.zwb.entity.UserDO" >
-        insert into my_user
+        insert into t_user
         <trim prefix="(" suffix=")" suffixOverrides="," >
             <if test="uid != null" >
                 uid,
@@ -24,17 +27,26 @@
             <if test="passwd != null" >
                 passwd,
             </if>
-            <if test="createTime != null" >
-                create_time,
-            </if>
             <if test="phnumber != null" >
                 phnumber,
+            </if>
+            <if test="email != null" >
+                email,
             </if>
             <if test="isDeleted != null" >
                 is_deleted,
             </if>
-            <if test="email != null" >
-                email,
+            <if test="createUser != null" >
+                create_user,
+            </if>
+            <if test="createTime != null" >
+                create_time,
+            </if>
+            <if test="updateUser != null" >
+                update_user,
+            </if>
+            <if test="updateTime != null" >
+                update_time,
             </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -47,17 +59,26 @@
             <if test="passwd != null" >
                 #{passwd,jdbcType=VARCHAR},
             </if>
-            <if test="createTime != null" >
-                #{createTime,jdbcType=DATE},
-            </if>
             <if test="phnumber != null" >
                 #{phnumber,jdbcType=VARCHAR},
+            </if>
+            <if test="email != null" >
+                #{email,jdbcType=VARCHAR},
             </if>
             <if test="isDeleted != null" >
                 #{isDeleted,jdbcType=TINYINT},
             </if>
-            <if test="email != null" >
-                #{email,jdbcType=VARCHAR},
+            <if test="createUser != null" >
+                #{createUser,jdbcType=BIGINT},
+            </if>
+            <if test="createTime != null" >
+                #{createTime,jdbcType=DATE},
+            </if>
+            <if test="updateUser != null" >
+                #{updateUser,jdbcType=VARCHAR},
+            </if>
+            <if test="updateTime != null" >
+                #{updateTime,jdbcType=DATE},
             </if>
         </trim>
     </insert>
@@ -65,7 +86,7 @@
     <select id="find" resultMap="BaseResultMap" parameterType="com.cmpay.zwb.entity.UserDO" >
         select 
         <include refid="Base_Column_List" />
-        from my_user
+        from t_user
         <where >
             <if test="uid != null" >
                 and uid = #{uid,jdbcType=BIGINT}
@@ -76,19 +97,27 @@
             <if test="passwd != null" >
                 and passwd = #{passwd,jdbcType=VARCHAR}
             </if>
-            <if test="createTime != null" >
-                and create_time = #{createTime,jdbcType=DATE}
-            </if>
             <if test="phnumber != null" >
                 and phnumber = #{phnumber,jdbcType=VARCHAR}
-            </if>
-            <if test="isDeleted != null" >
-                and is_deleted = #{isDeleted,jdbcType=TINYINT}
             </if>
             <if test="email != null" >
                 and email = #{email,jdbcType=VARCHAR}
             </if>
+            <if test="isDeleted != null" >
+                and is_deleted = #{isDeleted,jdbcType=TINYINT}
+            </if>
+            <if test="createUser != null" >
+                and create_user = #{createUser,jdbcType=BIGINT}
+            </if>
+            <if test="createTime != null" >
+                and create_time = #{createTime,jdbcType=DATE}
+            </if>
+            <if test="updateUser != null" >
+                and update_user = #{updateUser,jdbcType=VARCHAR}
+            </if>
+            <if test="updateTime != null" >
+                and update_time = #{updateTime,jdbcType=DATE}
+            </if>
         </where>
     </select>
-
 </mapper>

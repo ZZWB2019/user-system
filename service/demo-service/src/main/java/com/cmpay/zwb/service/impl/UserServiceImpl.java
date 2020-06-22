@@ -1,5 +1,6 @@
 package com.cmpay.zwb.service.impl;
 
+import com.cmpay.lemon.framework.utils.PageUtils;
 import com.cmpay.zwb.dao.IUserDao;
 import com.cmpay.zwb.dto.InitRsUserDto;
 import com.cmpay.zwb.dto.InitUserDto;
@@ -41,6 +42,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDO getUserById(Long id) {
         UserDO userDO = iUserDao.getById(id);
+        //PageUtils.pageQueryWithCount();
         return userDO;
     }
 
@@ -62,5 +64,11 @@ public class UserServiceImpl implements UserService {
         userDO.setEmail(saveUserDto.getEmail());
         userDO.setCreateTime(LocalDate.now());
         return iUserDao.insert(userDO);
+    }
+
+    @Override
+    public UserDO login(String name, String passwd) {
+
+        return null;
     }
 }

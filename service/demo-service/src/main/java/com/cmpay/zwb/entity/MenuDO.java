@@ -2,7 +2,7 @@
  * @ClassName MenuDO
  * @Description 
  * @version 1.0
- * @Date 2020-06-21 10:50:50
+ * @Date 2020-06-22 10:29:31
  */
 package com.cmpay.zwb.entity;
 
@@ -14,25 +14,37 @@ import java.time.LocalDate;
 @DataObject
 public class MenuDO extends BaseDO {
     /**
-     * @Fields mid 
+     * @Fields mid 菜单id
      */
     private Long mid;
     /**
-     * @Fields name 
+     * @Fields name 菜单名称
      */
     private String name;
     /**
-     * @Fields supid 
+     * @Fields supid 上级菜单
      */
     private Long supid;
     /**
-     * @Fields menuType 
+     * @Fields menuType 菜单类型
      */
     private Short menuType;
     /**
-     * @Fields creatTime 
+     * @Fields createUser 创建人
      */
-    private LocalDate creatTime;
+    private Long createUser;
+    /**
+     * @Fields createTime 创建时间
+     */
+    private LocalDate createTime;
+    /**
+     * @Fields updateUser 修改人
+     */
+    private Long updateUser;
+    /**
+     * @Fields updateTime 修改时间
+     */
+    private LocalDate updateTime;
 
     public Long getMid() {
         return mid;
@@ -66,11 +78,35 @@ public class MenuDO extends BaseDO {
         this.menuType = menuType;
     }
 
-    public LocalDate getCreatTime() {
-        return creatTime;
+    public Long getCreateUser() {
+        return createUser;
     }
 
-    public void setCreatTime(LocalDate creatTime) {
-        this.creatTime = creatTime;
+    public void setCreateUser(Long createUser) {
+        this.createUser = createUser;
+    }
+
+    public LocalDate getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(LocalDate createTime) {
+        this.createTime = createTime;
+    }
+
+    public Long getUpdateUser() {
+        return updateUser;
+    }
+
+    public void setUpdateUser(Long updateUser) {
+        this.updateUser = updateUser;
+    }
+
+    public LocalDate getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(LocalDate updateTime) {
+        this.updateTime = updateTime;
     }
 }

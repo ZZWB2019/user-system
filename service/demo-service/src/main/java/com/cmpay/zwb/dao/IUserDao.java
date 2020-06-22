@@ -2,7 +2,7 @@
  * @ClassName IUserDao
  * @Description 
  * @version 1.0
- * @Date 2020-06-21 10:50:50
+ * @Date 2020-06-22 10:29:31
  */
 package com.cmpay.zwb.dao;
 
@@ -12,9 +12,8 @@ import com.cmpay.zwb.entity.UserDOKey;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
-import java.math.BigInteger;
-
 @Mapper
-public interface IUserDao extends BaseDao<UserDO, BigInteger> {
+public interface IUserDao extends BaseDao<UserDO, Long> {
+
     public UserDO getById(@Param("uid") Long id);
 }

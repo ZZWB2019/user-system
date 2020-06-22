@@ -2,7 +2,7 @@
  * @ClassName RoleMenuDO
  * @Description 
  * @version 1.0
- * @Date 2020-06-21 10:50:50
+ * @Date 2020-06-22 10:29:31
  */
 package com.cmpay.zwb.entity;
 
@@ -14,37 +14,37 @@ import java.time.LocalDate;
 @DataObject
 public class RoleMenuDO extends BaseDO {
     /**
-     * @Fields id 
+     * @Fields id 权限表id
      */
     private Long id;
     /**
-     * @Fields rid 
+     * @Fields rid 角色id
      */
     private Long rid;
     /**
-     * @Fields mid 
+     * @Fields mid 菜单id
      */
     private Long mid;
     /**
-     * @Fields useSelect 
+     * @Fields action 权限名称
      */
-    private Short useSelect;
+    private String action;
     /**
-     * @Fields useDelete 
+     * @Fields createUser 创建人
      */
-    private Short useDelete;
+    private Long createUser;
     /**
-     * @Fields useInsert 
+     * @Fields createTime 创建时间
      */
-    private Short useInsert;
+    private LocalDate createTime;
     /**
-     * @Fields useUpdate 
+     * @Fields updateUser 修改人
      */
-    private Short useUpdate;
+    private Long updateUser;
     /**
-     * @Fields creatTime 
+     * @Fields updateTime 修改时间
      */
-    private LocalDate creatTime;
+    private LocalDate updateTime;
 
     public Long getId() {
         return id;
@@ -70,43 +70,43 @@ public class RoleMenuDO extends BaseDO {
         this.mid = mid;
     }
 
-    public Short getUseSelect() {
-        return useSelect;
+    public String getAction() {
+        return action;
     }
 
-    public void setUseSelect(Short useSelect) {
-        this.useSelect = useSelect;
+    public void setAction(String action) {
+        this.action = action;
     }
 
-    public Short getUseDelete() {
-        return useDelete;
+    public Long getCreateUser() {
+        return createUser;
     }
 
-    public void setUseDelete(Short useDelete) {
-        this.useDelete = useDelete;
+    public void setCreateUser(Long createUser) {
+        this.createUser = createUser;
     }
 
-    public Short getUseInsert() {
-        return useInsert;
+    public LocalDate getCreateTime() {
+        return createTime;
     }
 
-    public void setUseInsert(Short useInsert) {
-        this.useInsert = useInsert;
+    public void setCreateTime(LocalDate createTime) {
+        this.createTime = createTime;
     }
 
-    public Short getUseUpdate() {
-        return useUpdate;
+    public Long getUpdateUser() {
+        return updateUser;
     }
 
-    public void setUseUpdate(Short useUpdate) {
-        this.useUpdate = useUpdate;
+    public void setUpdateUser(Long updateUser) {
+        this.updateUser = updateUser;
     }
 
-    public LocalDate getCreatTime() {
-        return creatTime;
+    public LocalDate getUpdateTime() {
+        return updateTime;
     }
 
-    public void setCreatTime(LocalDate creatTime) {
-        this.creatTime = creatTime;
+    public void setUpdateTime(LocalDate updateTime) {
+        this.updateTime = updateTime;
     }
 }

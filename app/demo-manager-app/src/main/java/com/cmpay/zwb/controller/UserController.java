@@ -1,5 +1,6 @@
 package com.cmpay.zwb.controller;
 
+import com.cmpay.framework.data.response.GenericRspDTO;
 import com.cmpay.lemon.framework.annotation.QueryBody;
 import com.cmpay.lemon.framework.utils.IdGenUtils;
 import com.cmpay.lemon.framework.utils.PageUtils;
@@ -32,6 +33,7 @@ public class UserController {
     @GetMapping("/info")
     public Object init(){
         //List<InitRsUserDto> list = PageUtils.pageQuery();
+        GenericRspDTO.newInstance();
         UserDO userDO = userService.getUserById(1L);
         return userDO;
     }

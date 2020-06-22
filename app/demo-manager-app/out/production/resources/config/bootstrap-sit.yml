@@ -19,9 +19,9 @@ lemon:
       password: 'foobared'
   dataSources:
     primary:
-      url: jdbc:mysql://127.0.0.1:3306/sitbui?serverTimezone=Asia/Shanghai
-      username: buiadm
-      password: '*****'
+      url: jdbc:mysql://127.0.0.1:3306/test?serverTimezone=Asia/Shanghai
+      username: root
+      password: 'zwb'
   idgen:
     redis:
       password: 'foobared'

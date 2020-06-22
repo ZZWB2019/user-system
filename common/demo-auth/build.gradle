@@ -5,6 +5,8 @@ dependencies {
     compile("com.cmpay:lemon-framework-starter-session")
     compile("com.cmpay:lemon-framework-starter-security")
     compile("com.cmpay:lemon-framework-starter-security-refresh")
-
+    
+    compile project(":interface:demo-manager-interface")
+    compile project(":service:demo-service")
 
 }
