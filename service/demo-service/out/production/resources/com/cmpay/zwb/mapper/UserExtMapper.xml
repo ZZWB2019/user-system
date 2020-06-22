@@ -17,4 +17,17 @@
         </where>
     </select>
 
+    <select id="getByLogin" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from t_user
+        <where>
+            <if test="name != null and name != ''" >
+                and `name` = #{name ,jdbcType=VARCHAR}
+            </if>
+            <if test="passwd != null and passwd != ''" >
+                and passwd = #{passwd ,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
 </mapper>

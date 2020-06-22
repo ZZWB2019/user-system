@@ -1,10 +1,13 @@
 package com.cmpay.zwb.service;
 
+import com.cmpay.zwb.bo.SaveUserBo;
+import com.cmpay.zwb.bo.SimpUserInfoBo;
 import com.cmpay.zwb.dao.IUserDao;
 import com.cmpay.zwb.dto.InitRsUserDto;
 import com.cmpay.zwb.dto.InitUserDto;
 import com.cmpay.zwb.dto.SaveUserDto;
 import com.cmpay.zwb.entity.UserDO;
+import org.apache.catalina.User;
 
 import java.util.List;
 
@@ -27,18 +30,23 @@ public interface UserService {
 
     /**
      * 插入一个用户信息
-     * @param saveUserDto
+     * @param saveUserBo
      * @return
      */
-    public int SaveUser(SaveUserDto saveUserDto,Long idgenValue);
+    public int SaveUser(SaveUserBo saveUserBo, Long idgenValue);
 
     /**
-     * 用户登录接口
-     * @param name
-     * @param passwd
+     * 用户登录
+     * @param userInfoBo
      * @return
      */
-    public UserDO login(String name,String passwd);
+    public SimpUserInfoBo login(SimpUserInfoBo userInfoBo);
+
+    /**
+     * 查询用户字段
+     * @return
+     */
+    public List<UserDO> findUser(UserDO userDO);
 
 
 }

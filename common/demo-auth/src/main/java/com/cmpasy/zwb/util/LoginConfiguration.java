@@ -8,10 +8,11 @@ import org.springframework.context.annotation.Configuration;
 import java.util.Optional;
 
 /**
- *li_hq
+ * @author zhouwb
  */
 @Configuration
 public class LoginConfiguration {
+
 
     @Bean
     public LoginAuthenticationProcessor matchableAuthenticationProcessor( SecurityProperties securityProperties) {

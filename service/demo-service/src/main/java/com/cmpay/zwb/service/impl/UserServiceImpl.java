@@ -1,6 +1,8 @@
 package com.cmpay.zwb.service.impl;
 
 import com.cmpay.lemon.framework.utils.PageUtils;
+import com.cmpay.zwb.bo.SaveUserBo;
+import com.cmpay.zwb.bo.SimpUserInfoBo;
 import com.cmpay.zwb.dao.IUserDao;
 import com.cmpay.zwb.dto.InitRsUserDto;
 import com.cmpay.zwb.dto.InitUserDto;
@@ -48,27 +50,46 @@ public class UserServiceImpl implements UserService {
 
     /**
      * 插入用户信息
-     * @param saveUserDto
+     * @param saveUserBo
      * @param idgenValue
      * @return
      */
     @Override
     @Transient
-    public int SaveUser(SaveUserDto saveUserDto,Long idgenValue) {
+    public int SaveUser(SaveUserBo saveUserBo, Long idgenValue) {
         UserDO userDO = new UserDO();
         //userDO.setUid(idgenValue);
-        userDO.setUid(2L);
-        userDO.setName(saveUserDto.getName());
-        userDO.setPasswd(saveUserDto.getPasswd());
-        userDO.setPhnumber(saveUserDto.getPhnumber());
-        userDO.setEmail(saveUserDto.getEmail());
+        userDO.setUid(4L);
+        userDO.setName(saveUserBo.getName());
+        userDO.setPasswd(saveUserBo.getPasswd());
+        userDO.setPhnumber(saveUserBo.getPhnumber());
+        userDO.setEmail(saveUserBo.getEmail());
         userDO.setCreateTime(LocalDate.now());
         return iUserDao.insert(userDO);
     }
 
+    /**
+     * 登录业务代码
+     * @param userInfoBo
+     * @return
+     */
     @Override
-    public UserDO login(String name, String passwd) {
+    public SimpUserInfoBo login(SimpUserInfoBo userInfoBo) {
+        UserDO userDO = iUserDao.getByLogin(userInfoBo.getName(),userInfoBo.getPasswd());
+        SimpUserInfoBo simpUserInfoBo = new SimpUserInfoBo();
+        simpUserInfoBo.setName(userDO.getName());
+        simpUserInfoBo.setPasswd(userDO.getPasswd());
+        simpUserInfoBo.setUid(userDO.getUid());
+        return simpUserInfoBo;
+    }
 
-        return null;
+    /**
+     * 查询用户的信息
+     * @param userDO
+     * @return
+     */
+    @Override
+    public List<UserDO> findUser(UserDO userDO) {
+        return iUserDao.find(userDO);
     }
 }
