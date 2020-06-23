@@ -5,13 +5,13 @@ import com.cmpay.lemon.framework.annotation.QueryBody;
 import com.cmpay.lemon.framework.utils.IdGenUtils;
 import com.cmpay.lemon.framework.utils.PageUtils;
 import com.cmpay.zwb.bo.SaveUserBo;
-import com.cmpay.zwb.bo.SimpUserInfoBo;
 import com.cmpay.zwb.dto.*;
 import com.cmpay.zwb.entity.UserDO;
 import com.cmpay.zwb.enums.MsgEnum;
 import com.cmpay.zwb.service.UserService;
 import com.google.code.kaptcha.impl.DefaultKaptcha;
 import com.thoughtworks.xstream.core.ReferenceByIdMarshaller;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -31,6 +31,7 @@ import java.util.List;
  * @author  zhouwb
  */
 @RestController
+//@Log4j2
 //@RequestMapping("/user")
 public class UserController {
 
@@ -65,8 +66,9 @@ public class UserController {
         //String idgenValue = IdGenUtils.generateId("ZHOU_USER_IDGEN");
         SaveUserBo saveUserBo = new SaveUserBo();
         BeanUtils.copyProperties(saveUserDto,saveUserBo);
-        int result = userService.SaveUser(saveUserBo,null);
-        return "Ok";
+        String msg = "no";
+        if (userService.SaveUser(saveUserBo,null)==1){msg="yes";}
+        return msg;
     }
 
     /**
@@ -105,6 +107,19 @@ public class UserController {
         sout.close();
     }
 
+    /**
+     * 通过id查询用户的信息去往修改面板
+     * @param id
+     * @return
+     */
+    @PostMapping("/user/to_update")
+    public ToUpdateRsUserDto toUpdate(@QueryBody() Long id){
+        UserDto userDto = new UserDto();
+        System.out.println(id);
+        UserDO userDO = userService.getUserById(id);
+        BeanUtils.copyProperties(userDO,userDto);
+        return new ToUpdateRsUserDto(userDto);
+    }
 
 
 }

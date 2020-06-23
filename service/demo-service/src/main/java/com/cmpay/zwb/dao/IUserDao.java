@@ -20,7 +20,7 @@ public interface IUserDao extends BaseDao<UserDO, Long> {
      * @param id
      * @return
      */
-    public UserDO getById(Long id);
+    public UserDO getById(@Param("uid") Long id);
 
     /**
      * 通过账号密码进行查询

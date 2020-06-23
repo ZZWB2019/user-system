@@ -11,4 +11,5 @@ public class SaveUserDto {
     private String passwd;
     private String phnumber;
     private String email;
+    private String userName;
 }

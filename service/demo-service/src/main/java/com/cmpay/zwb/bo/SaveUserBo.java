@@ -12,4 +12,5 @@ public class SaveUserBo {
     private String passwd;
     private String phnumber;
     private String email;
+    private String userName;
 }
