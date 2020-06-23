@@ -3,7 +3,7 @@
 <mapper namespace="com.cmpay.zwb.dao.IRoleDao" >
 
     <sql id="Base_Column_List" >
-        mid,name,supid,menu_type,create_time
+        rid,name,note,create_user,create_time,update_user,update_time
     </sql>
 
 </mapper>

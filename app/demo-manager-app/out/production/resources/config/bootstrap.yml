@@ -98,6 +98,7 @@ lemon:
         - /upms/v1/captcha/getCaptcha
         - /user/**
         - /tologin
+        - /role/**
         #Multiple dataSources
   dataSources:
     primary:

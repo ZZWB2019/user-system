@@ -6,8 +6,10 @@ import com.cmpay.lemon.framework.utils.IdGenUtils;
 import com.cmpay.lemon.framework.utils.PageUtils;
 import com.cmpay.zwb.bo.SaveUserBo;
 import com.cmpay.zwb.dto.*;
+import com.cmpay.zwb.entity.RoleDO;
 import com.cmpay.zwb.entity.UserDO;
 import com.cmpay.zwb.enums.MsgEnum;
+import com.cmpay.zwb.service.RoleService;
 import com.cmpay.zwb.service.UserService;
 import com.google.code.kaptcha.impl.DefaultKaptcha;
 import com.thoughtworks.xstream.core.ReferenceByIdMarshaller;
@@ -39,13 +41,19 @@ public class UserController {
      * 用户业务类
      */
     @Resource
-    UserService userService;
+    private UserService userService;
+
+    /**
+     * 角色业务类
+     */
+    @Resource
+    private RoleService roleService;
 
     /**
      * 验证码工具
      */
     @Resource
-    DefaultKaptcha defaultKaptcha;
+    private DefaultKaptcha defaultKaptcha;
 
     /**
      * 初始化页面查询
@@ -118,7 +126,8 @@ public class UserController {
         System.out.println(id);
         UserDO userDO = userService.getUserById(id);
         BeanUtils.copyProperties(userDO,userDto);
-        return new ToUpdateRsUserDto(userDto);
+        List<RoleDO> list = roleService.findRole(null);
+        return new ToUpdateRsUserDto(userDto,roleService.listFromate(list));
     }
 
 
