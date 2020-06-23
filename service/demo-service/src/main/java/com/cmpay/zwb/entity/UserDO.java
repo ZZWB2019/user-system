@@ -2,13 +2,12 @@
  * @ClassName UserDO
  * @Description 
  * @version 1.0
- * @Date 2020-06-22 10:29:31
+ * @Date 2020-06-23 10:50:13
  */
 package com.cmpay.zwb.entity;
 
+import com.cmpay.framework.data.BaseDO;
 import com.cmpay.lemon.framework.annotation.DataObject;
-import com.cmpay.zwb.dao.BaseDO;
-
 import java.time.LocalDate;
 
 @DataObject
@@ -18,11 +17,11 @@ public class UserDO extends BaseDO {
      */
     private Long uid;
     /**
-     * @Fields name 用户名
+     * @Fields name 账号
      */
     private String name;
     /**
-     * @Fields passwd 用户密码
+     * @Fields passwd 
      */
     private String passwd;
     /**
@@ -48,11 +47,15 @@ public class UserDO extends BaseDO {
     /**
      * @Fields updateUser 修改人
      */
-    private String updateUser;
+    private Long updateUser;
     /**
      * @Fields updateTime 修改时间
      */
     private LocalDate updateTime;
+    /**
+     * @Fields userName 用户姓名
+     */
+    private String userName;
 
     public Long getUid() {
         return uid;
@@ -118,11 +121,11 @@ public class UserDO extends BaseDO {
         this.createTime = createTime;
     }
 
-    public String getUpdateUser() {
+    public Long getUpdateUser() {
         return updateUser;
     }
 
-    public void setUpdateUser(String updateUser) {
+    public void setUpdateUser(Long updateUser) {
         this.updateUser = updateUser;
     }
 
@@ -134,19 +137,11 @@ public class UserDO extends BaseDO {
         this.updateTime = updateTime;
     }
 
-    @Override
-    public String toString() {
-        return "UserDO{" +
-                "uid=" + uid +
-                ", name='" + name + '\'' +
-                ", passwd='" + passwd + '\'' +
-                ", phnumber='" + phnumber + '\'' +
-                ", email='" + email + '\'' +
-                ", isDeleted=" + isDeleted +
-                ", createUser=" + createUser +
-                ", createTime=" + createTime +
-                ", updateUser='" + updateUser + '\'' +
-                ", updateTime=" + updateTime +
-                '}';
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 }

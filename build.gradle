@@ -42,6 +42,7 @@ subprojects {
     }
 
     repositories {
+
         maven { url "${mavenUrl}" }
     }
 
@@ -81,6 +82,12 @@ configure(subprojects.findAll { it.name.matches('\\S*(-interface|-constant|-comm
                 repository(url: "http://maven.cmpay.com:8081/repository/cmpay-interface-releases/") {
                     authentication(userName: appMavenUserRelease, password: appMavenPasswordRelease)
                 }
+            }
+            maven {
+                url 'http://maven.aliyun.com/nexus/content/groups/public/'
+            }
+            maven {
+                url 'http://maven.aliyun.com/nexus/content/repositories/jcenter'
             }
         }
     }

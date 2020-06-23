@@ -97,7 +97,8 @@ lemon:
       permitAll:
         - /upms/v1/captcha/getCaptcha
         - /user/**
-  #Multiple dataSources
+        - /tologin
+        #Multiple dataSources
   dataSources:
     primary:
       type: com.alibaba.druid.pool.DruidDataSource

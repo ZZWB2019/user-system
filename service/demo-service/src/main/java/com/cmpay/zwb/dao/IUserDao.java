@@ -2,7 +2,7 @@
  * @ClassName IUserDao
  * @Description 
  * @version 1.0
- * @Date 2020-06-22 10:29:31
+ * @Date 2020-06-23 10:50:13
  */
 package com.cmpay.zwb.dao;
 
@@ -14,18 +14,19 @@ import org.apache.ibatis.annotations.Param;
 
 @Mapper
 public interface IUserDao extends BaseDao<UserDO, Long> {
+
     /**
-     * 通过id查询一个User对象
+     * 通过id查询UserDo
      * @param id
      * @return
      */
-    public UserDO getById(@Param("uid") Long id);
+    public UserDO getById(Long id);
 
     /**
-     * 通过用户名和密码登录方式查询用户对象
+     * 通过账号密码进行查询
      * @param name
      * @param passwd
      * @return
      */
-    public UserDO getByLogin(@Param("name")String name,@Param("passwd") String passwd);
+    public UserDO getByLogin(@Param("name") String name,@Param("passwd") String passwd);
 }

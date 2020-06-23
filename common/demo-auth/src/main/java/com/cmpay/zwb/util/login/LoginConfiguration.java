@@ -1,4 +1,4 @@
-package com.cmpasy.zwb.util;
+package com.cmpay.zwb.util.login;
 
 import com.cmpay.lemon.framework.autoconfigure.security.SecurityProperties;
 import com.cmpay.lemon.framework.security.auth.GenericAuthenticationFilter;

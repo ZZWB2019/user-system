@@ -11,8 +11,9 @@
         <result column="is_deleted" property="isDeleted" jdbcType="TINYINT" />
         <result column="create_user" property="createUser" jdbcType="BIGINT" />
         <result column="create_time" property="createTime" jdbcType="DATE" />
-        <result column="update_user" property="updateUser" jdbcType="VARCHAR" />
+        <result column="update_user" property="updateUser" jdbcType="BIGINT" />
         <result column="update_time" property="updateTime" jdbcType="DATE" />
+        <result column="user_name" property="userName" jdbcType="VARCHAR" />
     </resultMap>
 
     <insert id="insert" parameterType="com.cmpay.zwb.entity.UserDO" >
@@ -48,6 +49,9 @@
             <if test="updateTime != null" >
                 update_time,
             </if>
+            <if test="userName != null" >
+                user_name,
+            </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides="," >
             <if test="uid != null" >
@@ -75,10 +79,13 @@
                 #{createTime,jdbcType=DATE},
             </if>
             <if test="updateUser != null" >
-                #{updateUser,jdbcType=VARCHAR},
+                #{updateUser,jdbcType=BIGINT},
             </if>
             <if test="updateTime != null" >
                 #{updateTime,jdbcType=DATE},
+            </if>
+            <if test="userName != null" >
+                #{userName,jdbcType=VARCHAR},
             </if>
         </trim>
     </insert>
@@ -113,10 +120,13 @@
                 and create_time = #{createTime,jdbcType=DATE}
             </if>
             <if test="updateUser != null" >
-                and update_user = #{updateUser,jdbcType=VARCHAR}
+                and update_user = #{updateUser,jdbcType=BIGINT}
             </if>
             <if test="updateTime != null" >
                 and update_time = #{updateTime,jdbcType=DATE}
+            </if>
+            <if test="userName != null" >
+                and user_name = #{userName,jdbcType=VARCHAR}
             </if>
         </where>
     </select>

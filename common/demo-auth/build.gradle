@@ -5,8 +5,10 @@ dependencies {
     compile("com.cmpay:lemon-framework-starter-session")
     compile("com.cmpay:lemon-framework-starter-security")
     compile("com.cmpay:lemon-framework-starter-security-refresh")
+    compile('com.github.penggle:kaptcha:2.3.2')
     
     compile project(":interface:demo-manager-interface")
     compile project(":service:demo-service")
+
 
 }

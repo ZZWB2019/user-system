@@ -59,12 +59,16 @@ public class UserServiceImpl implements UserService {
     public int SaveUser(SaveUserBo saveUserBo, Long idgenValue) {
         UserDO userDO = new UserDO();
         //userDO.setUid(idgenValue);
+        LocalDate now = LocalDate.now();
         userDO.setUid(4L);
         userDO.setName(saveUserBo.getName());
         userDO.setPasswd(saveUserBo.getPasswd());
         userDO.setPhnumber(saveUserBo.getPhnumber());
         userDO.setEmail(saveUserBo.getEmail());
-        userDO.setCreateTime(LocalDate.now());
+        userDO.setCreateUser(1L);
+        userDO.setCreateTime(now);
+        userDO.setUpdateUser(1L);
+        userDO.setUpdateTime(now);
         return iUserDao.insert(userDO);
     }
 

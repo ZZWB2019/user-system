@@ -2,13 +2,12 @@
  * @ClassName MenuDO
  * @Description 
  * @version 1.0
- * @Date 2020-06-22 10:29:31
+ * @Date 2020-06-23 10:50:13
  */
 package com.cmpay.zwb.entity;
 
+import com.cmpay.framework.data.BaseDO;
 import com.cmpay.lemon.framework.annotation.DataObject;
-import com.cmpay.zwb.dao.BaseDO;
-
 import java.time.LocalDate;
 
 @DataObject

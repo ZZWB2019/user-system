@@ -1,4 +1,4 @@
-package com.cmpasy.zwb.util;
+package com.cmpay.zwb.util.login;
 
 import com.cmpay.lemon.common.exception.LemonException;
 import com.cmpay.lemon.framework.security.SimpleUserInfo;
@@ -39,6 +39,30 @@ public class LoginAuthenticationProcessor  extends AbstractGenericMatchableAuthe
         HttpServletRequest request = genericAuthenticationToken.getAuthenticationRequest().getHttpServletRequest();
         SimpUserInfoBo userInfoBO = bindLoginData(request);
         SimpUserInfoBo login = Service.login(userInfoBO);
+        //return new SimpUserInfoBo(login.getUid(),login.getName(),login.getPasswd());;
+        return null;
+    }
+
+    private SimpUserInfoBo bindLoginData(HttpServletRequest request) {
+        SimpUserInfoBo simpUserInfoBo = null;
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        try {
+            InputStream is = request.getInputStream();
+            simpUserInfoBo = objectMapper.readValue(is, SimpUserInfoBo.class);
+        } catch (IOException e) {
+            throw LemonException.create(e);
+        } catch (Exception e) {
+            LemonException.throwLemonException(MsgEnum.FAIL, e.getMessage());
+        }
+        return simpUserInfoBo;
+    }
+
+   /* @Override
+    protected UserInfoBase doProcessAuthentication(GenericAuthenticationToken genericAuthenticationToken) throws AuthenticationException {
+        HttpServletRequest request = genericAuthenticationToken.getAuthenticationRequest().getHttpServletRequest();
+        SimpUserInfoBo userInfoBO = bindLoginData(request);
+        SimpUserInfoBo login = Service.login(userInfoBO);
         //return new SimpUserInfoBo(login.getUid(),login.getName(),login.getPasswd());
         return null;
     }
@@ -57,5 +81,5 @@ public class LoginAuthenticationProcessor  extends AbstractGenericMatchableAuthe
             LemonException.throwLemonException(MsgEnum.FAIL, e.getMessage());
         }
         return simpUserInfoBo;
-    }
+    }*/
 }
