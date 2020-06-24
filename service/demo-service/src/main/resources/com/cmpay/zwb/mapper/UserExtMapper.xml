@@ -30,4 +30,35 @@
             </if>
         </where>
     </select>
+    
+    <update id="updateUserInfo" parameterType="com.cmpay.zwb.entity.UserDO">
+        update t_user
+        <set>
+            <if test="name !=null and name != ''">
+                `name` = #{name},
+            </if>
+            <if test="passwd != null and passwd != ''">
+                passwd = #{passwd},
+            </if>
+            <if test="phnumber != null ">
+                phnumber = #{phnumber},
+            </if>
+            <if test="email != null">
+                email = #{email},
+            </if>
+            <if test="isDeleted != null">
+                is_deleted = #{isDeleted},
+            </if>
+            <if test="updateUser != null">
+                update_user = #{updateUser},
+            </if>
+            <if test="updateTime != null">
+                updateTime = #{updateTime},
+            </if>
+            <if test="userName != null">
+                userName = #{userName},
+            </if>
+        </set>
+        where uid = #{uid}
+    </update>
 </mapper>

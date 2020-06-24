@@ -4,6 +4,7 @@ import com.cmpay.framework.data.response.GenericRspDTO;
 import com.cmpay.lemon.framework.annotation.QueryBody;
 import com.cmpay.lemon.framework.utils.IdGenUtils;
 import com.cmpay.lemon.framework.utils.PageUtils;
+import com.cmpay.zwb.bo.DeleteUserBo;
 import com.cmpay.zwb.bo.SaveUserBo;
 import com.cmpay.zwb.dto.*;
 import com.cmpay.zwb.entity.RoleDO;
@@ -60,9 +61,10 @@ public class UserController {
      * @return
      */
     @GetMapping("/user/info")
-    public GenericRspDTO<List<UserDO>> init(){
-        List<UserDO> list = PageUtils.pageQuery(1,2,() -> { return this.userService.findUser(null);});
-        return GenericRspDTO.newInstance(MsgEnum.SUCCESS,list);
+    public InitRsUserDto init(){
+        List<UserDO> userDOS = PageUtils.pageQuery(1,4,() -> { return this.userService.findUser(null);});
+        List<RoleDO> roleDOS = roleService.findRole(null);
+        return new InitRsUserDto(userService.ListFromate(userDOS),roleService.listFromate(roleDOS));
     }
 
     /**
@@ -123,12 +125,27 @@ public class UserController {
     @PostMapping("/user/to_update")
     public ToUpdateRsUserDto toUpdate(@QueryBody() Long id){
         UserDto userDto = new UserDto();
-        System.out.println(id);
         UserDO userDO = userService.getUserById(id);
         BeanUtils.copyProperties(userDO,userDto);
-        List<RoleDO> list = roleService.findRole(null);
-        return new ToUpdateRsUserDto(userDto,roleService.listFromate(list));
+        return new ToUpdateRsUserDto(userDto);
     }
 
+    /**
+     * 禁用
+     * @param deleteUserDto
+     * @return
+     */
+    @PostMapping("user/disable")
+    public String disbaleUser(DeleteUserDto deleteUserDto){
+        String msg = "no";
+        DeleteUserBo deleteUserBo = new DeleteUserBo();
+        deleteUserBo.setUid(deleteUserDto.getUid());
+        deleteUserBo.setIsDeleted(deleteUserDto.getIsDelete());
+        if (userService.isDelete(deleteUserBo)==1){
+            msg = "yes";
+            return msg;
+        }
+        return msg;
+    }
 
 }

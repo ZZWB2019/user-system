@@ -29,4 +29,10 @@ public interface IUserDao extends BaseDao<UserDO, Long> {
      * @return
      */
     public UserDO getByLogin(@Param("name") String name,@Param("passwd") String passwd);
+
+    /**
+     * 修改用户信息
+     * @return
+     */
+    public int updateUserInfo(UserDO userDO);
 }

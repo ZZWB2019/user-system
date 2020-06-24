@@ -1,23 +1,20 @@
 package com.cmpay.zwb.service.impl;
 
-import com.cmpay.lemon.common.utils.RandomUtils;
-import com.cmpay.lemon.framework.utils.PageUtils;
+import com.cmpay.zwb.bo.DeleteUserBo;
 import com.cmpay.zwb.bo.SaveUserBo;
 import com.cmpay.zwb.bo.SimpUserInfoBo;
 import com.cmpay.zwb.dao.IUserDao;
-import com.cmpay.zwb.dto.InitRsUserDto;
-import com.cmpay.zwb.dto.InitUserDto;
-import com.cmpay.zwb.dto.SaveUserDto;
+import com.cmpay.zwb.dto.UserDto;
 import com.cmpay.zwb.entity.UserDO;
 import com.cmpay.zwb.service.UserService;
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.beans.Transient;
 import java.time.LocalDate;
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -28,15 +25,6 @@ public class UserServiceImpl implements UserService {
 
     @Resource
     private IUserDao iUserDao;
-
-    /**
-     * 分页查询
-     * @return
-     */
-    @Override
-    public List<InitUserDto> ListByPage() {
-        return null;
-    }
 
     /**
      * 测试id查询
@@ -97,5 +85,37 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<UserDO> findUser(UserDO userDO) {
         return iUserDao.find(userDO);
+    }
+
+    /**
+     * 转换格式
+     * @param userDOS
+     * @return
+     */
+    @Override
+    public List<UserDto> ListFromate(List<UserDO> userDOS) {
+        Iterator<UserDO> it = userDOS.iterator();
+        List<UserDto> list = new ArrayList<UserDto>();
+        UserDto roleDto = new UserDto();
+        while (it.hasNext()) {
+            UserDO temp = it.next();
+            BeanUtils.copyProperties(temp,roleDto);
+            list.add(roleDto);
+        }
+        return list;
+    }
+
+    /**
+     * 逻辑删除
+     * @param deleteUserBo
+     * @return
+     */
+    @Override
+    @Transient
+    public int isDelete(DeleteUserBo deleteUserBo) {
+        UserDO userDO = new UserDO();
+        userDO.setIsDeleted(deleteUserBo.getIsDeleted());
+        userDO.setUid(deleteUserBo.getUid());
+        return iUserDao.updateUserInfo(userDO);
     }
 }

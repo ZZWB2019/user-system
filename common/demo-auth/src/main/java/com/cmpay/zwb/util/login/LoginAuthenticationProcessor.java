@@ -39,8 +39,7 @@ public class LoginAuthenticationProcessor  extends AbstractGenericMatchableAuthe
         HttpServletRequest request = genericAuthenticationToken.getAuthenticationRequest().getHttpServletRequest();
         SimpUserInfoBo userInfoBO = bindLoginData(request);
         SimpUserInfoBo login = Service.login(userInfoBO);
-        //return new SimpUserInfoBo(login.getUid(),login.getName(),login.getPasswd());;
-        return null;
+        return new SimpleUserInfo(login.getUid()+"",login.getName(),login.getPasswd());
     }
 
     private SimpUserInfoBo bindLoginData(HttpServletRequest request) {
