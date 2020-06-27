@@ -1,9 +1,13 @@
 package com.cmpay.zwb.controller;
 
+import com.cmpay.framework.data.response.GenericRspDTO;
+import com.cmpay.lemon.framework.utils.PageUtils;
 import com.cmpay.zwb.bo.SimpRoleBo;
+import com.cmpay.zwb.dto.InitRsRoleDto;
 import com.cmpay.zwb.dto.RoleDto;
 import com.cmpay.zwb.dto.SimpRoleDto;
 import com.cmpay.zwb.entity.RoleDO;
+import com.cmpay.zwb.enums.MsgEnum;
 import com.cmpay.zwb.service.RoleService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,8 +43,11 @@ public class RoleController {
      * 初始化角色查询
      * @return
      */
-    public Object init(){
-
-        return "";
+    @GetMapping("/info")
+    public GenericRspDTO<InitRsRoleDto> init(){
+        List<RoleDO> roleDOS = PageUtils.pageQuery(1,4,() -> { return this.roleService.findRole(null);});
+        List<RoleDto> list = roleService.listFromate(roleDOS);
+        InitRsRoleDto initRsRoleDto = new InitRsRoleDto(list);
+        return GenericRspDTO.newInstance(MsgEnum.SUCCESS,initRsRoleDto);
     }
 }
