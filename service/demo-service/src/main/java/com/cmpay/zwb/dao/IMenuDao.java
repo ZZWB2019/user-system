@@ -10,7 +10,10 @@ import com.cmpay.lemon.framework.dao.BaseDao;
 import com.cmpay.zwb.entity.MenuDO;
 import com.cmpay.zwb.entity.MenuDOKey;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 @Mapper
 public interface IMenuDao extends BaseDao<MenuDO, Long> {
+
+    public MenuDO getById(@Param("mid") Long id);
 }

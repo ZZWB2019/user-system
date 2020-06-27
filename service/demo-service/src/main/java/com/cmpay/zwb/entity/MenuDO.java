@@ -25,7 +25,7 @@ public class MenuDO extends BaseDO {
      */
     private Long supid;
     /**
-     * @Fields menuType 菜单类型
+     * @Fields menuType 菜单类型  0 -- 目录   1 -- 菜单
      */
     private Short menuType;
     /**

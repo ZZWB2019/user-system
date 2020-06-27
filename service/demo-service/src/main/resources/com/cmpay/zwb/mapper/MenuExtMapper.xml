@@ -6,4 +6,11 @@
         `mid`,`name`,supid,menu_type,create_user,create_time,update_user,update_time
     </sql>
 
+
+    <select id="getById" parameterType="Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from menu
+        where mid = #{mid}
+    </select>
 </mapper>

@@ -1,5 +1,6 @@
 package com.cmpay.zwb.service.impl;
 
+import com.cmpay.zwb.bo.SaveMenuBo;
 import com.cmpay.zwb.dao.IMenuDao;
 import com.cmpay.zwb.dto.MenuDto;
 import com.cmpay.zwb.dto.SelectMenuDto;
@@ -52,5 +53,26 @@ public class MenuServiceImpl implements MenuService {
             list.add(menuDto);
         }
         return list;
+    }
+
+    /**
+     * 通过id查询菜单信息
+     * @param id
+     * @return
+     */
+    @Override
+    public MenuDO getById(Long id) {return menuDao.getById(id);
+    }
+
+    /**
+     * 插入菜单信息
+     * @param saveMenuBo
+     * @return
+     */
+    @Override
+    public int saveMenu(SaveMenuBo saveMenuBo) {
+        MenuDO menuDO = new MenuDO();
+        BeanUtils.copyProperties(saveMenuBo,menuDO);
+        return menuDao.insert(menuDO);
     }
 }

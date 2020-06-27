@@ -148,6 +148,11 @@ lemon:
         maxValue: 1000
         minValue: 10
         delta: 5
+      ZHOU_MENU_IDGEN:
+        name: ZHOU_MENU_IDGEN
+        maxValue: 1000
+        minValue: 10
+        delta: 5
   cache:
     jcache:
       config: classpath:config/ehcache3.xml
