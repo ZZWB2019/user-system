@@ -12,5 +12,5 @@ import com.cmpay.zwb.entity.MenuDOKey;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
-public interface IMenuDao extends BaseDao<MenuDO, MenuDOKey> {
+public interface IMenuDao extends BaseDao<MenuDO, Long> {
 }

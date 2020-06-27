@@ -99,6 +99,7 @@ lemon:
         - /user/**
         - /tologin
         - /role/**
+        - /menu/**
         #Multiple dataSources
   dataSources:
     primary:
