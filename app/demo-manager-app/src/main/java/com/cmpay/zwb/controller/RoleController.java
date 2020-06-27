@@ -1,21 +1,22 @@
 package com.cmpay.zwb.controller;
 
 import com.cmpay.framework.data.response.GenericRspDTO;
+import com.cmpay.lemon.framework.utils.IdGenUtils;
 import com.cmpay.lemon.framework.utils.PageUtils;
+import com.cmpay.zwb.bo.SaveRoleBo;
 import com.cmpay.zwb.bo.SimpRoleBo;
 import com.cmpay.zwb.dto.InitRsRoleDto;
 import com.cmpay.zwb.dto.RoleDto;
+import com.cmpay.zwb.dto.SaveRoleDto;
 import com.cmpay.zwb.dto.SimpRoleDto;
 import com.cmpay.zwb.entity.RoleDO;
 import com.cmpay.zwb.enums.MsgEnum;
 import com.cmpay.zwb.service.RoleService;
 import org.springframework.beans.BeanUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -61,5 +62,33 @@ public class RoleController {
     public GenericRspDTO<RoleDto> getRole(@PathVariable("id") Long id){
         RoleDto roleDto = roleService.getByid(id);
         return GenericRspDTO.newInstance(MsgEnum.SUCCESS,roleDto);
+    }
+
+    /**
+     * 添加角色信息
+     * @param saveRoleDto
+     * @return
+     */
+    @PostMapping("/save")
+    public String saveRole(@RequestBody SaveRoleDto saveRoleDto){
+        String msg = "no";
+        //String idgenValue = IdGenUtils.generateId("ZHOU_ROLE_IDGEN");
+        SaveRoleBo saveRoleBo = new SaveRoleBo();
+        //saveRoleBo.setRid(Long.parseLong(idgenValue));
+        saveRoleBo.setRid(2L);
+        saveRoleBo.setName(saveRoleDto.getName());
+        saveRoleBo.setNote(saveRoleDto.getNote());
+        //创建人和修改人id要去session里面读取
+        saveRoleBo.setCreateUser(1L);
+        saveRoleBo.setCreateTime(LocalDate.now());
+        saveRoleBo.setUpdateUser(1L);
+        saveRoleBo.setUpdateTime(LocalDate.now());
+        if (roleService.saveRole(saveRoleBo) == 1){msg = "yes";}
+        return msg;
+    }
+
+    public String updateRole(){
+        String msg = "no";
+        return msg;
     }
 }

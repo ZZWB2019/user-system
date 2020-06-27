@@ -1,5 +1,6 @@
 package com.cmpay.zwb.service.impl;
 
+import com.cmpay.zwb.bo.SaveRoleBo;
 import com.cmpay.zwb.bo.SimpRoleBo;
 import com.cmpay.zwb.dao.IRoleDao;
 import com.cmpay.zwb.dto.RoleDto;
@@ -69,5 +70,17 @@ public class RoleServiceImpl implements RoleService {
         RoleDto roleDto = new RoleDto();
         BeanUtils.copyProperties(roleDO,roleDto);
         return roleDto;
+    }
+
+    /**
+     * 添加角色信息
+     * @param saveRoleBo
+     * @return
+     */
+    @Override
+    public int saveRole(SaveRoleBo saveRoleBo) {
+        RoleDO roleDO = new RoleDO();
+        BeanUtils.copyProperties(saveRoleBo,roleDO);
+        return roleDao.insert(roleDO);
     }
 }
