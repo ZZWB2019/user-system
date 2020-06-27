@@ -6,4 +6,10 @@
         rid,name,note,create_user,create_time,update_user,update_time
     </sql>
 
+    <select id="getById" parameterType="Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from role
+        where rid = #{rid}
+    </select>
 </mapper>

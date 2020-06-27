@@ -10,7 +10,10 @@ import com.cmpay.lemon.framework.dao.BaseDao;
 import com.cmpay.zwb.entity.RoleDO;
 import com.cmpay.zwb.entity.RoleDOKey;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 @Mapper
-public interface IRoleDao extends BaseDao<RoleDO, RoleDOKey> {
+public interface IRoleDao extends BaseDao<RoleDO, Long> {
+
+    public RoleDO getById(@Param("rid") Long id);
 }

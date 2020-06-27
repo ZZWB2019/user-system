@@ -11,6 +11,7 @@ import com.cmpay.zwb.enums.MsgEnum;
 import com.cmpay.zwb.service.RoleService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -49,5 +50,16 @@ public class RoleController {
         List<RoleDto> list = roleService.listFromate(roleDOS);
         InitRsRoleDto initRsRoleDto = new InitRsRoleDto(list);
         return GenericRspDTO.newInstance(MsgEnum.SUCCESS,initRsRoleDto);
+    }
+
+    /**
+     * 通过id查询角色信息
+     * @param id
+     * @return
+     */
+    @GetMapping("/getByid/{id}")
+    public GenericRspDTO<RoleDto> getRole(@PathVariable("id") Long id){
+        RoleDto roleDto = roleService.getByid(id);
+        return GenericRspDTO.newInstance(MsgEnum.SUCCESS,roleDto);
     }
 }

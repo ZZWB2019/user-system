@@ -22,4 +22,11 @@ public interface RoleService {
      * @return
      */
     public List<RoleDto> listFromate(List<RoleDO> doList);
+
+    /**
+     * 通过id查询角色信息
+     * @param id
+     * @return
+     */
+    public RoleDto getByid(Long id);
 }

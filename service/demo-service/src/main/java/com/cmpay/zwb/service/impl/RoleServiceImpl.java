@@ -57,4 +57,17 @@ public class RoleServiceImpl implements RoleService {
         }
         return list;
     }
+
+    /**
+     * 通过id查询角色信息
+     * @param id
+     * @return
+     */
+    @Override
+    public RoleDto getByid(Long id) {
+        RoleDO roleDO = roleDao.getById(id);
+        RoleDto roleDto = new RoleDto();
+        BeanUtils.copyProperties(roleDO,roleDto);
+        return roleDto;
+    }
 }
