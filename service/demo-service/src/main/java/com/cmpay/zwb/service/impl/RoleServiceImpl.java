@@ -48,8 +48,9 @@ public class RoleServiceImpl implements RoleService {
 
         Iterator<RoleDO> it = doList.iterator();
         List<RoleDto> list = new ArrayList<RoleDto>();
-        RoleDto roleDto = new RoleDto();
+
         while (it.hasNext()) {
+            RoleDto roleDto = new RoleDto();
             RoleDO temp = it.next();
             BeanUtils.copyProperties(temp,roleDto);
             list.add(roleDto);

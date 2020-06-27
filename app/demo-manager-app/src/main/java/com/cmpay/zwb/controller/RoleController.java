@@ -40,6 +40,7 @@ public class RoleController {
      * @return
      */
     public Object init(){
+
         return "";
     }
 }

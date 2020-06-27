@@ -27,6 +27,7 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -161,5 +162,20 @@ public class UserController {
         updateUserBo.setUpdateTime(LocalDate.now());
         if (userService.updateUser(updateUserBo) == 1){msg = "yes";}
         return msg;
+    }
+
+    /**
+     * 查询
+     * @param selectUserDto
+     * @return
+     */
+    @PostMapping("/user/select")
+    public GenericRspDTO<List<UserDto>> selectUser(@RequestBody SelectUserDto selectUserDto){
+        UserDO userDO = new UserDO();
+        userDO.setName(selectUserDto.getName());
+        userDO.setUserName(selectUserDto.getUserName());
+        List<UserDO> userDOS = PageUtils.pageQuery(1,4,() -> { return this.userService.findUser(userDO);});
+        List<UserDto> list = userService.ListFromate(userDOS);
+        return GenericRspDTO.newInstance(MsgEnum.SUCCESS,list);
     }
 }

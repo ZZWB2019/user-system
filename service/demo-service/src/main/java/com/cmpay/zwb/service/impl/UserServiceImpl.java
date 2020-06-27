@@ -98,8 +98,9 @@ public class UserServiceImpl implements UserService {
     public List<UserDto> ListFromate(List<UserDO> userDOS) {
         Iterator<UserDO> it = userDOS.iterator();
         List<UserDto> list = new ArrayList<UserDto>();
-        UserDto roleDto = new UserDto();
+
         while (it.hasNext()) {
+            UserDto roleDto = new UserDto();
             UserDO temp = it.next();
             BeanUtils.copyProperties(temp,roleDto);
             list.add(roleDto);
