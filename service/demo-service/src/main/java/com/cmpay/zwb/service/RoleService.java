@@ -2,6 +2,7 @@ package com.cmpay.zwb.service;
 
 import com.cmpay.zwb.bo.SaveRoleBo;
 import com.cmpay.zwb.bo.SimpRoleBo;
+import com.cmpay.zwb.bo.UpdateRoleBo;
 import com.cmpay.zwb.dto.RoleDto;
 import com.cmpay.zwb.entity.RoleDO;
 
@@ -37,4 +38,11 @@ public interface RoleService {
      * @return
      */
     public int saveRole(SaveRoleBo saveRoleBo);
+
+    /**
+     * 修改角色信息
+     * @param updateRoleBo
+     * @return
+     */
+    public int updateRole(UpdateRoleBo updateRoleBo);
 }

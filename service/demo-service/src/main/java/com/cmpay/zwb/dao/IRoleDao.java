@@ -15,5 +15,17 @@ import org.apache.ibatis.annotations.Param;
 @Mapper
 public interface IRoleDao extends BaseDao<RoleDO, Long> {
 
+    /**
+     * 通过id查询角色信息
+     * @param id
+     * @return
+     */
     public RoleDO getById(@Param("rid") Long id);
+
+    /**
+     * 修改角色信息
+     * @param roleDO
+     * @return
+     */
+    public int updateRole(RoleDO roleDO);
 }

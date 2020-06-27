@@ -136,7 +136,7 @@ lemon:
       MSGID_: 999999999
       REQUESTID_: 999999999
       SYS:PUB:SEQ: 999999999
-    id-infos:s
+    id-infos:
       ZHOU_USER_IDGEN:
         name: ZHOU_USER_IDGEN
         maxValue: 1000

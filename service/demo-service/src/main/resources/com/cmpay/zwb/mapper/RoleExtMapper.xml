@@ -12,4 +12,23 @@
         from role
         where rid = #{rid}
     </select>
+
+    <update id="updateRole" parameterType="com.cmpay.zwb.entity.RoleDO">
+        update role
+        <set>
+            <if test="name !=null and name != ''">
+                `name` = #{name},
+            </if>
+            <if test="note != null and note != ''">
+                note = #{note},
+            </if>
+            <if test="updateUser != null">
+                update_user = #{updateUser},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime},
+            </if>
+        </set>
+        where rid = #{rid}
+    </update>
 </mapper>

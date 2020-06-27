@@ -5,10 +5,8 @@ import com.cmpay.lemon.framework.utils.IdGenUtils;
 import com.cmpay.lemon.framework.utils.PageUtils;
 import com.cmpay.zwb.bo.SaveRoleBo;
 import com.cmpay.zwb.bo.SimpRoleBo;
-import com.cmpay.zwb.dto.InitRsRoleDto;
-import com.cmpay.zwb.dto.RoleDto;
-import com.cmpay.zwb.dto.SaveRoleDto;
-import com.cmpay.zwb.dto.SimpRoleDto;
+import com.cmpay.zwb.bo.UpdateRoleBo;
+import com.cmpay.zwb.dto.*;
 import com.cmpay.zwb.entity.RoleDO;
 import com.cmpay.zwb.enums.MsgEnum;
 import com.cmpay.zwb.service.RoleService;
@@ -87,8 +85,22 @@ public class RoleController {
         return msg;
     }
 
-    public String updateRole(){
+    /**
+     * 修改用户信息
+     * @param updateRoleDto
+     * @return
+     */
+    @PostMapping("/update")
+    public String updateRole(@RequestBody UpdateRoleDto updateRoleDto){
         String msg = "no";
+        UpdateRoleBo updateRoleBo = new UpdateRoleBo();
+        updateRoleBo.setRid(updateRoleDto.getRid());
+        updateRoleBo.setName(updateRoleDto.getName());
+        updateRoleBo.setNote(updateRoleDto.getNote());
+        //通过session读取当前用户为修改人
+        updateRoleBo.setUpdateUser(1L);
+        updateRoleBo.setUpdateTime(LocalDate.now());
+        if (roleService.updateRole(updateRoleBo) == 1){msg = "yes";}
         return msg;
     }
 }
