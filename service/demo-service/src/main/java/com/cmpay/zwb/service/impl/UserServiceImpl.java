@@ -3,6 +3,7 @@ package com.cmpay.zwb.service.impl;
 import com.cmpay.zwb.bo.DeleteUserBo;
 import com.cmpay.zwb.bo.SaveUserBo;
 import com.cmpay.zwb.bo.SimpUserInfoBo;
+import com.cmpay.zwb.bo.UpdateUserBo;
 import com.cmpay.zwb.dao.IUserDao;
 import com.cmpay.zwb.dto.UserDto;
 import com.cmpay.zwb.entity.UserDO;
@@ -32,6 +33,7 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public UserDO getUserById(Long id) {
+        System.out.println(id);
         UserDO userDO = iUserDao.getById(id);
         userDO.setPasswd("*************");
         return userDO;
@@ -47,9 +49,9 @@ public class UserServiceImpl implements UserService {
     @Transient
     public int SaveUser(SaveUserBo saveUserBo, Long idgenValue) {
         UserDO userDO = new UserDO();
-        //userDO.setUid(idgenValue);
+        userDO.setUid(idgenValue);
         LocalDate now = LocalDate.now();
-        userDO.setUid(6L);
+        //userDO.setUid(6L);
         userDO.setName(saveUserBo.getName());
         userDO.setPasswd(saveUserBo.getPasswd());
         userDO.setPhnumber(saveUserBo.getPhnumber());
@@ -116,6 +118,25 @@ public class UserServiceImpl implements UserService {
         UserDO userDO = new UserDO();
         userDO.setIsDeleted(deleteUserBo.getIsDeleted());
         userDO.setUid(deleteUserBo.getUid());
+        return iUserDao.updateUserInfo(userDO);
+    }
+
+    /**
+     * 修改用户信息
+     * @param updateUserBo
+     * @return
+     */
+    @Override
+    public int updateUser(UpdateUserBo updateUserBo) {
+        UserDO userDO = new UserDO();
+        userDO.setUid(updateUserBo.getUid());
+        userDO.setName(updateUserBo.getName());
+        userDO.setPasswd(updateUserBo.getPasswd());
+        userDO.setPhnumber(updateUserBo.getPhnumber());
+        userDO.setEmail(updateUserBo.getEmail());
+        userDO.setUserName(updateUserBo.getUserName());
+        userDO.setUpdateUser(updateUserBo.getUpdateUser());
+        userDO.setUpdateTime(updateUserBo.getUpdateTime());
         return iUserDao.updateUserInfo(userDO);
     }
 }

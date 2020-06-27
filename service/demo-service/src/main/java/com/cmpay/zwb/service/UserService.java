@@ -3,6 +3,7 @@ package com.cmpay.zwb.service;
 import com.cmpay.zwb.bo.DeleteUserBo;
 import com.cmpay.zwb.bo.SaveUserBo;
 import com.cmpay.zwb.bo.SimpUserInfoBo;
+import com.cmpay.zwb.bo.UpdateUserBo;
 import com.cmpay.zwb.dto.UserDto;
 import com.cmpay.zwb.entity.UserDO;
 
@@ -44,5 +45,17 @@ public interface UserService {
      */
     public List<UserDto> ListFromate(List<UserDO> userDOS);
 
+    /**
+     * 修改用户为禁用
+     * @param deleteUserBo
+     * @return
+     */
     public int isDelete(DeleteUserBo deleteUserBo);
+
+    /**
+     * 修改用户信息
+     * @param updateUserBo
+     * @return
+     */
+    public int updateUser(UpdateUserBo updateUserBo);
 }

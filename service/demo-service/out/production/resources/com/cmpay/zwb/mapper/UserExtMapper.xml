@@ -3,7 +3,7 @@
 <mapper namespace="com.cmpay.zwb.dao.IUserDao" >
 
     <sql id="Base_Column_List" >
-        uid,name,passwd,phnumber,email,is_deleted,create_user,create_time,update_user,update_time
+        uid,name,passwd,phnumber,email,user_name,is_deleted,create_user,create_time,update_user,update_time
     </sql>
 
     <select id="getById" parameterType="java.lang.Long" resultMap="BaseResultMap">
@@ -12,7 +12,7 @@
         from t_user
         <where>
             <if test="uid != null" >
-                and uid = #{uid,jdbcType=BIGINT}
+                and uid = #{uid}
             </if>
         </where>
     </select>
@@ -53,10 +53,10 @@
                 update_user = #{updateUser},
             </if>
             <if test="updateTime != null">
-                updateTime = #{updateTime},
+                update_time = #{updateTime},
             </if>
             <if test="userName != null">
-                userName = #{userName},
+                user_name = #{userName},
             </if>
         </set>
         where uid = #{uid}

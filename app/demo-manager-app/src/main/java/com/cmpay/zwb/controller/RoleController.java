@@ -34,4 +34,12 @@ public class RoleController {
         BeanUtils.copyProperties(simpRoleDto,simpRoleBo);
         return roleService.findRole(simpRoleBo);
     }
+
+    /**
+     * 初始化角色查询
+     * @return
+     */
+    public Object init(){
+        return "";
+    }
 }
