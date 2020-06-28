@@ -5,15 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="53471f0a-ea7c-496c-a219-68d00549f2b6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/interface/demo-manager-interface/src/main/java/com/cmpay/zwb/dto/UpdateMenuDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service/demo-service/src/main/java/com/cmpay/zwb/bo/UpdateMenuBo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/demo-manager-app/out/production/classes/com/cmpay/zwb/controller/MenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/demo-manager-app/out/production/classes/com/cmpay/zwb/controller/MenuController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/demo-manager-app/src/main/java/com/cmpay/zwb/controller/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/demo-manager-app/src/main/java/com/cmpay/zwb/controller/MenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/demo-service/src/main/java/com/cmpay/zwb/dao/IMenuDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/demo-service/src/main/java/com/cmpay/zwb/dao/IMenuDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/demo-service/src/main/java/com/cmpay/zwb/service/MenuService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/demo-service/src/main/java/com/cmpay/zwb/service/MenuService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/demo-service/src/main/java/com/cmpay/zwb/service/impl/MenuServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/demo-service/src/main/java/com/cmpay/zwb/service/impl/MenuServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/demo-service/src/main/resources/com/cmpay/zwb/mapper/MenuExtMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/service/demo-service/src/main/resources/com/cmpay/zwb/mapper/MenuExtMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/demo-service/out/production/classes/com/cmpay/zwb/dao/IMenuDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/service/demo-service/out/production/classes/com/cmpay/zwb/dao/IMenuDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/demo-service/out/production/classes/com/cmpay/zwb/service/MenuService.class" beforeDir="false" afterPath="$PROJECT_DIR$/service/demo-service/out/production/classes/com/cmpay/zwb/service/MenuService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/demo-service/out/production/classes/com/cmpay/zwb/service/impl/MenuServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/service/demo-service/out/production/classes/com/cmpay/zwb/service/impl/MenuServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/demo-service/out/production/resources/com/cmpay/zwb/mapper/MenuExtMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/service/demo-service/out/production/resources/com/cmpay/zwb/mapper/MenuExtMapper.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -269,7 +264,7 @@
         <entry file="file://$PROJECT_DIR$/app/demo-manager-app/src/main/java/com/cmpay/zwb/controller/MenuController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="218">
-              <caret line="48" column="24" selection-start-line="48" selection-start-column="11" selection-end-line="48" selection-end-column="24" />
+              <caret line="48" column="66" selection-start-line="48" selection-start-column="66" selection-end-line="48" selection-end-column="66" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -889,7 +884,7 @@
       <workItem from="1593214117143" duration="12806000" />
       <workItem from="1593259802762" duration="8873000" />
       <workItem from="1593298546705" duration="2029000" />
-      <workItem from="1593304586326" duration="5097000" />
+      <workItem from="1593304586326" duration="5350000" />
     </task>
     <task id="LOCAL-00001" summary="首次提交">
       <created>1592791206389</created>
@@ -996,11 +991,18 @@
       <option name="project" value="LOCAL" />
       <updated>1593300561714</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="添加：添加菜单功能">
+      <created>1593316578284</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1593316578284</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="153800000" />
+    <option name="totallyTimeSpent" value="154053000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1013,6 +1015,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2680965" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -1035,7 +1038,7 @@
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="11" />
-      <window_info anchor="bottom" id="Version Control" order="12" weight="0.3286119" />
+      <window_info anchor="bottom" id="Version Control" order="12" visible="true" weight="0.3286119" />
       <window_info anchor="bottom" id="Spring" order="13" />
       <window_info anchor="bottom" id="Java Enterprise" order="14" />
       <window_info anchor="bottom" id="Messages" order="15" sideWeight="0.49932975" weight="0.3286119" />
@@ -1506,7 +1509,7 @@
     <entry file="file://$PROJECT_DIR$/app/demo-manager-app/src/main/java/com/cmpay/zwb/controller/MenuController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="218">
-          <caret line="48" column="24" selection-start-line="48" selection-start-column="11" selection-end-line="48" selection-end-column="24" />
+          <caret line="48" column="66" selection-start-line="48" selection-start-column="66" selection-end-line="48" selection-end-column="66" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
