@@ -20,7 +20,7 @@ public interface IUserDao extends BaseDao<UserDO, Long> {
      * @param id
      * @return
      */
-    public UserDO getById(@Param("uid") Long id);
+    UserDO getById(@Param("uid") Long id);
 
     /**
      * 通过账号密码进行查询
@@ -28,11 +28,11 @@ public interface IUserDao extends BaseDao<UserDO, Long> {
      * @param passwd
      * @return
      */
-    public UserDO getByLogin(@Param("name") String name,@Param("passwd") String passwd);
+    UserDO getByLogin(@Param("name") String name, @Param("passwd") String passwd);
 
     /**
      * 修改用户信息
      * @return
      */
-    public int updateUserInfo(UserDO userDO);
+    int updateUserInfo(UserDO userDO);
 }

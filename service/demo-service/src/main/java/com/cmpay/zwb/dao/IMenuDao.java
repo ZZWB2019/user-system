@@ -20,8 +20,8 @@ public interface IMenuDao extends BaseDao<MenuDO, Long> {
      * @param id
      * @return
      */
-    public MenuDO getById(@Param("mid") Long id);
+    MenuDO getById(@Param("mid") Long id);
 
 
-    public int updateMenu(MenuDO menuDO);
+    int updateMenu(MenuDO menuDO);
 }

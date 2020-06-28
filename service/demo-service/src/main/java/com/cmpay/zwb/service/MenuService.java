@@ -19,33 +19,33 @@ public interface MenuService {
      * @param selectMenuDto
      * @return
      */
-    public List<MenuDO> selectMenu(SelectMenuDto selectMenuDto);
+    List<MenuDO> selectMenu(SelectMenuDto selectMenuDto);
 
     /**
      * 转换list格式
      * @param menuDOS
      * @return
      */
-    public List<MenuDto> listFormate(List<MenuDO> menuDOS);
+    List<MenuDto> listFormate(List<MenuDO> menuDOS);
 
     /**
      * 根据id查询菜单信息
      * @param id
      * @return
      */
-    public MenuDO getById(Long id);
+    MenuDO getById(Long id);
 
     /**
      * 插入菜单
      * @param saveMenuBo
      * @return
      */
-    public int saveMenu(SaveMenuBo saveMenuBo);
+    int saveMenu(SaveMenuBo saveMenuBo);
 
     /**
      * 修改菜单信息
      * @param updateMenuBo
      * @return
      */
-    public int updateMenu(UpdateMenuBo updateMenuBo);
+    int updateMenu(UpdateMenuBo updateMenuBo);
 }

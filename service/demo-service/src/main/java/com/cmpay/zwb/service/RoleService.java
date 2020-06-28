@@ -16,33 +16,33 @@ public interface RoleService {
      * 查询当前的所有的角色
      * @return
      */
-    public List<RoleDO> findRole(SimpRoleBo simpRoleBo);
+    List<RoleDO> findRole(SimpRoleBo simpRoleBo);
 
     /**
      * 转换List<RoleDO> 成 List<RoleDto>
      * @param doList
      * @return
      */
-    public List<RoleDto> listFromate(List<RoleDO> doList);
+    List<RoleDto> listFromate(List<RoleDO> doList);
 
     /**
      * 通过id查询角色信息
      * @param id
      * @return
      */
-    public RoleDto getByid(Long id);
+    RoleDto getByid(Long id);
 
     /**
      * 添加角色
      * @param saveRoleBo
      * @return
      */
-    public int saveRole(SaveRoleBo saveRoleBo);
+    int saveRole(SaveRoleBo saveRoleBo);
 
     /**
      * 修改角色信息
      * @param updateRoleBo
      * @return
      */
-    public int updateRole(UpdateRoleBo updateRoleBo);
+    int updateRole(UpdateRoleBo updateRoleBo);
 }

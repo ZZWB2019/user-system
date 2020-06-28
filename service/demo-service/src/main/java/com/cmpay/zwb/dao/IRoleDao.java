@@ -20,12 +20,12 @@ public interface IRoleDao extends BaseDao<RoleDO, Long> {
      * @param id
      * @return
      */
-    public RoleDO getById(@Param("rid") Long id);
+    RoleDO getById(@Param("rid") Long id);
 
     /**
      * 修改角色信息
      * @param roleDO
      * @return
      */
-    public int updateRole(RoleDO roleDO);
+    int updateRole(RoleDO roleDO);
 }
