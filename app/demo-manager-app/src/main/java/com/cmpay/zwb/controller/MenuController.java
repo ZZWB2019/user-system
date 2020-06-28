@@ -5,9 +5,11 @@ import com.cmpay.lemon.framework.annotation.QueryBody;
 import com.cmpay.lemon.framework.utils.IdGenUtils;
 import com.cmpay.lemon.framework.utils.PageUtils;
 import com.cmpay.zwb.bo.SaveMenuBo;
+import com.cmpay.zwb.bo.UpdateMenuBo;
 import com.cmpay.zwb.dto.InitMenuDto;
 import com.cmpay.zwb.dto.MenuDto;
 import com.cmpay.zwb.dto.SaveMenuDto;
+import com.cmpay.zwb.dto.UpdateMenuDto;
 import com.cmpay.zwb.entity.MenuDO;
 import com.cmpay.zwb.enums.MsgEnum;
 import com.cmpay.zwb.service.MenuService;
@@ -75,7 +77,15 @@ public class MenuController {
         return msg;
     }
 
-    public Object updateMenu(){
+    public Object updateMenu(UpdateMenuDto updateMenuDto){
+        UpdateMenuBo updateMenuBo = new UpdateMenuBo();
+        updateMenuBo.setMid(updateMenuDto.getMid());
+        updateMenuBo.setName(updateMenuDto.getName());
+        updateMenuBo.setSupid(updateMenuDto.getSupid());
+        updateMenuBo.setMenuType(updateMenuDto.getMenuType());
+        //从session中读取当前用户的信息
+        updateMenuBo.setUpdateUser(1L);
+        updateMenuBo.setUpdateTime(LocalDate.now());
         return null;
     }
 }

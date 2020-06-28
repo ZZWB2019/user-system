@@ -13,4 +13,23 @@
         from menu
         where mid = #{mid}
     </select>
+
+    <update id="updateMenu" parameterType="com.cmpay.zwb.entity.MenuDO" >
+        update menu
+        <set>
+            <if test="name !=null and name != ''">
+                `name` = #{name},
+            </if>
+            <if test="supid != null and supid != -1">
+                supid = #{supid},
+            </if>
+            <if test="menuType != null and menuType != -1">
+                update_user = #{menuType},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime},
+            </if>
+        </set>
+        where mid = #{mid}
+    </update>
 </mapper>

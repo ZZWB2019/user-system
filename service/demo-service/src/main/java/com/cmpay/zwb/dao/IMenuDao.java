@@ -15,5 +15,13 @@ import org.apache.ibatis.annotations.Param;
 @Mapper
 public interface IMenuDao extends BaseDao<MenuDO, Long> {
 
+    /**
+     * 通过id查询菜单信息
+     * @param id
+     * @return
+     */
     public MenuDO getById(@Param("mid") Long id);
+
+
+    public int updateMenu(MenuDO menuDO);
 }

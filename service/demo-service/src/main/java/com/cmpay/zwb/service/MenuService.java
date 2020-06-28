@@ -1,6 +1,7 @@
 package com.cmpay.zwb.service;
 
 import com.cmpay.zwb.bo.SaveMenuBo;
+import com.cmpay.zwb.bo.UpdateMenuBo;
 import com.cmpay.zwb.dto.MenuDto;
 import com.cmpay.zwb.dto.SaveMenuDto;
 import com.cmpay.zwb.dto.SelectMenuDto;
@@ -40,4 +41,11 @@ public interface MenuService {
      * @return
      */
     public int saveMenu(SaveMenuBo saveMenuBo);
+
+    /**
+     * 修改菜单信息
+     * @param updateMenuBo
+     * @return
+     */
+    public int updateMenu(UpdateMenuBo updateMenuBo);
 }
