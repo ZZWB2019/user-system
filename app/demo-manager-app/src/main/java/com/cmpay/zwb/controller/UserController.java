@@ -2,6 +2,8 @@ package com.cmpay.zwb.controller;
 
 import com.cmpay.framework.data.response.GenericRspDTO;
 import com.cmpay.lemon.framework.annotation.QueryBody;
+import com.cmpay.lemon.framework.security.SecurityUtils;
+import com.cmpay.lemon.framework.security.UserInfoBase;
 import com.cmpay.lemon.framework.utils.IdGenUtils;
 import com.cmpay.lemon.framework.utils.PageUtils;
 import com.cmpay.zwb.bo.DeleteUserBo;
@@ -56,15 +58,25 @@ public class UserController {
     @Resource
     private DefaultKaptcha defaultKaptcha;
 
+    @GetMapping("/v1/ui-template/user/info")
+    public GenericRspDTO<UserDto> getUserInfo(){
+        UserInfoBase loginUser = SecurityUtils.getLoginUser();
+        UserDO userById = userService.getUserById(Long.valueOf(loginUser.getUserId()));
+        UserDto userDto = new UserDto();
+        BeanUtils.copyProperties(userById,userDto);
+        return GenericRspDTO.newInstance(MsgEnum.SUCCESS,userDto);
+    }
+
+
     /**
      * 初始化页面查询
      * @return
      */
-    @GetMapping("/user/info")
+    @PostMapping("/v1/ui-template/user/list")
     public GenericRspDTO<InitRsUserDto> init(){
         List<UserDO> userDOS = PageUtils.pageQuery(1,4,() -> { return this.userService.findUser(null);});
         List<RoleDO> roleDOS = roleService.findRole(null);
-        InitRsUserDto initRsUserDto = new InitRsUserDto(userService.ListFromate(userDOS), roleService.listFromate(roleDOS));
+        InitRsUserDto initRsUserDto = new InitRsUserDto(userService.ListFromate(userDOS));
         return GenericRspDTO.newInstance(MsgEnum.SUCCESS,initRsUserDto);
     }
 

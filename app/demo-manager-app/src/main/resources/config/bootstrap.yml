@@ -89,16 +89,16 @@ lemon:
       principalNameExpression: username
     #认证地址
     authentication:
-      loginPathPrefix: /login               #默认 /security/login
+      loginPathPrefix: /v1/ui-template/login               #默认 /security/login
       refreshPath: /v1/bui/refresh                #默认 /security/refresh
       logoutPath: /v1/bui/logout                  #默认 /security/logout
     authorizeRequests:
       #配置不进行认证检查的交易请求url
       permitAll:
         - /upms/v1/captcha/getCaptcha
-        - /user/**
+        - /v1/ui-template/user/**
         - /tologin/*
-        - /role/**
+        - /v1/ui-template/role/**
         - /menu/**
         #Multiple dataSources
   dataSources:
@@ -137,6 +137,7 @@ lemon:
       MSGID_: 999999999
       REQUESTID_: 999999999
       SYS:PUB:SEQ: 999999999
+      ZHOU_MENU_IDGEN: 10000
     id-infos:
       ZHOU_USER_IDGEN:
         name: ZHOU_USER_IDGEN

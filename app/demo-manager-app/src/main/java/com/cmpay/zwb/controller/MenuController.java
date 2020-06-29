@@ -60,11 +60,11 @@ public class MenuController {
      */
     @PostMapping("/save")
     public Object saveMenu(@RequestBody SaveMenuDto saveMenuDto){
-        //String idgenValue = IdGenUtils.generateId("ZHOU_MENU_IDGEN");
+        String idgenValue = IdGenUtils.generateId("ZHOU_MENU_IDGEN");
         String msg = "no";
         SaveMenuBo saveMenuBo = new SaveMenuBo();
-        //saveMenuBo.setMid(Long.parseLong(idgenValue));
-        saveMenuBo.setMid(2L);
+        saveMenuBo.setMid(Long.parseLong(idgenValue));
+        //saveMenuBo.setMid(2L);
         saveMenuBo.setName(saveMenuDto.getName());
         saveMenuBo.setSupid(saveMenuDto.getSupid());
         saveMenuBo.setMenuType(saveMenuDto.getMenuType());

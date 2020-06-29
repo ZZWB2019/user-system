@@ -71,10 +71,10 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public SimpUserInfoBo login(SimpUserInfoBo userInfoBo) {
-        UserDO userDO = iUserDao.getByLogin(userInfoBo.getName(),userInfoBo.getPasswd());
+        UserDO userDO = iUserDao.getByLogin(userInfoBo.getUsername(),userInfoBo.getPassword());
         SimpUserInfoBo simpUserInfoBo = new SimpUserInfoBo();
-        simpUserInfoBo.setName(userDO.getName());
-        simpUserInfoBo.setPasswd(userDO.getPasswd());
+        simpUserInfoBo.setUsername(userDO.getName());
+        simpUserInfoBo.setPassword(userDO.getPasswd());
         simpUserInfoBo.setUid(userDO.getUid());
         return simpUserInfoBo;
     }
@@ -131,11 +131,11 @@ public class UserServiceImpl implements UserService {
     public int updateUser(UpdateUserBo updateUserBo) {
         UserDO userDO = new UserDO();
         userDO.setUid(updateUserBo.getUid());
-        userDO.setName(updateUserBo.getName());
+        userDO.setName(updateUserBo.getUserName());
         userDO.setPasswd(updateUserBo.getPasswd());
         userDO.setPhnumber(updateUserBo.getPhnumber());
         userDO.setEmail(updateUserBo.getEmail());
-        userDO.setUserName(updateUserBo.getUserName());
+        userDO.setUserName(updateUserBo.getName());
         userDO.setUpdateUser(updateUserBo.getUpdateUser());
         userDO.setUpdateTime(updateUserBo.getUpdateTime());
         return iUserDao.updateUserInfo(userDO);

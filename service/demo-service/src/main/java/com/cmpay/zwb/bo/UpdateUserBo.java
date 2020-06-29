@@ -16,7 +16,7 @@ public class UpdateUserBo {
     /**
      * @Fields name 账号
      */
-    private String name;
+    private String userName;
     /**
      * @Fields passwd
      */
@@ -31,7 +31,7 @@ public class UpdateUserBo {
     /**
      * @Fields userName 用户姓名
      */
-    private String userName;
+    private String name;
     /**
      * @Fields email 邮箱
      */

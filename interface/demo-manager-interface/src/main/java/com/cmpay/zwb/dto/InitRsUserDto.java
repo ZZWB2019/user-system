@@ -12,5 +12,4 @@ import java.util.List;
 @NoArgsConstructor
 public class InitRsUserDto {
     private List<UserDto>  userDtos;
-    private List<RoleDto> roleDtos;
 }

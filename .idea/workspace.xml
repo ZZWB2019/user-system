@@ -6,9 +6,22 @@
   <component name="ChangeListManager">
     <list default="true" id="53471f0a-ea7c-496c-a219-68d00549f2b6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/demo-manager-app/out/production/classes/com/cmpay/zwb/controller/MenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/demo-manager-app/out/production/classes/com/cmpay/zwb/controller/MenuController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/demo-manager-app/out/production/classes/com/cmpay/zwb/controller/UserController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/demo-manager-app/out/production/resources/config/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/app/demo-manager-app/out/production/resources/config/bootstrap.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/demo-manager-app/src/main/java/com/cmpay/zwb/controller/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/demo-manager-app/src/main/java/com/cmpay/zwb/controller/MenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/demo-manager-app/src/main/java/com/cmpay/zwb/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/demo-manager-app/src/main/java/com/cmpay/zwb/controller/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/demo-manager-app/src/main/resources/config/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/app/demo-manager-app/src/main/resources/config/bootstrap.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/demo-service/out/production/resources/com/cmpay/zwb/mapper/MenuExtMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/service/demo-service/out/production/resources/com/cmpay/zwb/mapper/MenuExtMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/demo-auth/out/production/classes/com/cmpay/zwb/util/login/LoginAuthenticationProcessor.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/demo-auth/out/production/classes/com/cmpay/zwb/util/login/LoginAuthenticationProcessor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/demo-auth/src/main/java/com/cmpay/zwb/util/login/LoginAuthenticationProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/demo-auth/src/main/java/com/cmpay/zwb/util/login/LoginAuthenticationProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/interface/demo-manager-interface/out/production/classes/com/cmpay/zwb/dto/InitRsUserDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/interface/demo-manager-interface/out/production/classes/com/cmpay/zwb/dto/InitRsUserDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/interface/demo-manager-interface/src/main/java/com/cmpay/zwb/dto/InitRsUserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/interface/demo-manager-interface/src/main/java/com/cmpay/zwb/dto/InitRsUserDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/demo-service/out/production/classes/com/cmpay/zwb/bo/SimpUserInfoBo.class" beforeDir="false" afterPath="$PROJECT_DIR$/service/demo-service/out/production/classes/com/cmpay/zwb/bo/SimpUserInfoBo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/demo-service/out/production/classes/com/cmpay/zwb/bo/UpdateUserBo.class" beforeDir="false" afterPath="$PROJECT_DIR$/service/demo-service/out/production/classes/com/cmpay/zwb/bo/UpdateUserBo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/demo-service/out/production/classes/com/cmpay/zwb/service/impl/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/service/demo-service/out/production/classes/com/cmpay/zwb/service/impl/UserServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/demo-service/src/main/java/com/cmpay/zwb/bo/SimpUserInfoBo.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/demo-service/src/main/java/com/cmpay/zwb/bo/SimpUserInfoBo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/demo-service/src/main/java/com/cmpay/zwb/bo/UpdateUserBo.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/demo-service/src/main/java/com/cmpay/zwb/bo/UpdateUserBo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/demo-service/src/main/java/com/cmpay/zwb/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/demo-service/src/main/java/com/cmpay/zwb/service/impl/UserServiceImpl.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -243,22 +256,19 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/service/demo-service/src/main/resources/com/cmpay/zwb/mapper/UserExtMapper.xml">
+        <entry file="file://$PROJECT_DIR$/common/demo-auth/src/main/java/com/cmpay/zwb/util/login/LoginAuthenticationProcessor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="858">
-              <caret line="39" column="25" selection-start-line="39" selection-start-column="25" selection-end-line="39" selection-end-column="25" />
+            <state relative-caret-position="198">
+              <caret line="41" column="93" selection-start-line="41" selection-start-column="93" selection-end-line="41" selection-end-column="93" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/service/demo-service/src/main/java/com/cmpay/zwb/service/impl/UserServiceImpl.java">
+        <entry file="file://$PROJECT_DIR$/service/demo-service/src/main/java/com/cmpay/zwb/bo/SimpUserInfoBo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2640">
-              <caret line="138" column="41" selection-start-line="138" selection-start-column="29" selection-end-line="138" selection-end-column="41" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="132">
+              <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -266,8 +276,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/service/demo-service/src/main/java/com/cmpay/zwb/bo/UpdateUserBo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="39" column="29" selection-start-line="39" selection-start-column="29" selection-end-line="39" selection-end-column="29" />
+            <state relative-caret-position="220">
+              <caret line="28" column="23" selection-start-line="28" selection-start-column="23" selection-end-line="28" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -278,20 +288,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/demo-manager-app/src/main/java/com/cmpay/zwb/controller/UserController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="43">
-              <caret line="91" column="27" lean-forward="true" selection-start-line="91" selection-start-column="27" selection-end-line="91" selection-end-column="27" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/demo-manager-app/src/main/java/com/cmpay/zwb/controller/MenuController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="395">
-              <caret line="94" column="9" lean-forward="true" selection-start-line="94" selection-start-column="9" selection-end-line="94" selection-end-column="9" />
+            <state relative-caret-position="48">
+              <caret line="75" column="31" selection-start-line="75" selection-start-column="31" selection-end-line="75" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -300,10 +298,31 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/interface/demo-manager-interface/src/main/java/com/cmpay/zwb/dto/InitRsUserDto.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="166">
+              <caret line="13" column="20" lean-forward="true" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/demo-manager-app/src/main/resources/config/bootstrap.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="283">
-              <caret line="97" column="37" lean-forward="true" selection-start-line="97" selection-start-column="37" selection-end-line="97" selection-end-column="37" />
+            <state relative-caret-position="218">
+              <caret line="101" column="18" lean-forward="true" selection-start-line="101" selection-start-column="18" selection-end-line="101" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/interface/demo-manager-interface/src/main/java/com/cmpay/zwb/dto/UserDto.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="100">
+              <caret line="18" column="32" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="32" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -340,7 +359,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/common/demo-auth/src/main/java/com/cmpay/zwb/kaptcha/KaptchaConfig.java" />
         <option value="$PROJECT_DIR$/app/demo-manager-app/build.gradle" />
         <option value="$PROJECT_DIR$/service/demo-service/src/main/java/com/cmpay/zwb/entity/RoleDO.java" />
         <option value="$PROJECT_DIR$/service/demo-service/src/main/java/com/cmpay/zwb/entity/RoleMenuDO.java" />
@@ -354,19 +372,14 @@
         <option value="$PROJECT_DIR$/interface/demo-manager-interface/src/main/java/com/cmpay/zwb/dto/SimpRoleDto.java" />
         <option value="$PROJECT_DIR$/interface/demo-manager-interface/src/main/java/com/cmpay/zwb/dto/RoleRsDto.java" />
         <option value="$PROJECT_DIR$/interface/demo-manager-interface/src/main/java/com/cmpay/zwb/dto/RoleDto.java" />
-        <option value="$PROJECT_DIR$/interface/demo-manager-interface/src/main/java/com/cmpay/zwb/dto/InitRsUserDto.java" />
         <option value="$PROJECT_DIR$/interface/demo-manager-interface/src/main/java/com/cmpay/zwb/dto/ToUpdateRsUserDto.java" />
         <option value="$PROJECT_DIR$/service/demo-service/src/main/java/com/cmpay/zwb/dao/IUserDao.java" />
         <option value="$PROJECT_DIR$/service/demo-service/src/main/java/com/cmpay/zwb/bo/DeleteUserBo.java" />
         <option value="$PROJECT_DIR$/interface/demo-manager-interface/src/main/java/com/cmpay/zwb/dto/DeleteUserDto.java" />
-        <option value="$PROJECT_DIR$/common/demo-auth/src/main/java/com/cmpay/zwb/util/login/LoginAuthenticationProcessor.java" />
         <option value="$PROJECT_DIR$/interface/demo-manager-interface/src/main/java/com/cmpay/zwb/dto/UserUpdateDto.java" />
-        <option value="$PROJECT_DIR$/service/demo-service/src/main/java/com/cmpay/zwb/bo/UpdateUserBo.java" />
         <option value="$PROJECT_DIR$/service/demo-service/src/main/java/com/cmpay/zwb/service/UserService.java" />
         <option value="$PROJECT_DIR$/service/demo-service/src/main/resources/com/cmpay/zwb/mapper/UserExtMapper.xml" />
         <option value="$PROJECT_DIR$/interface/demo-manager-interface/src/main/java/com/cmpay/zwb/dto/SelectUserDto.java" />
-        <option value="$PROJECT_DIR$/app/demo-manager-app/src/main/java/com/cmpay/zwb/controller/UserController.java" />
-        <option value="$PROJECT_DIR$/service/demo-service/src/main/java/com/cmpay/zwb/service/impl/UserServiceImpl.java" />
         <option value="$PROJECT_DIR$/interface/demo-manager-interface/src/main/java/com/cmpay/zwb/dto/InitRsRoleDto.java" />
         <option value="$PROJECT_DIR$/service/demo-service/src/main/java/com/cmpay/zwb/bo/SaveRoleBo.java" />
         <option value="$PROJECT_DIR$/interface/demo-manager-interface/src/main/java/com/cmpay/zwb/dto/SaveRoleDto.java" />
@@ -389,8 +402,14 @@
         <option value="$PROJECT_DIR$/service/demo-service/src/main/java/com/cmpay/zwb/service/impl/MenuServiceImpl.java" />
         <option value="$PROJECT_DIR$/service/demo-service/src/main/java/com/cmpay/zwb/dao/IMenuDao.java" />
         <option value="$PROJECT_DIR$/service/demo-service/src/main/resources/com/cmpay/zwb/mapper/MenuExtMapper.xml" />
-        <option value="$PROJECT_DIR$/app/demo-manager-app/src/main/resources/config/bootstrap.yml" />
         <option value="$PROJECT_DIR$/app/demo-manager-app/src/main/java/com/cmpay/zwb/controller/MenuController.java" />
+        <option value="$PROJECT_DIR$/service/demo-service/src/main/java/com/cmpay/zwb/bo/UpdateUserBo.java" />
+        <option value="$PROJECT_DIR$/service/demo-service/src/main/java/com/cmpay/zwb/bo/SimpUserInfoBo.java" />
+        <option value="$PROJECT_DIR$/common/demo-auth/src/main/java/com/cmpay/zwb/util/login/LoginAuthenticationProcessor.java" />
+        <option value="$PROJECT_DIR$/service/demo-service/src/main/java/com/cmpay/zwb/service/impl/UserServiceImpl.java" />
+        <option value="$PROJECT_DIR$/interface/demo-manager-interface/src/main/java/com/cmpay/zwb/dto/InitRsUserDto.java" />
+        <option value="$PROJECT_DIR$/app/demo-manager-app/src/main/java/com/cmpay/zwb/controller/UserController.java" />
+        <option value="$PROJECT_DIR$/app/demo-manager-app/src/main/resources/config/bootstrap.yml" />
       </list>
     </option>
   </component>
@@ -822,7 +841,7 @@
       <workItem from="1593298546705" duration="2029000" />
       <workItem from="1593304586326" duration="9722000" />
       <workItem from="1593347827522" duration="599000" />
-      <workItem from="1593402121197" duration="1688000" />
+      <workItem from="1593402121197" duration="12537000" />
     </task>
     <task id="LOCAL-00001" summary="首次提交">
       <created>1592791206389</created>
@@ -950,11 +969,18 @@
       <option name="project" value="LOCAL" />
       <updated>1593316845486</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="修改：完善菜单修改功能">
+      <created>1593406316502</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1593406316502</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="160712000" />
+    <option name="totallyTimeSpent" value="171561000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -980,13 +1006,13 @@
       <window_info id="JRebel" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" x="0" y="23" width="1536" height="801" id="Run" order="2" type="WINDOWED" visible="true" weight="0.77195466" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49932975" weight="0.66288954" />
+      <window_info anchor="bottom" x="1" y="31" width="1533" height="792" id="Run" order="2" type="WINDOWED" weight="0.77195466" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49932975" weight="0.39660057" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32956153" />
       <window_info anchor="bottom" id="Build" order="7" weight="0.33427763" />
-      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.15439093" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.15439093" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="11" />
@@ -994,8 +1020,8 @@
       <window_info anchor="bottom" id="Spring" order="13" />
       <window_info anchor="bottom" id="Java Enterprise" order="14" />
       <window_info anchor="bottom" id="Messages" order="15" sideWeight="0.49932975" weight="0.3286119" />
-      <window_info anchor="bottom" id="Problems" order="16" />
-      <window_info anchor="bottom" id="JRebel Executor" order="17" sideWeight="0.49865952" weight="0.9504249" />
+      <window_info anchor="bottom" id="Problems" order="16" weight="0.3286119" />
+      <window_info anchor="bottom" id="JRebel Executor" order="17" sideWeight="0.49865952" visible="true" weight="0.40509915" />
       <window_info anchor="bottom" id="JRebel Console" order="18" sideWeight="0.5013405" side_tool="true" weight="0.8640227" />
       <window_info anchor="bottom" id="Inspection Results" order="19" weight="0.3286119" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -1081,65 +1107,21 @@
     <MESSAGE value="添加：添加角色修改功能" />
     <MESSAGE value="添加：菜单管理初始化功能" />
     <MESSAGE value="添加：添加菜单功能" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加：添加菜单功能" />
+    <MESSAGE value="修改：完善菜单修改功能" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改：完善菜单修改功能" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>jar://D:/soft/gralde/gradle-6.5/src/wrapper/dists/gradle-4.10.3-bin/caches/modules-2/files-2.1/com.cmpay/lemon-framework-security/1.8.2/34e317cd63e54dfa290bb8a722770723d82cca78/lemon-framework-security-1.8.2-sources.jar!/com/cmpay/lemon/framework/security/auth/GenericAuthenticationProvider.java</url>
-          <line>28</line>
-          <properties>
-            <option name="lambda-ordinal" value="0" />
-          </properties>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="SpringBootApplicationConfigurationType">
+        <watch expression="request" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/common/demo-auth/src/main/java/com/cmpay/zwb/util/login/LoginConfiguration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service/demo-service/src/main/java/com/cmpay/zwb/enums/MsgEnum.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="9" column="12" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/demo-manager-app/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="3" column="36" selection-start-line="3" selection-start-column="36" selection-end-line="3" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/interface/demo-manager-interface/src/main/java/com/cmpay/zwb/dto/DeleteUserDto.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="5" column="28" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/soft/gralde/gradle-6.5/src/wrapper/dists/gradle-4.10.3-bin/caches/modules-2/files-2.1/com.cmpay/cmpay-support/1.8.1/ac909b8e65c64552c63100fbb7e74ecf62534de9/cmpay-support-1.8.1-sources.jar!/com/cmpay/framework/data/response/GenericRspDTO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/service/demo-service/src/main/java/com/cmpay/zwb/dao/IUserDao.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="286">
@@ -1192,16 +1174,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/interface/demo-manager-interface/src/main/java/com/cmpay/zwb/dto/UserDto.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="358">
-          <caret line="21" column="28" lean-forward="true" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1464,16 +1436,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/service/demo-service/src/main/java/com/cmpay/zwb/service/impl/UserServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2640">
-          <caret line="138" column="41" selection-start-line="138" selection-start-column="29" selection-end-line="138" selection-end-column="41" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/interface/demo-manager-interface/src/main/java/com/cmpay/zwb/dto/UserUpdateDto.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="726">
@@ -1481,27 +1443,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/demo-manager-app/src/main/resources/config/bootstrap-sit.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="33" column="53" selection-start-line="33" selection-start-column="53" selection-end-line="33" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/soft/gralde/gradle-6.5/src/wrapper/dists/gradle-4.10.3-bin/caches/modules-2/files-2.1/com.cmpay/lemon-framework-security/1.8.2/34e317cd63e54dfa290bb8a722770723d82cca78/lemon-framework-security-1.8.2-sources.jar!/com/cmpay/lemon/framework/security/auth/GenericAuthenticationProvider.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="28" column="44" selection-start-line="28" selection-start-column="44" selection-end-line="28" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/service/demo-service/src/main/java/com/cmpay/zwb/bo/UpdateUserBo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="39" column="29" selection-start-line="39" selection-start-column="29" selection-end-line="39" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/demo-manager-app/src/main/resources/config/bootstrap.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="97" column="37" lean-forward="true" selection-start-line="97" selection-start-column="37" selection-end-line="97" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/demo-manager-app/src/main/java/com/cmpay/zwb/controller/UserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="43">
-          <caret line="91" column="27" lean-forward="true" selection-start-line="91" selection-start-column="27" selection-end-line="91" selection-end-column="27" />
+        <state relative-caret-position="220">
+          <caret line="28" column="23" selection-start-line="28" selection-start-column="23" selection-end-line="28" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1510,11 +1469,69 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/demo-manager-app/src/main/java/com/cmpay/zwb/controller/MenuController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="395">
-          <caret line="94" column="9" lean-forward="true" selection-start-line="94" selection-start-column="9" selection-end-line="94" selection-end-column="9" />
+        <state relative-caret-position="285">
+          <caret line="65" column="44" selection-start-line="65" selection-start-column="44" selection-end-line="65" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service/demo-service/src/main/java/com/cmpay/zwb/bo/SimpUserInfoBo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service/demo-service/src/main/java/com/cmpay/zwb/service/impl/UserServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="792">
+          <caret line="63" column="39" lean-forward="true" selection-start-line="63" selection-start-column="39" selection-end-line="63" selection-end-column="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/demo-auth/src/main/java/com/cmpay/zwb/util/login/LoginAuthenticationProcessor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="41" column="93" selection-start-line="41" selection-start-column="93" selection-end-line="41" selection-end-column="93" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/demo-manager-app/src/main/java/com/cmpay/zwb/controller/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="75" column="31" selection-start-line="75" selection-start-column="31" selection-end-line="75" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/interface/demo-manager-interface/src/main/java/com/cmpay/zwb/dto/InitRsUserDto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="13" column="20" lean-forward="true" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/interface/demo-manager-interface/src/main/java/com/cmpay/zwb/dto/UserDto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="18" column="32" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/demo-manager-app/src/main/resources/config/bootstrap.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="218">
+          <caret line="101" column="18" lean-forward="true" selection-start-line="101" selection-start-column="18" selection-end-line="101" selection-end-column="18" />
         </state>
       </provider>
     </entry>
