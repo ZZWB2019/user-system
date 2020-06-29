@@ -20,16 +20,16 @@
             <if test="name !=null and name != ''">
                 `name` = #{name},
             </if>
-            <if test="note != null and note != ''">
-                note = #{note},
+            <if test="supid != null and supid != -1">
+                supid = #{supid},
             </if>
-            <if test="updateUser != null">
-                update_user = #{updateUser},
+            <if test="menuType != null and menuType != -1">
+                update_user = #{menuType},
             </if>
             <if test="updateTime != null">
                 update_time = #{updateTime},
             </if>
         </set>
-        where rid = #{rid}
+        where mid = #{mid}
     </update>
 </mapper>

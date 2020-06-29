@@ -77,7 +77,13 @@ public class MenuController {
         return msg;
     }
 
+    /**
+     * 修改菜单信息
+     * @param updateMenuDto
+     * @return
+     */
     public Object updateMenu(UpdateMenuDto updateMenuDto){
+        String msg = "no";
         UpdateMenuBo updateMenuBo = new UpdateMenuBo();
         updateMenuBo.setMid(updateMenuDto.getMid());
         updateMenuBo.setName(updateMenuDto.getName());
@@ -86,6 +92,8 @@ public class MenuController {
         //从session中读取当前用户的信息
         updateMenuBo.setUpdateUser(1L);
         updateMenuBo.setUpdateTime(LocalDate.now());
-        return null;
+        ;
+        if (menuService.updateMenu(updateMenuBo) == 1){msg = "yes";}
+        return msg;
     }
 }

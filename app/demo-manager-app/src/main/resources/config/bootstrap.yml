@@ -97,7 +97,7 @@ lemon:
       permitAll:
         - /upms/v1/captcha/getCaptcha
         - /user/**
-        - /tologin
+        - /tologin/*
         - /role/**
         - /menu/**
         #Multiple dataSources
