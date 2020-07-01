@@ -12,6 +12,8 @@ import com.cmpay.zwb.entity.RoleDOKey;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 @Mapper
 public interface IRoleDao extends BaseDao<RoleDO, Long> {
 
@@ -28,4 +30,6 @@ public interface IRoleDao extends BaseDao<RoleDO, Long> {
      * @return
      */
     int updateRole(RoleDO roleDO);
+
+    int deleteRole(List<Long> list);
 }

@@ -1,12 +1,13 @@
 package com.cmpay.zwb.dto;
 
+import com.cmpay.framework.data.request.GenericDTO;
 import lombok.Data;
 
 /**
  * @author zhouwb
  */
 @Data
-public class SaveRoleDto {
+public class SaveRoleDto extends GenericDTO {
     /**
      * @Fields rid 角色id
      */

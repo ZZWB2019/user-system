@@ -31,4 +31,12 @@
         </set>
         where rid = #{rid}
     </update>
+
+    <delete id="deleteRole" parameterType="List">
+        update role set is_del = '1'
+        where rid in
+        <foreach item="id" collection="list" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </delete>
 </mapper>

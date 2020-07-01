@@ -91,7 +91,7 @@ public class MenuServiceImpl implements MenuService {
      * @return
      */
     @Override
-    public List findAllMenu() {
+    public List<Map> findAllMenu() {
         List<MenuDO> menuList = selectMenu(null);
         return findMenuListByParentId(menuList,"0");
     }
@@ -106,15 +106,12 @@ public class MenuServiceImpl implements MenuService {
         List<Map> mapList = new ArrayList<Map>();
         for (MenuDO menu : menuList){
                 if (parentId.equals(menu.getSupid()+"")){
-                    /*List list = new ArrayList();
-                    list.add(menu);*/
                     Map map = new HashMap();
                     map.put("mid",menu.getMid());
                     map.put("name",menu.getName());
                     map.put("parentId",menu.getSupid());
                     map.put("children",findMenuListByParentId(menuList,menu.getMid()+""));
                     mapList.add(map);
-//                    mapList.add(list);
                 }
         }
         return mapList;

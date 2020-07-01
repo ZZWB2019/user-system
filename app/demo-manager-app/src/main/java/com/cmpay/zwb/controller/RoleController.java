@@ -1,8 +1,10 @@
 package com.cmpay.zwb.controller;
 
 import com.cmpay.framework.data.response.GenericRspDTO;
+import com.cmpay.lemon.framework.data.NoBody;
 import com.cmpay.lemon.framework.utils.IdGenUtils;
 import com.cmpay.lemon.framework.utils.PageUtils;
+import com.cmpay.zwb.bo.DeleteRoleBo;
 import com.cmpay.zwb.bo.SaveRoleBo;
 import com.cmpay.zwb.bo.SimpRoleBo;
 import com.cmpay.zwb.bo.UpdateRoleBo;
@@ -56,7 +58,7 @@ public class RoleController {
      * @param id
      * @return
      */
-    @GetMapping("/getByid/{id}")
+    @GetMapping("/info/{id}")
     public GenericRspDTO<RoleDto> getRole(@PathVariable("id") Long id){
         RoleDto roleDto = roleService.getByid(id);
         return GenericRspDTO.newInstance(MsgEnum.SUCCESS,roleDto);
@@ -68,12 +70,11 @@ public class RoleController {
      * @return
      */
     @PostMapping("/save")
-    public String saveRole(@RequestBody SaveRoleDto saveRoleDto){
-        String msg = "no";
-        //String idgenValue = IdGenUtils.generateId("ZHOU_ROLE_IDGEN");
+    public GenericRspDTO<NoBody> saveRole(@RequestBody SaveRoleDto saveRoleDto){
+        String idgenValue = IdGenUtils.generateId("ZHOU_ROLE_IDGEN");
         SaveRoleBo saveRoleBo = new SaveRoleBo();
         //saveRoleBo.setRid(Long.parseLong(idgenValue));
-        saveRoleBo.setRid(2L);
+        saveRoleBo.setRid(Long.parseLong(idgenValue));
         saveRoleBo.setName(saveRoleDto.getName());
         saveRoleBo.setNote(saveRoleDto.getNote());
         //创建人和修改人id要去session里面读取
@@ -81,8 +82,8 @@ public class RoleController {
         saveRoleBo.setCreateTime(LocalDate.now());
         saveRoleBo.setUpdateUser(1L);
         saveRoleBo.setUpdateTime(LocalDate.now());
-        if (roleService.saveRole(saveRoleBo) == 1){msg = "yes";}
-        return msg;
+        if (roleService.saveRole(saveRoleBo) >= 1){return GenericRspDTO.newInstance(MsgEnum.SUCCESS);}
+        return GenericRspDTO.newInstance(MsgEnum.FAIL);
     }
 
     /**
@@ -91,8 +92,7 @@ public class RoleController {
      * @return
      */
     @PostMapping("/update")
-    public String updateRole(@RequestBody UpdateRoleDto updateRoleDto){
-        String msg = "no";
+    public GenericRspDTO<NoBody> updateRole(@RequestBody UpdateRoleDto updateRoleDto){
         UpdateRoleBo updateRoleBo = new UpdateRoleBo();
         updateRoleBo.setRid(updateRoleDto.getRid());
         updateRoleBo.setName(updateRoleDto.getName());
@@ -100,7 +100,20 @@ public class RoleController {
         //通过session读取当前用户为修改人
         updateRoleBo.setUpdateUser(1L);
         updateRoleBo.setUpdateTime(LocalDate.now());
-        if (roleService.updateRole(updateRoleBo) == 1){msg = "yes";}
-        return msg;
+        if (roleService.updateRole(updateRoleBo) == 1){return GenericRspDTO.newInstance(MsgEnum.SUCCESS);}
+        return GenericRspDTO.newInstance(MsgEnum.FAIL);
+    }
+
+    /**
+     * 批量删除角色信息
+     * @param deleteRoleDto
+     * @return
+     */
+    @DeleteMapping("/delete")
+    public GenericRspDTO<NoBody> deleteRole(@RequestBody DeleteRoleDto deleteRoleDto){
+        DeleteRoleBo deleteRoleBo = new DeleteRoleBo();
+        deleteRoleBo.setDelList(deleteRoleDto.getDelList());
+        if (roleService.deleteRole(deleteRoleBo) >= 1){return GenericRspDTO.newInstance(MsgEnum.SUCCESS);}
+        return GenericRspDTO.newInstance(MsgEnum.FAIL);
     }
 }

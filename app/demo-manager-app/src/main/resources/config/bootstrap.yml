@@ -137,21 +137,21 @@ lemon:
       MSGID_: 999999999
       REQUESTID_: 999999999
       SYS:PUB:SEQ: 999999999
-
+      ZHOU_ROLE_IDGEN: 10000000
     id-infos:
       ZHOU_USER_IDGEN:
         name: ZHOU_USER_IDGEN
-        maxValue: 1000
+        maxValue: 100000
         minValue: 10
         delta: 5
       ZHOU_ROLE_IDGEN:
         name: ZHOU_ROLE_IDGEN
-        maxValue: 1000
+        maxValue: 1000000
         minValue: 10
         delta: 5
       ZHOU_MENU_IDGEN:
         name: ZHOU_MENU_IDGEN
-        maxValue: 1000
+        maxValue: 1000000
         minValue: 10
         delta: 5
   cache:

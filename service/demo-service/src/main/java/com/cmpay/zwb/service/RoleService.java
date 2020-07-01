@@ -1,5 +1,6 @@
 package com.cmpay.zwb.service;
 
+import com.cmpay.zwb.bo.DeleteRoleBo;
 import com.cmpay.zwb.bo.SaveRoleBo;
 import com.cmpay.zwb.bo.SimpRoleBo;
 import com.cmpay.zwb.bo.UpdateRoleBo;
@@ -45,4 +46,11 @@ public interface RoleService {
      * @return
      */
     int updateRole(UpdateRoleBo updateRoleBo);
+
+    /**
+     * 批量删除角色信息
+     * @param deleteRoleBo
+     * @return
+     */
+    int deleteRole(DeleteRoleBo deleteRoleBo);
 }
