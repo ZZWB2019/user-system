@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author zhouwb
@@ -92,8 +93,17 @@ public class MenuController {
         //从session中读取当前用户的信息
         updateMenuBo.setUpdateUser(1L);
         updateMenuBo.setUpdateTime(LocalDate.now());
-        ;
         if (menuService.updateMenu(updateMenuBo) == 1){msg = "yes";}
         return msg;
+    }
+
+    /**
+     * 查询所有的menu对象信息
+     * @return
+     */
+    @GetMapping("/list")
+    public GenericRspDTO<List<Map>> queryListMenu(){
+        List<Map> list = menuService.findAllMenu();
+        return GenericRspDTO.newInstance(MsgEnum.SUCCESS,list);
     }
 }

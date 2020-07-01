@@ -1,6 +1,5 @@
 package com.cmpay.zwb.dto;
 
-import com.cmpay.framework.data.request.GenericDTO;
 import lombok.Data;
 
 import java.util.List;
@@ -9,8 +8,8 @@ import java.util.List;
  * @author zhouwb
  */
 @Data
-public class SaveUserDto extends GenericDTO {
-    private Long uid;
+public class SimplSaveUserDto {
+    private Long rid;
     private String name;
     private String passwd;
     private String phnumber;

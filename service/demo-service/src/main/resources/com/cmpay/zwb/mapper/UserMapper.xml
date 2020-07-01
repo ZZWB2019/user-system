@@ -23,7 +23,7 @@
                 uid,
             </if>
             <if test="name != null" >
-                name,
+                `name`,
             </if>
             <if test="passwd != null" >
                 passwd,
@@ -98,7 +98,7 @@
             <if test="uid != null" >
                 and uid = #{uid,jdbcType=BIGINT}
             </if>
-            <if test="name != null" >
+            <if test="name != null and name != ''" >
                 and name = #{name,jdbcType=VARCHAR}
             </if>
             <if test="passwd != null" >
@@ -127,6 +127,9 @@
             </if>
             <if test="userName != null" >
                 and user_name = #{userName,jdbcType=VARCHAR}
+            </if>
+            <if test="1 == 1">
+                and is_del = 0
             </if>
         </where>
     </select>

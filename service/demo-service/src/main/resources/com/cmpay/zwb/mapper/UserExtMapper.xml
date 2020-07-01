@@ -58,6 +58,9 @@
             <if test="userName != null">
                 user_name = #{userName},
             </if>
+            <if test="isDel != null">
+                is_del = #{isDel},
+            </if>
         </set>
         where uid = #{uid}
     </update>

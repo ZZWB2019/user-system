@@ -57,6 +57,19 @@ public class UserDO extends BaseDO {
      */
     private String userName;
 
+    /**
+     * @Fields is_Del 逻辑删除 0 -- 正常；1 -- 删除
+     */
+    private Byte isDel;
+
+    public Byte getIsDel() {
+        return isDel;
+    }
+
+    public void setIsDel(Byte isDel) {
+        this.isDel = isDel;
+    }
+
     public Long getUid() {
         return uid;
     }

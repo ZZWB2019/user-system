@@ -44,4 +44,8 @@ public class UpdateUserBo {
      * @Fields updateTime 修改时间
      */
     private LocalDate updateTime;
+    /**
+     * @Fields isDelte 禁用用户
+     */
+    private Byte isDelte;
 }

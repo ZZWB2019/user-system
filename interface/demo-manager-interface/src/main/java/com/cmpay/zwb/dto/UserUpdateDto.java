@@ -1,5 +1,6 @@
 package com.cmpay.zwb.dto;
 
+import com.cmpay.framework.data.request.GenericDTO;
 import lombok.Data;
 
 
@@ -7,7 +8,7 @@ import lombok.Data;
  * @author zhouwb
  */
 @Data
-public class UserUpdateDto {
+public class UserUpdateDto extends GenericDTO {
     /**
      * @Fields uid 用户id
      */
@@ -32,4 +33,8 @@ public class UserUpdateDto {
      * @Fields userName 用户姓名
      */
     private String userName;
+    /**
+     * @Fields isDelete 禁用用户
+     */
+    private Byte isDelete;
 }

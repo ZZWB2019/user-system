@@ -15,6 +15,7 @@ public class UserDto {
     private String phnumber;
     private String email;
     private Byte isDeleted;
+    private Byte is_Del;
     private Long createUser;
     private LocalDate createTime;
     private Long updateUser;

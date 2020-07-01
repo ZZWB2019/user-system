@@ -8,6 +8,7 @@ import com.cmpay.zwb.dto.SelectMenuDto;
 import com.cmpay.zwb.entity.MenuDO;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author zhouwb
@@ -48,4 +49,10 @@ public interface MenuService {
      * @return
      */
     int updateMenu(UpdateMenuBo updateMenuBo);
+
+    /**
+     * 迭代查询所有的菜单信息
+     * @return
+     */
+    public List<Map> findAllMenu();
 }

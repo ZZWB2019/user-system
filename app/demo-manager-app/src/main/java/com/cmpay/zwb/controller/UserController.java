@@ -1,13 +1,17 @@
 package com.cmpay.zwb.controller;
 
+import com.cmpay.framework.data.request.GenericDTO;
 import com.cmpay.framework.data.response.GenericRspDTO;
+import com.cmpay.lemon.common.utils.RandomUtils;
 import com.cmpay.lemon.framework.annotation.QueryBody;
+import com.cmpay.lemon.framework.data.NoBody;
 import com.cmpay.lemon.framework.security.SecurityUtils;
 import com.cmpay.lemon.framework.security.UserInfoBase;
 import com.cmpay.lemon.framework.utils.IdGenUtils;
 import com.cmpay.lemon.framework.utils.PageUtils;
 import com.cmpay.zwb.bo.DeleteUserBo;
 import com.cmpay.zwb.bo.SaveUserBo;
+import com.cmpay.zwb.bo.SelectUserBo;
 import com.cmpay.zwb.bo.UpdateUserBo;
 import com.cmpay.zwb.dto.*;
 import com.cmpay.zwb.entity.RoleDO;
@@ -15,6 +19,8 @@ import com.cmpay.zwb.entity.UserDO;
 import com.cmpay.zwb.enums.MsgEnum;
 import com.cmpay.zwb.service.RoleService;
 import com.cmpay.zwb.service.UserService;
+import com.cmpay.zwb.util.BeanConvertUtils;
+import com.github.pagehelper.PageInfo;
 import com.google.code.kaptcha.impl.DefaultKaptcha;
 import org.springframework.beans.BeanUtils;
 import org.springframework.web.bind.annotation.*;
@@ -37,7 +43,7 @@ import java.util.List;
  */
 @RestController
 //@Log4j2
-//@RequestMapping("/user")
+@RequestMapping("/v1/ui-template")
 public class UserController {
 
     /**
@@ -58,7 +64,11 @@ public class UserController {
     @Resource
     private DefaultKaptcha defaultKaptcha;
 
-    @GetMapping("/v1/ui-template/user/info")
+    /**
+     * 查询
+     * @return
+     */
+    @GetMapping("/user/info")
     public GenericRspDTO<UserDto> getUserInfo(){
         UserInfoBase loginUser = SecurityUtils.getLoginUser();
         UserDO userById = userService.getUserById(Long.valueOf(loginUser.getUserId()));
@@ -72,11 +82,26 @@ public class UserController {
      * 初始化页面查询
      * @return
      */
-    @PostMapping("/v1/ui-template/user/list")
-    public GenericRspDTO<InitRsUserDto> init(){
-        List<UserDO> userDOS = PageUtils.pageQuery(1,4,() -> { return this.userService.findUser(null);});
-        List<RoleDO> roleDOS = roleService.findRole(null);
+    @PostMapping("/user/list")
+    public GenericRspDTO<InitRsUserDto> selectUsers(@RequestBody SelectUserDto selectUserDto){
+        SelectUserBo selectUserBo = new SelectUserBo();
+        selectUserBo.setUserName(selectUserDto.getUserName());
+        selectUserBo.setPageNum(selectUserDto.getPageNum());
+        selectUserBo.setPageSize(selectUserDto.getPageSize());
+        PageInfo<UserDO> page = userService.findPUser(selectUserBo);
+
+        List<UserDto> userInfos = BeanConvertUtils.convertList(page.getList(), UserDto.class);
+        InitRsUserDto initRsUserDto = new InitRsUserDto();
+        initRsUserDto.setUserDtos(userInfos);
+        initRsUserDto.setPageNum(page.getPageNum());
+        initRsUserDto.setPageSize(page.getPageSize());
+        initRsUserDto.setPages(page.getPages());
+        initRsUserDto.setTotal(page.getTotal());
+        initRsUserDto.setMsgCd(MsgEnum.SUCCESS.getMsgCd());
+        initRsUserDto.setMsgInfo(MsgEnum.SUCCESS.getMsgInfo());
+        /*List<UserDO> userDOS = PageUtils.pageQuery(1,10,() -> { return this.userService.findUser(null);});
         InitRsUserDto initRsUserDto = new InitRsUserDto(userService.ListFromate(userDOS));
+        return GenericRspDTO.newInstance(MsgEnum.SUCCESS,initRsUserDto);*/
         return GenericRspDTO.newInstance(MsgEnum.SUCCESS,initRsUserDto);
     }
 
@@ -85,14 +110,17 @@ public class UserController {
      * @return
      */
     @PostMapping("/user/save")
-    public Object saveUser(@QueryBody SaveUserDto saveUserDto){
-
-        String idgenValue = IdGenUtils.generateId("ZHOU_USER_IDGEN");
+    public GenericRspDTO<NoBody> saveUser(@RequestBody SaveUserDto saveUserDto){
+        //String idgenValue = IdGenUtils.generateId("ZHOU_USER_IDGEN");
+        Long idgenValue = RandomUtils.nextLong(1000000);
         SaveUserBo saveUserBo = new SaveUserBo();
-        BeanUtils.copyProperties(saveUserDto,saveUserBo);
+        saveUserBo.setName(saveUserDto.getName());
+        saveUserBo.setEmail(saveUserDto.getEmail());
+        saveUserBo.setPasswd(saveUserDto.getPasswd());
+        saveUserBo.setPhnumber(saveUserDto.getPhnumber());
         String msg = "no";
-        if (userService.SaveUser(saveUserBo,null)==1){msg="yes";}
-        return msg;
+        if (userService.SaveUser(saveUserBo,idgenValue)==1){return GenericRspDTO.newInstance(MsgEnum.SUCCESS);}
+        return GenericRspDTO.newInstance(MsgEnum.FAIL);
     }
 
     /**
@@ -136,12 +164,14 @@ public class UserController {
      * @param id
      * @return
      */
-    @GetMapping("/user/getByid/{id}")
+    @GetMapping("/user/info/{id}")
     public GenericRspDTO<ToUpdateRsUserDto> toUpdate(@PathVariable("id") Long id){
         UserDto userDto = new UserDto();
         UserDO userDO = userService.getUserById(id);
         BeanUtils.copyProperties(userDO,userDto);
-        return GenericRspDTO.newInstance(MsgEnum.SUCCESS,new ToUpdateRsUserDto(userDto)) ;
+        List<Long> longs = new ArrayList<>();
+        longs.add(1L);
+        return GenericRspDTO.newInstance(MsgEnum.SUCCESS,new ToUpdateRsUserDto(userDto,longs)) ;
     }
 
     /**
@@ -149,19 +179,23 @@ public class UserController {
      * @param deleteUserDto
      * @return
      */
-    @PostMapping("/user/disable")
-    public String disbaleUser(@RequestBody DeleteUserDto deleteUserDto){
-        String msg = "no";
+    @DeleteMapping("/user/delete")
+    public GenericRspDTO<NoBody> disbaleUser(@RequestBody DeleteUserDto deleteUserDto){
+        System.out.println(deleteUserDto);
         DeleteUserBo deleteUserBo = new DeleteUserBo();
-        deleteUserBo.setUid(deleteUserDto.getUid());
+        deleteUserBo.setUid(deleteUserDto.getId().get(0));
         deleteUserBo.setIsDeleted(deleteUserDto.getIsDelete());
-        if (userService.isDelete(deleteUserBo) == 1){ msg = "yes";}
-        return msg;
+        if (userService.isDelete(deleteUserBo) == 1){ return GenericRspDTO.newInstance(MsgEnum.SUCCESS);}
+        return GenericRspDTO.newInstance(MsgEnum.FAIL);
     }
 
+    /**
+     * 修改用户信息
+     * @param userUpdateDto
+     * @return
+     */
     @PostMapping("/user/update")
-    public String updateUser(@RequestBody UserUpdateDto userUpdateDto){
-        String msg = "no";
+    public GenericRspDTO<NoBody> updateUser(@RequestBody UserUpdateDto userUpdateDto){
         UpdateUserBo updateUserBo = new UpdateUserBo();
         updateUserBo.setUid(userUpdateDto.getUid());
         updateUserBo.setName(userUpdateDto.getName());
@@ -169,11 +203,12 @@ public class UserController {
         updateUserBo.setPhnumber(userUpdateDto.getPhnumber());
         updateUserBo.setEmail(userUpdateDto.getEmail());
         updateUserBo.setUserName(userUpdateDto.getUserName());
+        updateUserBo.setIsDelte(userUpdateDto.getIsDelete());
         //通过session拿到当前用户的信息
         updateUserBo.setUpdateUser(1L);
         updateUserBo.setUpdateTime(LocalDate.now());
-        if (userService.updateUser(updateUserBo) == 1){msg = "yes";}
-        return msg;
+        if (userService.updateUser(updateUserBo) == 1){return GenericRspDTO.newInstance(MsgEnum.SUCCESS);}
+        return GenericRspDTO.newInstance(MsgEnum.FAIL);
     }
 
     /**
@@ -181,13 +216,22 @@ public class UserController {
      * @param selectUserDto
      * @return
      */
-    @PostMapping("/user/select")
-    public GenericRspDTO<List<UserDto>> selectUser(@RequestBody SelectUserDto selectUserDto){
+    /*@PostMapping("/user/list")
+    public GenericRspDTO<SelectUserRsDto> selectUser(@RequestBody SelectUserDto selectUserDto){
         UserDO userDO = new UserDO();
-        userDO.setName(selectUserDto.getName());
-        userDO.setUserName(selectUserDto.getUserName());
-        List<UserDO> userDOS = PageUtils.pageQuery(1,4,() -> { return this.userService.findUser(userDO);});
+        userDO.setName(selectUserDto.getUserName());
+        int pageNum;
+        int pageSize;
+        if (selectUserDto.getPageNum() == 0 || selectUserDto.getPageSize() == 0){
+            pageNum = 1;
+            pageSize = 10;
+        }else{
+            pageNum = selectUserDto.getPageNum();
+            pageSize =selectUserDto.getPageSize();
+        }
+        List<UserDO> userDOS = PageUtils.pageQuery(pageNum,pageSize,() -> { return this.userService.findUser(userDO);});
         List<UserDto> list = userService.ListFromate(userDOS);
-        return GenericRspDTO.newInstance(MsgEnum.SUCCESS,list);
-    }
+        return GenericRspDTO.newInstance(MsgEnum.SUCCESS,new SelectUserRsDto(list,pageNum,pageSize));
+//        return null;
+    }*/
 }

@@ -1,9 +1,7 @@
 package com.cmpay.zwb.service;
 
-import com.cmpay.zwb.bo.DeleteUserBo;
-import com.cmpay.zwb.bo.SaveUserBo;
-import com.cmpay.zwb.bo.SimpUserInfoBo;
-import com.cmpay.zwb.bo.UpdateUserBo;
+import com.cmpay.lemon.framework.page.PageInfo;
+import com.cmpay.zwb.bo.*;
 import com.cmpay.zwb.dto.UserDto;
 import com.cmpay.zwb.entity.UserDO;
 
@@ -58,4 +56,11 @@ public interface UserService {
      * @return
      */
     int updateUser(UpdateUserBo updateUserBo);
+
+    /**
+     * 分页查询
+     * @param selectUserBo
+     * @return
+     */
+    PageInfo<UserDO> findPUser(SelectUserBo selectUserBo);
 }

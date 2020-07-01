@@ -1,15 +1,15 @@
 package com.cmpay.zwb.service.impl;
 
-import com.cmpay.zwb.bo.DeleteUserBo;
-import com.cmpay.zwb.bo.SaveUserBo;
-import com.cmpay.zwb.bo.SimpUserInfoBo;
-import com.cmpay.zwb.bo.UpdateUserBo;
+import com.cmpay.lemon.framework.page.PageInfo;
+import com.cmpay.lemon.framework.utils.PageUtils;
+import com.cmpay.zwb.bo.*;
 import com.cmpay.zwb.dao.IUserDao;
 import com.cmpay.zwb.dto.UserDto;
 import com.cmpay.zwb.entity.UserDO;
 import com.cmpay.zwb.service.UserService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.annotation.Resource;
 import java.beans.Transient;
@@ -35,7 +35,6 @@ public class UserServiceImpl implements UserService {
     public UserDO getUserById(Long id) {
         System.out.println(id);
         UserDO userDO = iUserDao.getById(id);
-        userDO.setPasswd("*************");
         return userDO;
     }
 
@@ -117,7 +116,8 @@ public class UserServiceImpl implements UserService {
     @Transient
     public int isDelete(DeleteUserBo deleteUserBo) {
         UserDO userDO = new UserDO();
-        userDO.setIsDeleted(deleteUserBo.getIsDeleted());
+        //userDO.setIsDeleted(deleteUserBo.getIsDeleted());
+        userDO.setIsDel(Byte.parseByte("1"));
         userDO.setUid(deleteUserBo.getUid());
         return iUserDao.updateUserInfo(userDO);
     }
@@ -131,13 +131,26 @@ public class UserServiceImpl implements UserService {
     public int updateUser(UpdateUserBo updateUserBo) {
         UserDO userDO = new UserDO();
         userDO.setUid(updateUserBo.getUid());
-        userDO.setName(updateUserBo.getUserName());
+        userDO.setName(updateUserBo.getName());
         userDO.setPasswd(updateUserBo.getPasswd());
         userDO.setPhnumber(updateUserBo.getPhnumber());
         userDO.setEmail(updateUserBo.getEmail());
         userDO.setUserName(updateUserBo.getName());
+        userDO.setIsDeleted(updateUserBo.getIsDelte());
         userDO.setUpdateUser(updateUserBo.getUpdateUser());
         userDO.setUpdateTime(updateUserBo.getUpdateTime());
         return iUserDao.updateUserInfo(userDO);
+    }
+
+    /**
+     * 分页查询
+     * @param selectUserBo
+     * @return
+     */
+    @Override
+    public PageInfo<UserDO> findPUser(SelectUserBo selectUserBo) {
+        UserDO userDO = new UserDO();
+        userDO.setName(selectUserBo.getUserName());
+        return PageUtils.pageQueryWithCount(selectUserBo.getPageNum(),selectUserBo.getPageSize(),()->iUserDao.find(userDO));
     }
 }

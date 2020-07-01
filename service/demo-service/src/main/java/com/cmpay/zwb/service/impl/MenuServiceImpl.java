@@ -11,9 +11,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author zhouwb
@@ -86,5 +84,35 @@ public class MenuServiceImpl implements MenuService {
     public int updateMenu(UpdateMenuBo updateMenuBo) {
 
         return 0;
+    }
+
+    /**
+     * 迭代拆线呢
+     * @return
+     */
+    @Override
+    public List<Map> findAllMenu() {
+        List<MenuDO> menuList = selectMenu(null);
+        return findMenuListByParentId(menuList,"0");
+    }
+
+    /**
+     * 迭代方法
+     * @param menuList
+     * @param parentId
+     * @return
+     */
+    public List<Map> findMenuListByParentId(List<MenuDO> menuList, String parentId){
+        List<Map> mapList = new ArrayList<Map>();
+        for (MenuDO menu : menuList){
+                if (parentId.equals(menu.getSupid()+"")){
+                    Map map = new HashMap();
+                    map.put("mid",menu.getMid());
+                    map.put("name",menu.getName());
+                    map.put("children",findMenuListByParentId(menuList,menu.getMid()+""));
+                    mapList.add(map);
+                }
+        }
+        return mapList;
     }
 }

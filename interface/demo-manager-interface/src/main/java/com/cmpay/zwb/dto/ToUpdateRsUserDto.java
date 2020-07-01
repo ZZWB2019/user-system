@@ -17,4 +17,6 @@ public class ToUpdateRsUserDto {
 
     //用户信息
     private UserDto userDo;
+
+    private List<Long> roleId;
 }

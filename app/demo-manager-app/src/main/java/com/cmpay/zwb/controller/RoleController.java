@@ -21,7 +21,7 @@ import java.util.List;
  * @author zhouwb
  */
 @RestController
-@RequestMapping("/role")
+@RequestMapping("/v1/ui-template/role")
 public class RoleController {
 
     @Resource
@@ -32,17 +32,18 @@ public class RoleController {
      * @param simpRoleDto
      * @return
      */
-    public List<RoleDO> findRole(SimpRoleDto simpRoleDto){
+    @GetMapping("/select")
+    public GenericRspDTO<List<RoleDO>> findRole(SimpRoleDto simpRoleDto){
         SimpRoleBo simpRoleBo = new SimpRoleBo();
         BeanUtils.copyProperties(simpRoleDto,simpRoleBo);
-        return roleService.findRole(simpRoleBo);
+        return GenericRspDTO.newInstance(MsgEnum.SUCCESS,roleService.findRole(simpRoleBo));
     }
 
     /**
      * 初始化角色查询
      * @return
      */
-    @GetMapping("/info")
+    @PostMapping("/list")
     public GenericRspDTO<InitRsRoleDto> init(){
         List<RoleDO> roleDOS = PageUtils.pageQuery(1,4,() -> { return this.roleService.findRole(null);});
         List<RoleDto> list = roleService.listFromate(roleDOS);
