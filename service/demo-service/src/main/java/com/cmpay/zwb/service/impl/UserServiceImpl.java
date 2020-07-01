@@ -116,10 +116,9 @@ public class UserServiceImpl implements UserService {
     @Transient
     public int isDelete(DeleteUserBo deleteUserBo) {
         UserDO userDO = new UserDO();
-        //userDO.setIsDeleted(deleteUserBo.getIsDeleted());
         userDO.setIsDel(Byte.parseByte("1"));
-        userDO.setUid(deleteUserBo.getUid());
-        return iUserDao.updateUserInfo(userDO);
+        List<Long> list = deleteUserBo.getDelList();
+        return iUserDao.ListDelUserr(list);
     }
 
     /**

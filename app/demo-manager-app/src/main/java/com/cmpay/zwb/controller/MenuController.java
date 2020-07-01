@@ -25,7 +25,7 @@ import java.util.Map;
  * @author zhouwb
  */
 @RestController
-@RequestMapping("/menu")
+@RequestMapping("v1/ui-template/menu")
 public class MenuController {
 
     @Resource

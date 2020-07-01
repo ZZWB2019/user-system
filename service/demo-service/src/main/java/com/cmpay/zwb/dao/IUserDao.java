@@ -12,6 +12,8 @@ import com.cmpay.zwb.entity.UserDOKey;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 @Mapper
 public interface IUserDao extends BaseDao<UserDO, Long> {
 
@@ -35,4 +37,11 @@ public interface IUserDao extends BaseDao<UserDO, Long> {
      * @return
      */
     int updateUserInfo(UserDO userDO);
+
+    /**
+     * 批量删除角色对象
+     * @param list
+     * @return
+     */
+    public int ListDelUserr(List<Long> list);
 }

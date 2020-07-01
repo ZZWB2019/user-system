@@ -99,9 +99,6 @@ public class UserController {
         initRsUserDto.setTotal(page.getTotal());
         initRsUserDto.setMsgCd(MsgEnum.SUCCESS.getMsgCd());
         initRsUserDto.setMsgInfo(MsgEnum.SUCCESS.getMsgInfo());
-        /*List<UserDO> userDOS = PageUtils.pageQuery(1,10,() -> { return this.userService.findUser(null);});
-        InitRsUserDto initRsUserDto = new InitRsUserDto(userService.ListFromate(userDOS));
-        return GenericRspDTO.newInstance(MsgEnum.SUCCESS,initRsUserDto);*/
         return GenericRspDTO.newInstance(MsgEnum.SUCCESS,initRsUserDto);
     }
 
@@ -111,15 +108,15 @@ public class UserController {
      */
     @PostMapping("/user/save")
     public GenericRspDTO<NoBody> saveUser(@RequestBody SaveUserDto saveUserDto){
-        //String idgenValue = IdGenUtils.generateId("ZHOU_USER_IDGEN");
-        Long idgenValue = RandomUtils.nextLong(1000000);
+        String idgenValue = IdGenUtils.generateId("ZHOU_USER_IDGEN");
+        //Long idgenValue = RandomUtils.nextLong(0,100000000);
         SaveUserBo saveUserBo = new SaveUserBo();
         saveUserBo.setName(saveUserDto.getName());
         saveUserBo.setEmail(saveUserDto.getEmail());
         saveUserBo.setPasswd(saveUserDto.getPasswd());
         saveUserBo.setPhnumber(saveUserDto.getPhnumber());
         String msg = "no";
-        if (userService.SaveUser(saveUserBo,idgenValue)==1){return GenericRspDTO.newInstance(MsgEnum.SUCCESS);}
+        if (userService.SaveUser(saveUserBo,Long.parseLong(idgenValue))==1){return GenericRspDTO.newInstance(MsgEnum.SUCCESS);}
         return GenericRspDTO.newInstance(MsgEnum.FAIL);
     }
 
@@ -175,7 +172,7 @@ public class UserController {
     }
 
     /**
-     * 禁用
+     * 逻辑删除
      * @param deleteUserDto
      * @return
      */
@@ -183,9 +180,9 @@ public class UserController {
     public GenericRspDTO<NoBody> disbaleUser(@RequestBody DeleteUserDto deleteUserDto){
         System.out.println(deleteUserDto);
         DeleteUserBo deleteUserBo = new DeleteUserBo();
-        deleteUserBo.setUid(deleteUserDto.getId().get(0));
+        deleteUserBo.setDelList(deleteUserDto.getId());
         deleteUserBo.setIsDeleted(deleteUserDto.getIsDelete());
-        if (userService.isDelete(deleteUserBo) == 1){ return GenericRspDTO.newInstance(MsgEnum.SUCCESS);}
+        if (userService.isDelete(deleteUserBo) >= 1){ return GenericRspDTO.newInstance(MsgEnum.SUCCESS);}
         return GenericRspDTO.newInstance(MsgEnum.FAIL);
     }
 

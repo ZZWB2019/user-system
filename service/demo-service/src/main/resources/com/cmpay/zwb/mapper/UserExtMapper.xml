@@ -64,4 +64,12 @@
         </set>
         where uid = #{uid}
     </update>
+    
+    <delete id="ListDelUserr" parameterType="List">
+        update t_user set is_del = '1'
+                where uid in
+                <foreach item="id" collection="list" open="(" close=")" separator=",">
+                    #{id}
+                </foreach>
+    </delete>
 </mapper>

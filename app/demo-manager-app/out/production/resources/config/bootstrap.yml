@@ -99,7 +99,7 @@ lemon:
         - /v1/ui-template/user/**
         - /tologin/*
         - /v1/ui-template/role/**
-        - /menu/**
+        - v1/ui-template/menu/**
         #Multiple dataSources
   dataSources:
     primary:
@@ -137,7 +137,7 @@ lemon:
       MSGID_: 999999999
       REQUESTID_: 999999999
       SYS:PUB:SEQ: 999999999
-      ZHOU_MENU_IDGEN: 10000
+
     id-infos:
       ZHOU_USER_IDGEN:
         name: ZHOU_USER_IDGEN
