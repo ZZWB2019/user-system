@@ -16,7 +16,7 @@ import java.util.List;
 public class ToUpdateRsUserDto {
 
     //用户信息
-    private UserDto userDo;
+    private UserDto userDTO;
 
     private List<Long> roleId;
 }

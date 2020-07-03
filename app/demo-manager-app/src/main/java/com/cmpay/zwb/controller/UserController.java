@@ -9,20 +9,19 @@ import com.cmpay.lemon.framework.security.SecurityUtils;
 import com.cmpay.lemon.framework.security.UserInfoBase;
 import com.cmpay.lemon.framework.utils.IdGenUtils;
 import com.cmpay.lemon.framework.utils.PageUtils;
-import com.cmpay.zwb.bo.DeleteUserBo;
-import com.cmpay.zwb.bo.SaveUserBo;
-import com.cmpay.zwb.bo.SelectUserBo;
-import com.cmpay.zwb.bo.UpdateUserBo;
+import com.cmpay.zwb.bo.*;
 import com.cmpay.zwb.dto.*;
 import com.cmpay.zwb.entity.RoleDO;
 import com.cmpay.zwb.entity.UserDO;
 import com.cmpay.zwb.enums.MsgEnum;
 import com.cmpay.zwb.service.RoleService;
+import com.cmpay.zwb.service.UserRoleService;
 import com.cmpay.zwb.service.UserService;
 import com.cmpay.zwb.util.BeanConvertUtils;
 import com.github.pagehelper.PageInfo;
 import com.google.code.kaptcha.impl.DefaultKaptcha;
 import org.springframework.beans.BeanUtils;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -53,10 +52,10 @@ public class UserController {
     private UserService userService;
 
     /**
-     * 角色业务类
+     * 用户角色关联业务类
      */
     @Resource
-    private RoleService roleService;
+    private UserRoleService userRoleService;
 
     /**
      * 验证码工具
@@ -115,8 +114,12 @@ public class UserController {
         saveUserBo.setEmail(saveUserDto.getEmail());
         saveUserBo.setPasswd(saveUserDto.getPasswd());
         saveUserBo.setPhnumber(saveUserDto.getPhnumber());
-        String msg = "no";
-        if (userService.SaveUser(saveUserBo,Long.parseLong(idgenValue))==1){return GenericRspDTO.newInstance(MsgEnum.SUCCESS);}
+        //添加关联
+        SaveUserRoleBo saveUserRoleBo = new SaveUserRoleBo();
+        saveUserRoleBo.setId(Long.valueOf(RandomUtils.nextInt()));
+        saveUserRoleBo.setUid(Long.parseLong(idgenValue));
+        saveUserRoleBo.setRids(saveUserDto.getRoleIds());
+        if (userService.SaveUser(saveUserBo,Long.parseLong(idgenValue))==1 & userRoleService.addUserRole(saveUserRoleBo) == 1){return GenericRspDTO.newInstance(MsgEnum.SUCCESS);}
         return GenericRspDTO.newInstance(MsgEnum.FAIL);
     }
 
@@ -166,8 +169,8 @@ public class UserController {
         UserDto userDto = new UserDto();
         UserDO userDO = userService.getUserById(id);
         BeanUtils.copyProperties(userDO,userDto);
-        List<Long> longs = new ArrayList<>();
-        longs.add(1L);
+        List<Long> longs = userRoleService.ListRidByUid(id);
+        if (longs == null){longs = new ArrayList<>();}
         return GenericRspDTO.newInstance(MsgEnum.SUCCESS,new ToUpdateRsUserDto(userDto,longs)) ;
     }
 
@@ -204,7 +207,24 @@ public class UserController {
         //通过session拿到当前用户的信息
         updateUserBo.setUpdateUser(1L);
         updateUserBo.setUpdateTime(LocalDate.now());
-        if (userService.updateUser(updateUserBo) == 1){return GenericRspDTO.newInstance(MsgEnum.SUCCESS);}
+        //判断关联关系修改
+        int tag = 0;
+        //修改关联
+        if (userRoleService.ListRidByUid(userUpdateDto.getUid()) == null){
+            //添加关联
+            SaveUserRoleBo saveUserRoleBo = new SaveUserRoleBo();
+            saveUserRoleBo.setId(Long.valueOf(RandomUtils.nextInt()));
+            saveUserRoleBo.setUid(userUpdateDto.getUid());
+            saveUserRoleBo.setRids(userUpdateDto.getRoleIds());
+            tag = userRoleService.addUserRole(saveUserRoleBo);
+        }else{
+            //修改关联
+            UpdateUserRoleBo updateUserRoleBo = new UpdateUserRoleBo();
+            updateUserRoleBo.setRids(userUpdateDto.getRoleIds());
+            updateUserRoleBo.setUid(userUpdateDto.getUid());
+            tag = userRoleService.updateUserRole(updateUserRoleBo);
+        }
+        if (userService.updateUser(updateUserBo) == 1 && tag >= 1){return GenericRspDTO.newInstance(MsgEnum.SUCCESS);}
         return GenericRspDTO.newInstance(MsgEnum.FAIL);
     }
 

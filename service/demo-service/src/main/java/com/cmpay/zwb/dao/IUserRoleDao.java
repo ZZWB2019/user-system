@@ -12,5 +12,19 @@ import com.cmpay.zwb.entity.UserRoleDOKey;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
-public interface IUserRoleDao extends BaseDao<UserRoleDO, UserRoleDOKey> {
+public interface IUserRoleDao extends BaseDao<UserRoleDO, Long> {
+
+    /**
+     * 通过uid查询关联信息
+     * @param uid
+     * @return
+     */
+    public UserRoleDO getByUid(Long uid);
+
+    /**
+     * 修改用户与角色关联
+     * @param userRoleDO
+     * @return
+     */
+    public int updataUserRol(UserRoleDO userRoleDO);
 }

@@ -3,7 +3,23 @@
 <mapper namespace="com.cmpay.zwb.dao.IUserRoleDao" >
 
     <sql id="Base_Column_List" >
-        id,uid,rid
+        id,uid,rids
     </sql>
 
+    <select id="getByUid" parameterType="Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from user_role
+        where uid = #{uid}
+    </select>
+
+    <update id="updataUserRol" parameterType="com.cmpay.zwb.entity.UserRoleDO">
+        update user_role
+        <set>
+            <if test="rids != null">
+                rids = #{rids},
+            </if>
+        </set>
+        where uid = #{uid}
+    </update>
 </mapper>

@@ -127,7 +127,7 @@ lemon:
       timeout: 50000
     #每次从redis申请Id的数量
     delta:
-      default: 500
+      default: 10
       MSGID_: 1000
       REQUESTID_: 1000
       SYS:PUB:SEQ: 1000
@@ -139,6 +139,7 @@ lemon:
       SYS:PUB:SEQ: 999999999
       ZHOU_ROLE_IDGEN: 10000000
       ZHOU_MENU_IDGEN: 10000000
+      ZHOU_USER_IDGEN: 10000000
     id-infos:
       ZHOU_USER_IDGEN:
         name: ZHOU_USER_IDGEN

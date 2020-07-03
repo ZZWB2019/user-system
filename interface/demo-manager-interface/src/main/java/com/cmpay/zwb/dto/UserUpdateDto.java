@@ -3,6 +3,8 @@ package com.cmpay.zwb.dto;
 import com.cmpay.framework.data.request.GenericDTO;
 import lombok.Data;
 
+import java.util.List;
+
 
 /**
  * @author zhouwb
@@ -37,4 +39,8 @@ public class UserUpdateDto extends GenericDTO {
      * @Fields isDelete 禁用用户
      */
     private Byte isDelete;
+    /**
+     * 修改的
+     */
+    private List<Long> roleIds;
 }

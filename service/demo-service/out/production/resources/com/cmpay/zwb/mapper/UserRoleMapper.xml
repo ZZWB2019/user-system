@@ -5,7 +5,7 @@
     <resultMap id="BaseResultMap" type="com.cmpay.zwb.entity.UserRoleDO" >
         <result column="id" property="id" jdbcType="BIGINT" />
         <result column="uid" property="uid" jdbcType="BIGINT" />
-        <result column="rid" property="rid" jdbcType="BIGINT" />
+        <result column="rids" property="rids" jdbcType="VARCHAR" />
     </resultMap>
 
     <insert id="insert" parameterType="com.cmpay.zwb.entity.UserRoleDO" >
@@ -17,11 +17,8 @@
             <if test="uid != null" >
                 uid,
             </if>
-            <if test="rid != null" >
-                rid,
-            </if>
-            <if test="creatTime != null" >
-                creat_time,
+            <if test="rids != null" >
+                rids,
             </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -31,11 +28,8 @@
             <if test="uid != null" >
                 #{uid,jdbcType=BIGINT},
             </if>
-            <if test="rid != null" >
-                #{rid,jdbcType=BIGINT},
-            </if>
-            <if test="creatTime != null" >
-                #{creatTime,jdbcType=DATE},
+            <if test="rids != null" >
+                #{rids,jdbcType=VARCHAR},
             </if>
         </trim>
     </insert>
@@ -51,11 +45,8 @@
             <if test="uid != null" >
                 and uid = #{uid,jdbcType=BIGINT}
             </if>
-            <if test="rid != null" >
-                and rid = #{rid,jdbcType=BIGINT}
-            </if>
-            <if test="creatTime != null" >
-                and creat_time = #{creatTime,jdbcType=DATE}
+            <if test="rids != null" >
+                and rids = #{rid,jdbcType=BIGINT}
             </if>
         </where>
     </select>

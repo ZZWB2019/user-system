@@ -21,9 +21,9 @@ public class UserRoleDO extends BaseDO {
      */
     private Long uid;
     /**
-     * @Fields rid 
+     * @Fields rids
      */
-    private Long rid;
+    private String rids;
 
     public Long getId() {
         return id;
@@ -41,11 +41,11 @@ public class UserRoleDO extends BaseDO {
         this.uid = uid;
     }
 
-    public Long getRid() {
-        return rid;
+    public String getRids() {
+        return rids;
     }
 
-    public void setRid(Long rid) {
-        this.rid = rid;
+    public void setRids(String rid) {
+        this.rids = rid;
     }
 }
