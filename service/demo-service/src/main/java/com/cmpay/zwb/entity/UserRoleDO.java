@@ -24,10 +24,6 @@ public class UserRoleDO extends BaseDO {
      * @Fields rid 
      */
     private Long rid;
-    /**
-     * @Fields creatTime 
-     */
-    private LocalDate creatTime;
 
     public Long getId() {
         return id;
@@ -51,13 +47,5 @@ public class UserRoleDO extends BaseDO {
 
     public void setRid(Long rid) {
         this.rid = rid;
-    }
-
-    public LocalDate getCreatTime() {
-        return creatTime;
-    }
-
-    public void setCreatTime(LocalDate creatTime) {
-        this.creatTime = creatTime;
     }
 }

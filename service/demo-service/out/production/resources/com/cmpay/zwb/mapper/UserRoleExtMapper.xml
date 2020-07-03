@@ -3,7 +3,7 @@
 <mapper namespace="com.cmpay.zwb.dao.IUserRoleDao" >
 
     <sql id="Base_Column_List" >
-        mid,name,supid,menu_type,create_time
+        id,uid,rid
     </sql>
 
 </mapper>

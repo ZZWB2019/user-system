@@ -6,7 +6,6 @@
         <result column="id" property="id" jdbcType="BIGINT" />
         <result column="uid" property="uid" jdbcType="BIGINT" />
         <result column="rid" property="rid" jdbcType="BIGINT" />
-        <result column="creat_time" property="creatTime" jdbcType="DATE" />
     </resultMap>
 
     <insert id="insert" parameterType="com.cmpay.zwb.entity.UserRoleDO" >
