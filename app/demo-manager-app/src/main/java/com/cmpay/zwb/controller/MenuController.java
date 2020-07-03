@@ -2,8 +2,10 @@ package com.cmpay.zwb.controller;
 
 import com.cmpay.framework.data.response.GenericRspDTO;
 import com.cmpay.lemon.framework.annotation.QueryBody;
+import com.cmpay.lemon.framework.data.NoBody;
 import com.cmpay.lemon.framework.utils.IdGenUtils;
 import com.cmpay.lemon.framework.utils.PageUtils;
+import com.cmpay.zwb.bo.DeleteMenuBo;
 import com.cmpay.zwb.bo.SaveMenuBo;
 import com.cmpay.zwb.bo.UpdateMenuBo;
 import com.cmpay.zwb.dto.InitMenuDto;
@@ -46,7 +48,7 @@ public class MenuController {
      * @param id
      * @return
      */
-    @GetMapping("/getById/{id}")
+    @GetMapping("/info/{id}")
     public GenericRspDTO<MenuDto> getByid(@PathVariable("id") Long id){
         MenuDO menuDO = menuService.getById(id);
         MenuDto menuDto = new MenuDto();
@@ -60,22 +62,22 @@ public class MenuController {
      * @return
      */
     @PostMapping("/save")
-    public Object saveMenu(@RequestBody SaveMenuDto saveMenuDto){
+    public GenericRspDTO<NoBody> saveMenu(@RequestBody SaveMenuDto saveMenuDto){
         String idgenValue = IdGenUtils.generateId("ZHOU_MENU_IDGEN");
-        String msg = "no";
         SaveMenuBo saveMenuBo = new SaveMenuBo();
         saveMenuBo.setMid(Long.parseLong(idgenValue));
         //saveMenuBo.setMid(2L);
         saveMenuBo.setName(saveMenuDto.getName());
-        saveMenuBo.setSupid(saveMenuDto.getSupid());
+        saveMenuBo.setSupid(saveMenuDto.getParentId());
         saveMenuBo.setMenuType(saveMenuDto.getMenuType());
+        saveMenuBo.setPath(saveMenuDto.getPath());
         //通过session读取当前用户信息
         saveMenuBo.setCreateUser(1L);
         saveMenuBo.setCreateTime(LocalDate.now());
         saveMenuBo.setUpdateUser(1L);
         saveMenuBo.setUpdateTime(LocalDate.now());
-        if (menuService.saveMenu(saveMenuBo) == 1){msg = "yes";}
-        return msg;
+        if (menuService.saveMenu(saveMenuBo) == 1){return GenericRspDTO.newInstance(MsgEnum.SUCCESS);}
+        return GenericRspDTO.newInstance(MsgEnum.FAIL);
     }
 
     /**
@@ -83,18 +85,19 @@ public class MenuController {
      * @param updateMenuDto
      * @return
      */
-    public Object updateMenu(UpdateMenuDto updateMenuDto){
-        String msg = "no";
+    @PostMapping("/update")
+    public GenericRspDTO<NoBody> updateMenu(@RequestBody UpdateMenuDto updateMenuDto){
         UpdateMenuBo updateMenuBo = new UpdateMenuBo();
-        updateMenuBo.setMid(updateMenuDto.getMid());
+        updateMenuBo.setMid(updateMenuDto.getId());
         updateMenuBo.setName(updateMenuDto.getName());
-        updateMenuBo.setSupid(updateMenuDto.getSupid());
+        updateMenuBo.setSupid(updateMenuDto.getParentId());
         updateMenuBo.setMenuType(updateMenuDto.getMenuType());
+        updateMenuBo.setPath(updateMenuDto.getPath());
         //从session中读取当前用户的信息
         updateMenuBo.setUpdateUser(1L);
         updateMenuBo.setUpdateTime(LocalDate.now());
-        if (menuService.updateMenu(updateMenuBo) == 1){msg = "yes";}
-        return msg;
+        if (menuService.updateMenu(updateMenuBo) == 1){return GenericRspDTO.newInstance(MsgEnum.SUCCESS);}
+        return GenericRspDTO.newInstance(MsgEnum.FAIL);
     }
 
     /**
@@ -105,5 +108,28 @@ public class MenuController {
     public GenericRspDTO<List<Map>> queryListMenu(){
         List<Map> list = menuService.findAllMenu();
         return GenericRspDTO.newInstance(MsgEnum.SUCCESS,list);
+    }
+
+    /**
+     * 自己的查询对象方法
+     * @return
+     */
+    @GetMapping("/select")
+    public GenericRspDTO<List<MenuDto>> quereyMyListMenu(){
+        List<MenuDO> list = menuService.myFindAllMenu();
+        List<MenuDto> menuDtos = menuService.listFormate(list);
+        return GenericRspDTO.newInstance(MsgEnum.SUCCESS,menuDtos);
+    }
+
+    /**
+     * 删除方法
+     * @return
+     */
+    @DeleteMapping("delete/{id}")
+    public GenericRspDTO<NoBody> moveMenu(@PathVariable("id") Long id){
+        DeleteMenuBo deleteMenuBo = new DeleteMenuBo();
+        deleteMenuBo.setMid(id);
+        if (menuService.deleteMenu(deleteMenuBo) == 1){return GenericRspDTO.newInstance(MsgEnum.SUCCESS);}
+        return GenericRspDTO.newInstance(MsgEnum.FAIL);
     }
 }

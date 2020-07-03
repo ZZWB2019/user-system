@@ -7,10 +7,12 @@
         <result column="name" property="name" jdbcType="VARCHAR" />
         <result column="supid" property="supid" jdbcType="BIGINT" />
         <result column="menu_type" property="menuType" jdbcType="SMALLINT" />
+        <result column="path" property="path" jdbcType="VARCHAR" />
         <result column="create_user" property="createUser" jdbcType="BIGINT" />
         <result column="create_time" property="createTime" jdbcType="DATE" />
         <result column="update_user" property="updateUser" jdbcType="BIGINT" />
         <result column="update_time" property="updateTime" jdbcType="DATE" />
+        <result column="is_del" property="isDel" jdbcType="SMALLINT"/>
     </resultMap>
 
     <insert id="insert" parameterType="com.cmpay.zwb.entity.MenuDO" >
@@ -40,6 +42,9 @@
             <if test="updateTime != null" >
                 update_time,
             </if>
+            <if test="path != null">
+                path,
+            </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides="," >
             <if test="mid != null" >
@@ -65,6 +70,9 @@
             </if>
             <if test="updateTime != null" >
                 #{updateTime,jdbcType=DATE},
+            </if>
+            <if test="path != null">
+                #{path,jdbcType=VARCHAR},
             </if>
         </trim>
     </insert>
@@ -97,6 +105,12 @@
             </if>
             <if test="updateTime != null" >
                 and update_time = #{updateTime,jdbcType=DATE}
+            </if>
+            <if test="path != null">
+                and path = #{path,jdbcType=VARCHAR}
+            </if>
+            <if test="1 == 1">
+                and is_del = 0
             </if>
         </where>
     </select>

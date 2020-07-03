@@ -1,9 +1,8 @@
 package com.cmpay.zwb.service.impl;
 
-import com.cmpay.zwb.bo.DeleteRoleBo;
-import com.cmpay.zwb.bo.SaveRoleBo;
-import com.cmpay.zwb.bo.SimpRoleBo;
-import com.cmpay.zwb.bo.UpdateRoleBo;
+import com.cmpay.lemon.framework.page.PageInfo;
+import com.cmpay.lemon.framework.utils.PageUtils;
+import com.cmpay.zwb.bo.*;
 import com.cmpay.zwb.dao.IRoleDao;
 import com.cmpay.zwb.dto.RoleDto;
 import com.cmpay.zwb.entity.RoleDO;
@@ -110,5 +109,17 @@ public class RoleServiceImpl implements RoleService {
     @Override
     public int deleteRole(DeleteRoleBo deleteRoleBo) {
         return roleDao.deleteRole(deleteRoleBo.getDelList());
+    }
+
+    /**
+     * 分页查询角色信息
+     * @param selectRoleBo
+     * @return
+     */
+    @Override
+    public PageInfo<RoleDO> findPRole(SelectRoleBo selectRoleBo) {
+        RoleDO roleDO = new RoleDO();
+        roleDO.setName(selectRoleBo.getName());
+        return PageUtils.pageQueryWithCount(selectRoleBo.getPageNum(),selectRoleBo.getPageSize(),() -> {return this.roleDao.find(roleDO);});
     }
 }

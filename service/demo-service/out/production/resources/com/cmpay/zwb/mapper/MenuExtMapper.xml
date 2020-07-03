@@ -3,7 +3,7 @@
 <mapper namespace="com.cmpay.zwb.dao.IMenuDao" >
 
     <sql id="Base_Column_List" >
-        `mid`,`name`,supid,menu_type,create_user,create_time,update_user,update_time
+        `mid`,`name`,supid,menu_type,create_user,create_time,update_user,update_time,path
     </sql>
 
 
@@ -29,7 +29,15 @@
             <if test="updateTime != null">
                 update_time = #{updateTime},
             </if>
+            <if test="path != null">
+                path = #{path},
+            </if>
         </set>
+        where mid = #{mid}
+    </update>
+
+    <update id="deleteMenu" parameterType="Long">
+        update menu set is_del = 1
         where mid = #{mid}
     </update>
 </mapper>

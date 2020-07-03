@@ -31,5 +31,10 @@ public interface IRoleDao extends BaseDao<RoleDO, Long> {
      */
     int updateRole(RoleDO roleDO);
 
+    /**
+     * 批量删除角色信息
+     * @param list
+     * @return
+     */
     int deleteRole(List<Long> list);
 }

@@ -1,5 +1,6 @@
 package com.cmpay.zwb.service.impl;
 
+import com.cmpay.zwb.bo.DeleteMenuBo;
 import com.cmpay.zwb.bo.SaveMenuBo;
 import com.cmpay.zwb.bo.UpdateMenuBo;
 import com.cmpay.zwb.dao.IMenuDao;
@@ -82,8 +83,14 @@ public class MenuServiceImpl implements MenuService {
      */
     @Override
     public int updateMenu(UpdateMenuBo updateMenuBo) {
-
-        return 0;
+        MenuDO menuDO = new MenuDO();
+        menuDO.setMid(updateMenuBo.getMid());
+        menuDO.setName(updateMenuBo.getName());
+        menuDO.setPath(updateMenuBo.getPath());
+        menuDO.setMenuType(updateMenuBo.getMenuType());
+        menuDO.setUpdateTime(updateMenuBo.getUpdateTime());
+        menuDO.setUpdateUser(updateMenuBo.getUpdateUser());
+        return menuDao.updateMenu(menuDO);
     }
 
     /**
@@ -97,6 +104,24 @@ public class MenuServiceImpl implements MenuService {
     }
 
     /**
+     * 自己的排序查询菜单方法
+     * @return
+     */
+    @Override
+    public List<MenuDO> myFindAllMenu() {
+        List<MenuDO> menuList = selectMenu(null);
+        return queryMenu(menuList,"0");
+    }
+
+    /**
+     * 逻辑删除角色信息
+     * @param deleteMenuBo
+     * @return
+     */
+    @Override
+    public int deleteMenu(DeleteMenuBo deleteMenuBo) {return menuDao.deleteMenu(deleteMenuBo.getMid());}
+
+    /**
      * 迭代方法
      * @param menuList
      * @param parentId
@@ -107,13 +132,32 @@ public class MenuServiceImpl implements MenuService {
         for (MenuDO menu : menuList){
                 if (parentId.equals(menu.getSupid()+"")){
                     Map map = new HashMap();
-                    map.put("mid",menu.getMid());
+                    map.put("id",menu.getMid());
                     map.put("name",menu.getName());
-                    map.put("parentId",menu.getSupid());
+                    map.put("pid",menu.getSupid());
+                    map.put("resourceType",menu.getMenuType());
+                    map.put("path",menu.getPath());
                     map.put("children",findMenuListByParentId(menuList,menu.getMid()+""));
                     mapList.add(map);
                 }
         }
         return mapList;
+    }
+
+    /**
+     * 迭代排序
+     * @param menuList
+     * @param parentId
+     * @return
+     */
+    public List<MenuDO> queryMenu(List<MenuDO> menuList, String parentId){
+        List<MenuDO> list = new ArrayList<MenuDO>();
+        for (MenuDO menu : menuList){
+            if (parentId.equals(menu.getSupid()+"")){
+                list.add(menu);
+                list.addAll(queryMenu(menuList,menu.getMid()+""));
+            }
+        }
+        return list;
     }
 }

@@ -26,6 +26,10 @@ public class SaveMenuBo {
      */
     private Short menuType;
     /**
+     * @Fields path 菜单类型
+     */
+    private String path;
+    /**
      * @Fields createUser 创建人
      */
     private Long createUser;

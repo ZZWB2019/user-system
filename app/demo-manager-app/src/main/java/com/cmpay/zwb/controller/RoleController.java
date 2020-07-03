@@ -1,17 +1,17 @@
 package com.cmpay.zwb.controller;
 
 import com.cmpay.framework.data.response.GenericRspDTO;
+import com.cmpay.lemon.framework.annotation.QueryBody;
 import com.cmpay.lemon.framework.data.NoBody;
+import com.cmpay.lemon.framework.page.PageInfo;
 import com.cmpay.lemon.framework.utils.IdGenUtils;
 import com.cmpay.lemon.framework.utils.PageUtils;
-import com.cmpay.zwb.bo.DeleteRoleBo;
-import com.cmpay.zwb.bo.SaveRoleBo;
-import com.cmpay.zwb.bo.SimpRoleBo;
-import com.cmpay.zwb.bo.UpdateRoleBo;
+import com.cmpay.zwb.bo.*;
 import com.cmpay.zwb.dto.*;
 import com.cmpay.zwb.entity.RoleDO;
 import com.cmpay.zwb.enums.MsgEnum;
 import com.cmpay.zwb.service.RoleService;
+import com.cmpay.zwb.util.BeanConvertUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,23 +34,35 @@ public class RoleController {
      * @param simpRoleDto
      * @return
      */
-    @GetMapping("/select")
-    public GenericRspDTO<List<RoleDO>> findRole(SimpRoleDto simpRoleDto){
-        SimpRoleBo simpRoleBo = new SimpRoleBo();
-        BeanUtils.copyProperties(simpRoleDto,simpRoleBo);
-        return GenericRspDTO.newInstance(MsgEnum.SUCCESS,roleService.findRole(simpRoleBo));
+    @PostMapping("/list")
+    public GenericRspDTO<SelectRoleRsDTO> findRole(@RequestBody SimpRoleDto simpRoleDto){
+        SelectRoleBo selectRoleBo = new SelectRoleBo();
+        selectRoleBo.setName(simpRoleDto.getName());
+        selectRoleBo.setPageNum(simpRoleDto.getPageNum());
+        selectRoleBo.setPageSize(simpRoleDto.getPageSize());
+        PageInfo<RoleDO> page = roleService.findPRole(selectRoleBo);
+
+        List<RoleDto> roleDOS = BeanConvertUtils.convertList(page.getList(), RoleDto.class);
+        SelectRoleRsDTO selectRoleRsDTO = new SelectRoleRsDTO();
+        selectRoleRsDTO.setList(roleDOS);
+        selectRoleRsDTO.setPageNum(page.getPageNum());
+        selectRoleRsDTO.setPageSize(page.getPageSize());
+        selectRoleRsDTO.setPages(page.getPages());
+        selectRoleRsDTO.setTotal(page.getTotal());
+        selectRoleRsDTO.setMsgCd(MsgEnum.SUCCESS.getMsgCd());
+        selectRoleRsDTO.setMsgInfo(MsgEnum.SUCCESS.getMsgInfo());
+        return GenericRspDTO.newInstance(MsgEnum.SUCCESS,selectRoleRsDTO);
     }
 
     /**
      * 初始化角色查询
      * @return
      */
-    @PostMapping("/list")
-    public GenericRspDTO<InitRsRoleDto> init(){
-        List<RoleDO> roleDOS = PageUtils.pageQuery(1,4,() -> { return this.roleService.findRole(null);});
-        List<RoleDto> list = roleService.listFromate(roleDOS);
-        InitRsRoleDto initRsRoleDto = new InitRsRoleDto(list);
-        return GenericRspDTO.newInstance(MsgEnum.SUCCESS,initRsRoleDto);
+    @GetMapping("/select")
+    public GenericRspDTO<List<RoleDto>> listRole(){
+         List<RoleDO> roleDOS = roleService.findRole(null);
+        List<RoleDto> roleDtos = roleService.listFromate(roleDOS);
+        return GenericRspDTO.newInstance(MsgEnum.SUCCESS,roleDtos);
     }
 
     /**

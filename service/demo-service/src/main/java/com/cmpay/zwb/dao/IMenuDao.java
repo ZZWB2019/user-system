@@ -22,6 +22,17 @@ public interface IMenuDao extends BaseDao<MenuDO, Long> {
      */
     MenuDO getById(@Param("mid") Long id);
 
-
+    /**
+     * 修改菜单信息
+     * @param menuDO
+     * @return
+     */
     int updateMenu(MenuDO menuDO);
+
+    /**
+     * 通过id逻辑删除
+     * @param id
+     * @return
+     */
+    int deleteMenu(@Param("mid") Long id);
 }

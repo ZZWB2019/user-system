@@ -29,6 +29,10 @@ public class MenuDO extends BaseDO {
      */
     private Short menuType;
     /**
+     * @Fields path 菜单类型
+     */
+    private String path;
+    /**
      * @Fields createUser 创建人
      */
     private Long createUser;
@@ -44,6 +48,18 @@ public class MenuDO extends BaseDO {
      * @Fields updateTime 修改时间
      */
     private LocalDate updateTime;
+    /**
+     * @Fields isDel 逻辑删除判断 0 -- 正常；1 -- 删除
+     */
+    private Short isDel;
+
+    public Short getIsDel() {return isDel;}
+
+    public void setIsDel(Short isDel) {this.isDel = isDel;}
+
+    public String getPath() {return path;}
+
+    public void setPath(String path) {this.path = path;}
 
     public Long getMid() {
         return mid;

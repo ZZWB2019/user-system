@@ -26,6 +26,10 @@ public class MenuDto {
      */
     private Short menuType;
     /**
+     * @Fields path 资源地址
+     */
+    private String path;
+    /**
      * @Fields createUser 创建人
      */
     private Long createUser;

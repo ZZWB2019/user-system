@@ -26,6 +26,10 @@ public class UpdateMenuBo {
      */
     private Short menuType;
     /**
+     * @Fields path 资源地址
+     */
+    private String path;
+    /**
      * @Fields updateUser 修改人
      */
     private Long updateUser;

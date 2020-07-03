@@ -1,12 +1,13 @@
 package com.cmpay.zwb.dto;
 
+import com.cmpay.framework.data.response.PageableRspDTO;
 import lombok.Data;
 
 /**
  * @author zhouwb
  */
 @Data
-public class SimpRoleDto {
+public class SimpRoleDto extends PageableRspDTO {
     /**
      * @Fields rid 角色id
      */

@@ -1,9 +1,7 @@
 package com.cmpay.zwb.service;
 
-import com.cmpay.zwb.bo.DeleteRoleBo;
-import com.cmpay.zwb.bo.SaveRoleBo;
-import com.cmpay.zwb.bo.SimpRoleBo;
-import com.cmpay.zwb.bo.UpdateRoleBo;
+import com.cmpay.lemon.framework.page.PageInfo;
+import com.cmpay.zwb.bo.*;
 import com.cmpay.zwb.dto.RoleDto;
 import com.cmpay.zwb.entity.RoleDO;
 
@@ -53,4 +51,11 @@ public interface RoleService {
      * @return
      */
     int deleteRole(DeleteRoleBo deleteRoleBo);
+
+    /**
+     * 分页查询角色信息
+     * @param selectRoleBo
+     * @return
+     */
+    PageInfo<RoleDO> findPRole(SelectRoleBo selectRoleBo);
 }

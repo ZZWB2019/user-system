@@ -1,5 +1,6 @@
 package com.cmpay.zwb.service;
 
+import com.cmpay.zwb.bo.DeleteMenuBo;
 import com.cmpay.zwb.bo.SaveMenuBo;
 import com.cmpay.zwb.bo.UpdateMenuBo;
 import com.cmpay.zwb.dto.MenuDto;
@@ -55,4 +56,17 @@ public interface MenuService {
      * @return
      */
     public List<Map> findAllMenu();
+
+    /**
+     * 排序查询所有的菜单信息
+     * @return
+     */
+    public List<MenuDO> myFindAllMenu();
+
+    /**
+     * 逻辑删除菜单信息
+     * @param deleteMenuBo
+     * @return
+     */
+    public int deleteMenu(DeleteMenuBo deleteMenuBo);
 }
