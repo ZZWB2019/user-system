@@ -16,6 +16,7 @@ import com.cmpay.zwb.entity.MenuDO;
 import com.cmpay.zwb.enums.MsgEnum;
 import com.cmpay.zwb.service.MenuService;
 import org.springframework.beans.BeanUtils;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -62,7 +63,7 @@ public class MenuController {
      * @return
      */
     @PostMapping("/save")
-    public GenericRspDTO<NoBody> saveMenu(@RequestBody SaveMenuDto saveMenuDto){
+    public GenericRspDTO<NoBody> saveMenu(@Validated @RequestBody SaveMenuDto saveMenuDto){
         String idgenValue = IdGenUtils.generateId("ZHOU_MENU_IDGEN");
         SaveMenuBo saveMenuBo = new SaveMenuBo();
         saveMenuBo.setMid(Long.parseLong(idgenValue));
@@ -86,7 +87,7 @@ public class MenuController {
      * @return
      */
     @PostMapping("/update")
-    public GenericRspDTO<NoBody> updateMenu(@RequestBody UpdateMenuDto updateMenuDto){
+    public GenericRspDTO<NoBody> updateMenu(@Validated @RequestBody UpdateMenuDto updateMenuDto){
         UpdateMenuBo updateMenuBo = new UpdateMenuBo();
         updateMenuBo.setMid(updateMenuDto.getId());
         updateMenuBo.setName(updateMenuDto.getName());

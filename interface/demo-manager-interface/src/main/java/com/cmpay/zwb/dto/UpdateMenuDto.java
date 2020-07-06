@@ -1,6 +1,9 @@
 package com.cmpay.zwb.dto;
 
 import lombok.Data;
+import org.hibernate.validator.constraints.NotBlank;
+
+import javax.validation.constraints.NotNull;
 
 /**
  * @author zhouwb
@@ -14,6 +17,7 @@ public class UpdateMenuDto {
     /**
      * @Fields name 菜单名称
      */
+    @NotBlank
     private String name;
     /**
      * @Fields supid 上级菜单
@@ -22,6 +26,7 @@ public class UpdateMenuDto {
     /**
      * @Fields menuType 菜单类型  0 -- 目录   1 -- 菜单
      */
+    @NotNull
     private Short menuType;
     /**
      * @Fields path 资源路径
