@@ -66,11 +66,8 @@ public class RoleServiceImpl implements RoleService {
      * @return
      */
     @Override
-    public RoleDto getByid(Long id) {
-        RoleDO roleDO = roleDao.getById(id);
-        RoleDto roleDto = new RoleDto();
-        BeanUtils.copyProperties(roleDO,roleDto);
-        return roleDto;
+    public RoleDO getByid(Long id) {
+        return roleDao.getById(id);
     }
 
     /**

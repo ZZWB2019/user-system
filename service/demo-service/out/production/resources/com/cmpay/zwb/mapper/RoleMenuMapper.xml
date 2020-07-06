@@ -5,12 +5,7 @@
     <resultMap id="BaseResultMap" type="com.cmpay.zwb.entity.RoleMenuDO" >
         <result column="id" property="id" jdbcType="BIGINT" />
         <result column="rid" property="rid" jdbcType="BIGINT" />
-        <result column="mid" property="mid" jdbcType="BIGINT" />
-        <result column="action" property="action" jdbcType="VARCHAR" />
-        <result column="create_user" property="createUser" jdbcType="BIGINT" />
-        <result column="create_time" property="createTime" jdbcType="DATE" />
-        <result column="update_user" property="updateUser" jdbcType="BIGINT" />
-        <result column="update_time" property="updateTime" jdbcType="DATE" />
+        <result column="mids" property="mids" jdbcType="VARCHAR" />
     </resultMap>
 
     <insert id="insert" parameterType="com.cmpay.zwb.entity.RoleMenuDO" >
@@ -22,23 +17,8 @@
             <if test="rid != null" >
                 rid,
             </if>
-            <if test="mid != null" >
-                mid,
-            </if>
-            <if test="action != null" >
-                action,
-            </if>
-            <if test="createUser != null" >
-                create_user,
-            </if>
-            <if test="createTime != null" >
-                create_time,
-            </if>
-            <if test="updateUser != null" >
-                update_user,
-            </if>
-            <if test="updateTime != null" >
-                update_time,
+            <if test="mids != null" >
+                mids,
             </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -48,23 +28,8 @@
             <if test="rid != null" >
                 #{rid,jdbcType=BIGINT},
             </if>
-            <if test="mid != null" >
-                #{mid,jdbcType=BIGINT},
-            </if>
-            <if test="action != null" >
-                #{action,jdbcType=VARCHAR},
-            </if>
-            <if test="createUser != null" >
-                #{createUser,jdbcType=BIGINT},
-            </if>
-            <if test="createTime != null" >
-                #{createTime,jdbcType=DATE},
-            </if>
-            <if test="updateUser != null" >
-                #{updateUser,jdbcType=BIGINT},
-            </if>
-            <if test="updateTime != null" >
-                #{updateTime,jdbcType=DATE},
+            <if test="mids != null" >
+                #{mids,jdbcType=VARCHAR},
             </if>
         </trim>
     </insert>
@@ -80,23 +45,8 @@
             <if test="rid != null" >
                 and rid = #{rid,jdbcType=BIGINT}
             </if>
-            <if test="mid != null" >
-                and mid = #{mid,jdbcType=BIGINT}
-            </if>
-            <if test="action != null" >
-                and action = #{action,jdbcType=VARCHAR}
-            </if>
-            <if test="createUser != null" >
-                and create_user = #{createUser,jdbcType=BIGINT}
-            </if>
-            <if test="createTime != null" >
-                and create_time = #{createTime,jdbcType=DATE}
-            </if>
-            <if test="updateUser != null" >
-                and update_user = #{updateUser,jdbcType=BIGINT}
-            </if>
-            <if test="updateTime != null" >
-                and update_time = #{updateTime,jdbcType=DATE}
+            <if test="mids != null" >
+                and mids = #{mids,jdbcType=VARCHAR}
             </if>
         </where>
     </select>

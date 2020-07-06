@@ -1,7 +1,6 @@
 package com.cmpay.zwb.dto;
 
 import lombok.Data;
-import org.hibernate.validator.constraints.NotBlank;
 
 import java.util.List;
 
@@ -9,7 +8,7 @@ import java.util.List;
  * @author zhouwb
  */
 @Data
-public class UpdateRoleDto {
+public class SelectRoleInfoDTO {
     /**
      * @Fields rid 角色id
      */
@@ -17,14 +16,13 @@ public class UpdateRoleDto {
     /**
      * @Fields name 角色名称
      */
-    @NotBlank
     private String name;
     /**
      * @Fields note 角色备注
      */
     private String note;
     /**
-     * 存入的菜单选择
+     * 角色选择的菜单项
      */
-    private List<Long> menuIdList;
+    private List<Long> menuIds;
 }

@@ -29,7 +29,7 @@ public interface RoleService {
      * @param id
      * @return
      */
-    RoleDto getByid(Long id);
+    RoleDO getByid(Long id);
 
     /**
      * 添加角色

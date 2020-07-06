@@ -1,22 +1,24 @@
 package com.cmpay.zwb.controller;
 
 import com.cmpay.framework.data.response.GenericRspDTO;
-import com.cmpay.lemon.framework.annotation.QueryBody;
+import com.cmpay.lemon.common.utils.RandomUtils;
 import com.cmpay.lemon.framework.data.NoBody;
 import com.cmpay.lemon.framework.page.PageInfo;
 import com.cmpay.lemon.framework.utils.IdGenUtils;
-import com.cmpay.lemon.framework.utils.PageUtils;
 import com.cmpay.zwb.bo.*;
 import com.cmpay.zwb.dto.*;
 import com.cmpay.zwb.entity.RoleDO;
 import com.cmpay.zwb.enums.MsgEnum;
+import com.cmpay.zwb.service.RoleMenuService;
 import com.cmpay.zwb.service.RoleService;
 import com.cmpay.zwb.util.BeanConvertUtils;
-import org.springframework.beans.BeanUtils;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -26,8 +28,13 @@ import java.util.List;
 @RequestMapping("/v1/ui-template/role")
 public class RoleController {
 
+    //角色业务类
     @Resource
     private RoleService roleService;
+
+    //角色菜单关联业务类
+    @Resource
+    private RoleMenuService roleMenuService;
 
     /**
      * 查询角色信息
@@ -71,9 +78,19 @@ public class RoleController {
      * @return
      */
     @GetMapping("/info/{id}")
-    public GenericRspDTO<RoleDto> getRole(@PathVariable("id") Long id){
-        RoleDto roleDto = roleService.getByid(id);
-        return GenericRspDTO.newInstance(MsgEnum.SUCCESS,roleDto);
+    public GenericRspDTO<SelectRoleInfoDTO> getRole(@PathVariable("id") Long id){
+        RoleDO roleDO = roleService.getByid(id);
+        SelectRoleInfoDTO selectRoleInfoDTO = new SelectRoleInfoDTO();
+        selectRoleInfoDTO.setName(roleDO.getName());
+        selectRoleInfoDTO.setRid(roleDO.getRid());
+        selectRoleInfoDTO.setNote(roleDO.getNote());
+        List<Long> menuIds = roleMenuService.listMenuByRid(id);
+        if (menuIds == null){
+            //传入空值
+            menuIds = new ArrayList<Long>();
+        }
+        selectRoleInfoDTO.setMenuIds(menuIds);
+        return GenericRspDTO.newInstance(MsgEnum.SUCCESS,selectRoleInfoDTO);
     }
 
     /**
@@ -82,7 +99,7 @@ public class RoleController {
      * @return
      */
     @PostMapping("/save")
-    public GenericRspDTO<NoBody> saveRole(@RequestBody SaveRoleDto saveRoleDto){
+    public GenericRspDTO<NoBody> saveRole(@Validated @RequestBody SaveRoleDto saveRoleDto){
         String idgenValue = IdGenUtils.generateId("ZHOU_ROLE_IDGEN");
         SaveRoleBo saveRoleBo = new SaveRoleBo();
         //saveRoleBo.setRid(Long.parseLong(idgenValue));
@@ -94,7 +111,15 @@ public class RoleController {
         saveRoleBo.setCreateTime(LocalDate.now());
         saveRoleBo.setUpdateUser(1L);
         saveRoleBo.setUpdateTime(LocalDate.now());
-        if (roleService.saveRole(saveRoleBo) >= 1){return GenericRspDTO.newInstance(MsgEnum.SUCCESS);}
+        //处理关联
+        int tag = 0;
+        SaveRoleMenuBo saveRoleMenuBo = new SaveRoleMenuBo();
+        saveRoleMenuBo.setId(Long.valueOf(RandomUtils.nextInt()));
+        saveRoleMenuBo.setRid(saveRoleBo.getRid());
+        saveRoleMenuBo.setMids(saveRoleDto.getMenuIdList());
+        tag = roleMenuService.saveRoleMenu(saveRoleMenuBo);
+
+        if (roleService.saveRole(saveRoleBo) >= 1 && tag == 1){return GenericRspDTO.newInstance(MsgEnum.SUCCESS);}
         return GenericRspDTO.newInstance(MsgEnum.FAIL);
     }
 
@@ -104,7 +129,7 @@ public class RoleController {
      * @return
      */
     @PostMapping("/update")
-    public GenericRspDTO<NoBody> updateRole(@RequestBody UpdateRoleDto updateRoleDto){
+    public GenericRspDTO<NoBody> updateRole(@Validated @RequestBody UpdateRoleDto updateRoleDto){
         UpdateRoleBo updateRoleBo = new UpdateRoleBo();
         updateRoleBo.setRid(updateRoleDto.getRid());
         updateRoleBo.setName(updateRoleDto.getName());
@@ -112,7 +137,24 @@ public class RoleController {
         //通过session读取当前用户为修改人
         updateRoleBo.setUpdateUser(1L);
         updateRoleBo.setUpdateTime(LocalDate.now());
-        if (roleService.updateRole(updateRoleBo) == 1){return GenericRspDTO.newInstance(MsgEnum.SUCCESS);}
+        //判断关联操作是否成功
+        int tag = 0;
+        //处理关联关系
+        if (roleMenuService.listMenuByRid(updateRoleDto.getRid()) == null){
+            //添加关联
+            SaveRoleMenuBo saveRoleMenuBo = new SaveRoleMenuBo();
+            saveRoleMenuBo.setId(Long.valueOf(RandomUtils.nextInt()));
+            saveRoleMenuBo.setMids(updateRoleDto.getMenuIdList());
+            saveRoleMenuBo.setRid(updateRoleDto.getRid());
+            tag = roleMenuService.saveRoleMenu(saveRoleMenuBo);
+        }else{
+            //修改关联
+            UpdateRoleMenuBO updateRoleMenuBO = new UpdateRoleMenuBO();
+            updateRoleMenuBO.setMids(updateRoleDto.getMenuIdList());
+            updateRoleMenuBO.setRid(updateRoleDto.getRid());
+            tag = roleMenuService.updateRoleMenu(updateRoleMenuBO);
+        }
+        if (roleService.updateRole(updateRoleBo) == 1 & tag > 0){return GenericRspDTO.newInstance(MsgEnum.SUCCESS);}
         return GenericRspDTO.newInstance(MsgEnum.FAIL);
     }
 

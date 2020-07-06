@@ -21,29 +21,9 @@ public class RoleMenuDO extends BaseDO {
      */
     private Long rid;
     /**
-     * @Fields mid 菜单id
+     * @Fields mids 角色菜单关联
      */
-    private Long mid;
-    /**
-     * @Fields action 权限名称
-     */
-    private String action;
-    /**
-     * @Fields createUser 创建人
-     */
-    private Long createUser;
-    /**
-     * @Fields createTime 创建时间
-     */
-    private LocalDate createTime;
-    /**
-     * @Fields updateUser 修改人
-     */
-    private Long updateUser;
-    /**
-     * @Fields updateTime 修改时间
-     */
-    private LocalDate updateTime;
+    private String mids;
 
     public Long getId() {
         return id;
@@ -61,51 +41,11 @@ public class RoleMenuDO extends BaseDO {
         this.rid = rid;
     }
 
-    public Long getMid() {
-        return mid;
+    public String getMids() {
+        return mids;
     }
 
-    public void setMid(Long mid) {
-        this.mid = mid;
-    }
-
-    public String getAction() {
-        return action;
-    }
-
-    public void setAction(String action) {
-        this.action = action;
-    }
-
-    public Long getCreateUser() {
-        return createUser;
-    }
-
-    public void setCreateUser(Long createUser) {
-        this.createUser = createUser;
-    }
-
-    public LocalDate getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(LocalDate createTime) {
-        this.createTime = createTime;
-    }
-
-    public Long getUpdateUser() {
-        return updateUser;
-    }
-
-    public void setUpdateUser(Long updateUser) {
-        this.updateUser = updateUser;
-    }
-
-    public LocalDate getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(LocalDate updateTime) {
-        this.updateTime = updateTime;
+    public void setMids(String mid) {
+        this.mids = mid;
     }
 }

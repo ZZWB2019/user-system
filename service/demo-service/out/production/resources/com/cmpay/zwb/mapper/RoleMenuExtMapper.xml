@@ -3,7 +3,19 @@
 <mapper namespace="com.cmpay.zwb.dao.IRoleMenuDao" >
 
     <sql id="Base_Column_List" >
-        mid,name,supid,menu_type,create_time
+        id,rid,mids
     </sql>
 
+    <select id="listByRid" parameterType="Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from role_menu
+        where rid = #{rid}
+    </select>
+
+    <update id="updateByRid" parameterType="com.cmpay.zwb.entity.RoleMenuDO">
+        update role_menu
+        set mids = #{mids}
+        where rid = #{rid}
+    </update>
 </mapper>

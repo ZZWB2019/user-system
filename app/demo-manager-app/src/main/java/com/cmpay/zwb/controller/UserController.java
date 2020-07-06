@@ -22,6 +22,7 @@ import com.github.pagehelper.PageInfo;
 import com.google.code.kaptcha.impl.DefaultKaptcha;
 import org.springframework.beans.BeanUtils;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -106,7 +107,7 @@ public class UserController {
      * @return
      */
     @PostMapping("/user/save")
-    public GenericRspDTO<NoBody> saveUser(@RequestBody SaveUserDto saveUserDto){
+    public GenericRspDTO<NoBody> saveUser(@Validated @RequestBody SaveUserDto saveUserDto){
         String idgenValue = IdGenUtils.generateId("ZHOU_USER_IDGEN");
         //Long idgenValue = RandomUtils.nextLong(0,100000000);
         SaveUserBo saveUserBo = new SaveUserBo();
