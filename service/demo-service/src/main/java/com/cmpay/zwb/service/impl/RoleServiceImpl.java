@@ -9,6 +9,8 @@ import com.cmpay.zwb.entity.RoleDO;
 import com.cmpay.zwb.service.RoleService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
@@ -76,6 +78,7 @@ public class RoleServiceImpl implements RoleService {
      * @return
      */
     @Override
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public int saveRole(SaveRoleBo saveRoleBo) {
         RoleDO roleDO = new RoleDO();
         BeanUtils.copyProperties(saveRoleBo,roleDO);
@@ -88,6 +91,7 @@ public class RoleServiceImpl implements RoleService {
      * @return
      */
     @Override
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public int updateRole(UpdateRoleBo updateRoleBo) {
         RoleDO roleDO = new RoleDO();
         roleDO.setRid(updateRoleBo.getRid());
@@ -104,6 +108,7 @@ public class RoleServiceImpl implements RoleService {
      * @return
      */
     @Override
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public int deleteRole(DeleteRoleBo deleteRoleBo) {
         return roleDao.deleteRole(deleteRoleBo.getDelList());
     }

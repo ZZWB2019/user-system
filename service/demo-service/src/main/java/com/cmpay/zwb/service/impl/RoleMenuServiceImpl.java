@@ -7,6 +7,8 @@ import com.cmpay.zwb.dao.IRoleMenuDao;
 import com.cmpay.zwb.entity.RoleMenuDO;
 import com.cmpay.zwb.service.RoleMenuService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
@@ -43,6 +45,7 @@ public class RoleMenuServiceImpl implements RoleMenuService {
      * @return
      */
     @Override
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public int saveRoleMenu(SaveRoleMenuBo saveRoleMenuBo) {
         RoleMenuDO roleMenuDO = new RoleMenuDO();
         roleMenuDO.setId(saveRoleMenuBo.getId());
@@ -57,6 +60,7 @@ public class RoleMenuServiceImpl implements RoleMenuService {
      * @return
      */
     @Override
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public int updateRoleMenu(UpdateRoleMenuBO updateRoleMenuBO) {
         RoleMenuDO roleMenuDO = new RoleMenuDO();
         roleMenuDO.setRid(updateRoleMenuBO.getRid());

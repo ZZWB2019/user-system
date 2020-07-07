@@ -6,6 +6,8 @@ import com.cmpay.zwb.dao.IUserRoleDao;
 import com.cmpay.zwb.entity.UserRoleDO;
 import com.cmpay.zwb.service.UserRoleService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
@@ -43,6 +45,7 @@ public class UserRoleServiceImpl implements UserRoleService {
      * @return
      */
     @Override
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public int addUserRole(SaveUserRoleBo saveUserRoleBo) {
         UserRoleDO userRoleDO = new UserRoleDO();
         userRoleDO.setId(saveUserRoleBo.getId());
@@ -62,6 +65,7 @@ public class UserRoleServiceImpl implements UserRoleService {
      * @return
      */
     @Override
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public int updateUserRole(UpdateUserRoleBo updateUserRoleBo) {
         UserRoleDO userRoleDO = new UserRoleDO();
         userRoleDO.setUid(updateUserRoleBo.getUid());

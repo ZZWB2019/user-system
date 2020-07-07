@@ -22,7 +22,7 @@ public interface UserService {
      * @param saveUserBo
      * @return
      */
-    int SaveUser(SaveUserBo saveUserBo, Long idgenValue);
+    int saveUser(SaveUserBo saveUserBo, Long idgenValue);
 
     /**
      * 用户登录

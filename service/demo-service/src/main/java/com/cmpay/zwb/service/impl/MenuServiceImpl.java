@@ -10,6 +10,7 @@ import com.cmpay.zwb.entity.MenuDO;
 import com.cmpay.zwb.service.MenuService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
@@ -71,7 +72,7 @@ public class MenuServiceImpl implements MenuService {
      * @return
      */
     @Override
-    @Transactional
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public int saveMenu(SaveMenuBo saveMenuBo) {
         MenuDO menuDO = new MenuDO();
         BeanUtils.copyProperties(saveMenuBo,menuDO);
@@ -84,6 +85,7 @@ public class MenuServiceImpl implements MenuService {
      * @return
      */
     @Override
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public int updateMenu(UpdateMenuBo updateMenuBo) {
         MenuDO menuDO = new MenuDO();
         menuDO.setMid(updateMenuBo.getMid());
@@ -96,7 +98,7 @@ public class MenuServiceImpl implements MenuService {
     }
 
     /**
-     * 迭代拆线呢
+     * 迭代查询
      * @return
      */
     @Override
@@ -121,6 +123,7 @@ public class MenuServiceImpl implements MenuService {
      * @return
      */
     @Override
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public int deleteMenu(DeleteMenuBo deleteMenuBo) {return menuDao.deleteMenu(deleteMenuBo.getMid());}
 
     /**

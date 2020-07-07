@@ -9,6 +9,8 @@ import com.cmpay.zwb.entity.UserDO;
 import com.cmpay.zwb.service.UserService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.annotation.Resource;
@@ -45,12 +47,11 @@ public class UserServiceImpl implements UserService {
      * @return
      */
     @Override
-    @Transient
-    public int SaveUser(SaveUserBo saveUserBo, Long idgenValue) {
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
+    public int saveUser(SaveUserBo saveUserBo, Long idgenValue) {
         UserDO userDO = new UserDO();
         userDO.setUid(idgenValue);
         LocalDate now = LocalDate.now();
-        //userDO.setUid(6L);
         userDO.setName(saveUserBo.getName());
         userDO.setPasswd(saveUserBo.getPasswd());
         userDO.setPhnumber(saveUserBo.getPhnumber());
@@ -113,7 +114,7 @@ public class UserServiceImpl implements UserService {
      * @return
      */
     @Override
-    @Transient
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public int isDelete(DeleteUserBo deleteUserBo) {
         UserDO userDO = new UserDO();
         userDO.setIsDel(Byte.parseByte("1"));

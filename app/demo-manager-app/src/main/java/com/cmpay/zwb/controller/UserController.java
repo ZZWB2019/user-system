@@ -119,7 +119,7 @@ public class UserController {
         saveUserRoleBo.setId(Long.valueOf(RandomUtils.nextInt()));
         saveUserRoleBo.setUid(Long.parseLong(idgenValue));
         saveUserRoleBo.setRids(saveUserDto.getRoleIds());
-        if (userService.SaveUser(saveUserBo,Long.parseLong(idgenValue))==1 & userRoleService.addUserRole(saveUserRoleBo) == 1){return GenericRspDTO.newInstance(MsgEnum.SUCCESS);}
+        if (userService.saveUser(saveUserBo,Long.parseLong(idgenValue))==1 & userRoleService.addUserRole(saveUserRoleBo) == 1){return GenericRspDTO.newInstance(MsgEnum.SUCCESS);}
         return GenericRspDTO.newInstance(MsgEnum.FAIL);
     }
 
