@@ -56,29 +56,4 @@ public class LoginAuthenticationProcessor  extends AbstractGenericMatchableAuthe
         }
         return simpUserInfoBo;
     }
-
-   /* @Override
-    protected UserInfoBase doProcessAuthentication(GenericAuthenticationToken genericAuthenticationToken) throws AuthenticationException {
-        HttpServletRequest request = genericAuthenticationToken.getAuthenticationRequest().getHttpServletRequest();
-        SimpUserInfoBo userInfoBO = bindLoginData(request);
-        SimpUserInfoBo login = Service.login(userInfoBO);
-        //return new SimpUserInfoBo(login.getUid(),login.getName(),login.getPasswd());
-        return null;
-    }
-
-
-    private SimpUserInfoBo bindLoginData(HttpServletRequest request) {
-        SimpUserInfoBo simpUserInfoBo = null;
-        ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-        try {
-            InputStream is = request.getInputStream();
-            simpUserInfoBo = objectMapper.readValue(is, SimpUserInfoBo.class);
-        } catch (IOException e) {
-            throw LemonException.create(e);
-        } catch (Exception e) {
-            LemonException.throwLemonException(MsgEnum.FAIL, e.getMessage());
-        }
-        return simpUserInfoBo;
-    }*/
 }

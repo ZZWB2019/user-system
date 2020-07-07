@@ -109,7 +109,6 @@ public class UserController {
     @PostMapping("/user/save")
     public GenericRspDTO<NoBody> saveUser(@Validated @RequestBody SaveUserDto saveUserDto){
         String idgenValue = IdGenUtils.generateId("ZHOU_USER_IDGEN");
-        //Long idgenValue = RandomUtils.nextLong(0,100000000);
         SaveUserBo saveUserBo = new SaveUserBo();
         saveUserBo.setName(saveUserDto.getName());
         saveUserBo.setEmail(saveUserDto.getEmail());
@@ -228,28 +227,4 @@ public class UserController {
         if (userService.updateUser(updateUserBo) == 1 && tag >= 1){return GenericRspDTO.newInstance(MsgEnum.SUCCESS);}
         return GenericRspDTO.newInstance(MsgEnum.FAIL);
     }
-
-    /**
-     * 查询
-     * @param selectUserDto
-     * @return
-     */
-    /*@PostMapping("/user/list")
-    public GenericRspDTO<SelectUserRsDto> selectUser(@RequestBody SelectUserDto selectUserDto){
-        UserDO userDO = new UserDO();
-        userDO.setName(selectUserDto.getUserName());
-        int pageNum;
-        int pageSize;
-        if (selectUserDto.getPageNum() == 0 || selectUserDto.getPageSize() == 0){
-            pageNum = 1;
-            pageSize = 10;
-        }else{
-            pageNum = selectUserDto.getPageNum();
-            pageSize =selectUserDto.getPageSize();
-        }
-        List<UserDO> userDOS = PageUtils.pageQuery(pageNum,pageSize,() -> { return this.userService.findUser(userDO);});
-        List<UserDto> list = userService.ListFromate(userDOS);
-        return GenericRspDTO.newInstance(MsgEnum.SUCCESS,new SelectUserRsDto(list,pageNum,pageSize));
-//        return null;
-    }*/
 }

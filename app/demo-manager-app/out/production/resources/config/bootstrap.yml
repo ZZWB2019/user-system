@@ -91,7 +91,7 @@ lemon:
     authentication:
       loginPathPrefix: /v1/ui-template/login               #默认 /security/login
       refreshPath: /v1/bui/refresh                #默认 /security/refresh
-      logoutPath: /v1/bui/logout                  #默认 /security/logout
+      logoutPath: /v1/ui-template/logout                  #默认 /security/logout
     authorizeRequests:
       #配置不进行认证检查的交易请求url
       permitAll:

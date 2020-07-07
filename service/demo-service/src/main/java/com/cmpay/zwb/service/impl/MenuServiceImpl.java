@@ -10,6 +10,7 @@ import com.cmpay.zwb.entity.MenuDO;
 import com.cmpay.zwb.service.MenuService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.*;
@@ -70,6 +71,7 @@ public class MenuServiceImpl implements MenuService {
      * @return
      */
     @Override
+    @Transactional
     public int saveMenu(SaveMenuBo saveMenuBo) {
         MenuDO menuDO = new MenuDO();
         BeanUtils.copyProperties(saveMenuBo,menuDO);

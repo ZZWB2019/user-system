@@ -16,7 +16,6 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import javax.validation.Valid;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,11 +27,9 @@ import java.util.List;
 @RequestMapping("/v1/ui-template/role")
 public class RoleController {
 
-    //角色业务类
     @Resource
     private RoleService roleService;
 
-    //角色菜单关联业务类
     @Resource
     private RoleMenuService roleMenuService;
 
@@ -85,10 +82,7 @@ public class RoleController {
         selectRoleInfoDTO.setRid(roleDO.getRid());
         selectRoleInfoDTO.setNote(roleDO.getNote());
         List<Long> menuIds = roleMenuService.listMenuByRid(id);
-        if (menuIds == null){
-            //传入空值
-            menuIds = new ArrayList<Long>();
-        }
+        if (menuIds.isEmpty()){menuIds = new ArrayList<Long>();}
         selectRoleInfoDTO.setMenuIds(menuIds);
         return GenericRspDTO.newInstance(MsgEnum.SUCCESS,selectRoleInfoDTO);
     }
@@ -102,7 +96,6 @@ public class RoleController {
     public GenericRspDTO<NoBody> saveRole(@Validated @RequestBody SaveRoleDto saveRoleDto){
         String idgenValue = IdGenUtils.generateId("ZHOU_ROLE_IDGEN");
         SaveRoleBo saveRoleBo = new SaveRoleBo();
-        //saveRoleBo.setRid(Long.parseLong(idgenValue));
         saveRoleBo.setRid(Long.parseLong(idgenValue));
         saveRoleBo.setName(saveRoleDto.getName());
         saveRoleBo.setNote(saveRoleDto.getNote());
